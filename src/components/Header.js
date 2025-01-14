@@ -1,29 +1,102 @@
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 
 const Header = () => (
-  <AppBar position="sticky" sx={{ backgroundColor: '#D50032', boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)' }}>
-    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <Typography variant="h6" sx={{ flexGrow: 1, color: '#FFFFFF', fontWeight: 'bold', fontSize: '1.5rem' }}>
+  <AppBar 
+    position="sticky" 
+    sx={{
+      backgroundColor: '#D50032', 
+      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)', 
+      height: '120px', // Increased height for more room
+    }}
+  >
+    <Toolbar 
+      sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        height: '100%', // Ensure the toolbar fills the AppBar height
+        fontFamily: 'Roboto, sans-serif', // Apply custom font
+      }}
+    >
+      <Typography 
+        variant="h6" 
+        sx={{
+          flexGrow: 1, 
+          color: '#FFFFFF', 
+          fontWeight: 'bold', 
+          fontSize: '3rem', // Adjusted title size if needed
+          letterSpacing: '1px', 
+          lineHeight: 1.1, 
+        }}
+      >
         Formula RP
       </Typography>
       <Box sx={{ display: 'flex', gap: 2 }}>
-        <Button color="inherit" sx={{ '&:hover': { backgroundColor: '#FFD700', color: '#212121' } }} href="/economy">
-          Economy
+        <Button 
+          color="inherit" 
+          sx={{ 
+            '&:hover': { backgroundColor: '#FFD700', color: '#212121' },
+            fontSize: '1.5rem', // Increased font size for buttons
+            padding: '12px 24px', // Adjusted padding for balance
+          }} 
+          href="/economy"
+        >
+          Overview
         </Button>
-        <Button color="inherit" sx={{ '&:hover': { backgroundColor: '#FFD700', color: '#212121' } }} href="/rulebook">
-          Rulebook
-        </Button>
-        <Button color="inherit" sx={{ '&:hover': { backgroundColor: '#FFD700', color: '#212121' } }} href="/howitworks">
+        <Button 
+          color="inherit" 
+          sx={{ 
+            '&:hover': { backgroundColor: '#FFD700', color: '#212121' },
+            fontSize: '1.5rem', // Increased font size for buttons
+            padding: '12px 24px', // Adjusted padding for balance
+          }} 
+          href="/rulebook"
+        >
           How It Works
         </Button>
-        <Button color="inherit" sx={{ '&:hover': { backgroundColor: '#FFD700', color: '#212121' } }} href="/roleplayevents">
+        <Button 
+          color="inherit" 
+          sx={{ 
+            '&:hover': { backgroundColor: '#FFD700', color: '#212121' },
+            fontSize: '1.5rem', // Increased font size for buttons
+            padding: '12px 24px', // Adjusted padding for balance
+          }} 
+          href="/howitworks"
+        >
+          Weather
+        </Button>
+        <Button 
+          color="inherit" 
+          sx={{ 
+            '&:hover': { backgroundColor: '#FFD700', color: '#212121' },
+            fontSize: '1.5rem', // Increased font size for buttons
+            padding: '12px 24px', // Adjusted padding for balance
+          }} 
+          href="/roleplayevents"
+        >
+          Economy
+        </Button>
+        <Button 
+          color="inherit" 
+          sx={{ 
+            '&:hover': { backgroundColor: '#FFD700', color: '#212121' },
+            fontSize: '1.5rem', // Increased font size for buttons
+            padding: '12px 24px', // Adjusted padding for balance
+          }} 
+          href="/signup"
+        >
           Roleplay Events
         </Button>
-        <Button color="inherit" sx={{ '&:hover': { backgroundColor: '#FFD700', color: '#212121' } }} href="/signup">
+        <Button 
+          color="inherit" 
+          sx={{ 
+            '&:hover': { backgroundColor: '#FFD700', color: '#212121' },
+            fontSize: '1.5rem', // Increased font size for buttons
+            padding: '12px 24px', // Adjusted padding for balance
+          }} 
+          href="/weather"
+        >
           Sign Up
-        </Button>
-        <Button color="inherit" sx={{ '&:hover': { backgroundColor: '#FFD700', color: '#212121' } }} href="/weather">
-          Weather
         </Button>
       </Box>
     </Toolbar>

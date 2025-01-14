@@ -1,13 +1,15 @@
 /* Ensure the font is loaded properly */
 @font-face {
-  font-family: 'F1-Regular'; /* Custom font name */
-  src: url('/Formula1-Regular.otf') format('opentype'),
-       url('/assets/fonts/F1-Regular.woff') format('woff'),
-       url('/assets/fonts/F1-Regular.ttf') format('truetype');
-  font-weight: normal;
+  font-family: 'Formula Condensed Light';
   font-style: normal;
-}
+  font-weight: normal;
+  src: local('Formula Condensed Light'), url('FormulaCondensed-Light.woff') format('woff');
+  }
+  
 
-body {
-  font-family: 'F1-Regular', sans-serif;
-}
+  @font-face {
+  font-family: 'Formula Condensed Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Formula Condensed Bold'), url('FormulaCondensed-Bold.woff') format('woff');
+  }

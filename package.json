@@ -46,6 +46,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "import-fresh": "^3.3.0"
+    "import-fresh": "^3.3.0",
+    "webpack-dev-server": "^5.2.0"
   }
 }

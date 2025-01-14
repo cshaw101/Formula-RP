@@ -15,16 +15,21 @@ const Overview = () => {
         color: "#FFFFFF", // Keeping text light for readability
         position: "relative",
         overflow: "hidden",
+        borderRadius: "12px", // Add some rounded corners for a softer look
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)", // Adding a subtle shadow for depth
       }}
     >
       <Typography
         variant="h2"
         sx={{
           fontFamily: "'F1-Wide', sans-serif",
-          fontSize: { xs: "2.5rem", sm: "3.5rem" },
+          fontSize: { xs: "3.5rem", sm: "5rem" }, // Larger font size
           fontWeight: "bold",
           color: "#FFD700", // F1 gold color for the header
-          marginBottom: "30px",
+          marginBottom: "50px", // Increased margin for more space between title and text
+          maxWidth: "80%", // Ensure the title doesn’t stretch too wide on large screens
+          margin: "0 auto", // Center the title
+          letterSpacing: "2px", // Add letter spacing for clarity
         }}
       >
         Your Journey Starts Here
@@ -34,10 +39,14 @@ const Overview = () => {
         variant="body1"
         sx={{
           fontFamily: "'F1-Regular', sans-serif",
-          fontSize: { xs: "1.2rem", sm: "1.4rem" },
-          lineHeight: "1.8",
-          marginBottom: "30px",
+          fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Increased font size for better readability
+          lineHeight: "2", // Increased line height for better spacing between lines
+          marginBottom: "30px", // Added space between paragraphs
           color: "#FFFFFF", // Keeping the text white for contrast
+          maxWidth: "80%", // Prevent text from going too wide on large screens
+          margin: "0 auto", // Center text
+          letterSpacing: "1px", // Add letter spacing for improved readability
+          textAlign: "center", // Ensure the text is centered
         }}
       >
         Experience the thrill of Formula 1 like never before! Join a dynamic
@@ -51,9 +60,14 @@ const Overview = () => {
         variant="body1"
         sx={{
           fontFamily: "'F1-Regular', sans-serif",
-          fontSize: { xs: "1.2rem", sm: "1.4rem" },
-          lineHeight: "1.8",
+          fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Increased font size
+          lineHeight: "2", // Increased line height
+          marginBottom: "50px", // Added more space after the last paragraph
           color: "#FFFFFF", // Keeping the text white for contrast
+          maxWidth: "80%", // Prevent text from going too wide on large screens
+          margin: "0 auto", // Center text
+          letterSpacing: "1px", // Add letter spacing
+          textAlign: "center", // Center the text
         }}
       >
         Are you ready to make your mark on the F1 Roleplay League? This is your
@@ -75,11 +89,15 @@ const Overview = () => {
           "&:hover": {
             backgroundColor: "#FFB300",
             transform: "scale(1.05)",
+            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)", // Adding hover shadow effect
           },
+          maxWidth: "200px", // Restrict the button size for better responsiveness
+          marginLeft: "auto", // Align button to the center
+          marginRight: "auto", // Align button to the center
         }}
         href="#signup" // Button link for sign-up
       >
-        Join the League Now
+        Join the League
       </Button>
     </Box>
   );
