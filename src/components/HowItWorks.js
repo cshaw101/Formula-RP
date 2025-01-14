@@ -47,11 +47,15 @@ const HowItWorks = () => {
     >
       <Typography
         variant="h2"
-        style={{
-          fontFamily: "'Formula1-Bold', sans-serif",
-          marginBottom: "60px", // Increased margin for more space
-          color: "#FFD700", // Gold color for the header
-          fontSize: "4rem", // Larger font size for the title
+        sx={{
+          fontFamily: "'F1-Wide', sans-serif", // Changed to match Overview font family
+          fontSize: { xs: "3.5rem", sm: "5rem" }, // Updated font size
+          fontWeight: "bold",
+          color: "#FFD700", // F1 gold color for the header
+          marginBottom: "50px", // Increased margin for more space between title and text
+          maxWidth: "80%", // Ensure the title doesn’t stretch too wide on large screens
+          margin: "0 auto", // Center the title
+          letterSpacing: "2px", // Add letter spacing for clarity
         }}
       >
         How the League Works
@@ -68,7 +72,7 @@ const HowItWorks = () => {
               <TimelineOppositeContent
                 sx={{
                   display: { xs: "none", sm: "block" },
-                  fontFamily: "'Formula1-Bold', sans-serif",
+                  fontFamily: "'F1-Regular', sans-serif", // Updated to match Overview font
                   color: "rgba(255, 255, 255, 0.7)",
                   fontSize: "22px", // Increased font size for step titles
                   fontWeight: "bold", // Bold text for step titles
@@ -99,7 +103,7 @@ const HowItWorks = () => {
                   <Typography
                     variant="h5"
                     sx={{
-                      fontFamily: "'Formula1-Bold', sans-serif",
+                      fontFamily: "'F1-Wide', sans-serif", // Changed to match Overview font family
                       marginBottom: "20px", // Increased margin for more space
                       fontSize: "28px", // Larger title size
                       color: "#FFD700", // Gold color for titles
@@ -110,8 +114,9 @@ const HowItWorks = () => {
                   <Typography
                     variant="body2"
                     sx={{
-                      fontSize: "20px", // Larger description text
-                      lineHeight: "1.8",
+                      fontFamily: "'F1-Regular', sans-serif", // Updated to match Overview font
+                      fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Increased font size for description
+                      lineHeight: "2", // Increased line height for better spacing
                       color: "#ccc", // Lighter text for description
                     }}
                   >
