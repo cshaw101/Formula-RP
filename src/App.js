@@ -8,11 +8,14 @@ import WeatherSection from "./components/Weather";
 import EconomySection from "./components/Economy";
 import RoleplayEvents from "./components/RoleplayEvents";
 import DownloadRulebook from "./components/Rulebook";
+import HeroSection from "./components/HeroSection";
+import './styles/styles.css'
 
 function App() {
   return (
     <>
       <Header />
+      <HeroSection />
       <main>
         <Overview />
         <HowItWorks />

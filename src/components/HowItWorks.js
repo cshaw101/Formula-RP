@@ -37,10 +37,11 @@ const HowItWorks = () => {
   return (
     <div
       style={{
-        backgroundColor: "#1e1e1e",
+        backgroundColor: "#2e2e2e", // Dark grey background
         color: "#fff",
-        padding: "40px 20px",
+        padding: "80px 20px", // Increased padding for better space
         textAlign: "center",
+        borderRadius: "10px",
       }}
       id="how-it-works"
     >
@@ -48,7 +49,8 @@ const HowItWorks = () => {
         variant="h3"
         style={{
           fontFamily: "'Formula1-Bold', sans-serif",
-          marginBottom: "30px",
+          marginBottom: "40px",
+          color: "#FFD700", // Gold color for the header
         }}
       >
         How the League Works
@@ -67,6 +69,8 @@ const HowItWorks = () => {
                   display: { xs: "none", sm: "block" },
                   fontFamily: "'Formula1-Bold', sans-serif",
                   color: "rgba(255, 255, 255, 0.7)",
+                  fontSize: "16px",
+                  fontWeight: "bold", // Bold text for step titles
                 }}
               >
                 <Typography variant="body2">{step.title}</Typography>
@@ -78,21 +82,38 @@ const HowItWorks = () => {
               <TimelineContent>
                 <Box
                   sx={{
-                    backgroundColor: "#000",
+                    backgroundColor: "#333", // Dark background for cards
                     color: "#fff",
                     borderRadius: "10px",
-                    padding: "20px",
-                    boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.6)",
-                    marginBottom: "20px",
+                    padding: "25px",
+                    boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.6)", // Stronger shadow
+                    marginBottom: "30px",
+                    transition: "all 0.3s ease-in-out", // Hover transition
+                    "&:hover": {
+                      transform: "translateY(-5px)", // Slight lift on hover
+                      boxShadow: "0px 12px 30px rgba(0, 0, 0, 0.8)", // Hover shadow effect
+                    },
                   }}
                 >
                   <Typography
                     variant="h6"
-                    sx={{ fontFamily: "'Formula1-Bold', sans-serif", marginBottom: "10px" }}
+                    sx={{
+                      fontFamily: "'Formula1-Bold', sans-serif",
+                      marginBottom: "10px",
+                      fontSize: "20px", // Increased title size
+                      color: "#FFD700", // Gold color for titles
+                    }}
                   >
                     {step.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ fontSize: "16px", lineHeight: "1.6" }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: "16px",
+                      lineHeight: "1.8",
+                      color: "#ccc", // Lighter text for description
+                    }}
+                  >
                     {step.description}
                   </Typography>
                 </Box>

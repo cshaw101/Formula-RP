@@ -1,24 +1,15 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Link } from '@mui/material';
 
-const Footer = () => {
-  return (
-    <Box
-      sx={{
-        padding: "20px",
-        textAlign: "center",
-        backgroundColor: "#333",
-        color: "#fff",
-      }}
-    >
-      <Typography variant="body2">
-        © 2025 F1 Roleplay League. All Rights Reserved.
-      </Typography>
-      <Typography variant="body2">
-        Contact us: <a href="mailto:f1league@example.com">f1league@example.com</a>
-      </Typography>
-    </Box>
-  );
-};
+const Footer = () => (
+  <Box sx={{ backgroundColor: '#212121', padding: 2, textAlign: 'center' }}>
+    <Typography variant="body2" sx={{ color: '#FFFFFF' }}>
+      © 2025 F1 RP League | All Rights Reserved
+    </Typography>
+    <Typography variant="body2" sx={{ color: '#FFD700', marginTop: 1 }}>
+      <Link href="#" sx={{ color: '#FFD700' }}>Terms of Service</Link> | 
+      <Link href="#" sx={{ color: '#FFD700' }}> Privacy Policy</Link>
+    </Typography>
+  </Box>
+);
 
 export default Footer;

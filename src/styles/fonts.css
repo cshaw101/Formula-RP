@@ -1,21 +1,13 @@
+/* Ensure the font is loaded properly */
 @font-face {
-    font-family: 'Formula1Regular';
-    src: url('../assets/fonts/Formula1-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Formula1Wide';
-    src: url('../assets/fonts/Formula1-Wide.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Formula1Bold';
-    src: url('../assets/fonts/Formula1-Bold.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
-  }
-  
+  font-family: 'F1-Regular'; /* Custom font name */
+  src: url('/Formula1-Regular.otf') format('opentype'),
+       url('/assets/fonts/F1-Regular.woff') format('woff'),
+       url('/assets/fonts/F1-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'F1-Regular', sans-serif;
+}
