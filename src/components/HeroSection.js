@@ -53,7 +53,7 @@ const HeroSection = () => {
           }}
         >
           <source src="/video.mp4" type="video/mp4" />
-          <img src="/fallback-image.jpg" alt="Fallback Image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/fallback-image.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           Your browser does not support the video tag. <br />
           Please consider upgrading your browser or using a more modern one.
         </video>
