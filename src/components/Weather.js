@@ -26,7 +26,7 @@ const WeatherSection = () => {
         Weather Forecast and Accuracy
       </Typography>
       <Box sx={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-        <WiDaySunny size={60} color="#FF9800" /> {/* Weather icon */}
+        <WiDaySunny size={60} color="#FF9800" /> 
         <WiDayCloudy size={60} color="#FF9800" />
         <WiDayLightning size={60} color="#FF9800" />
       </Box>

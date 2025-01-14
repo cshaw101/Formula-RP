@@ -5,6 +5,9 @@ import SignUp from "./components/Signup";
 import Footer from "./components/Footer";
 import HowItWorks from "./components/HowItWorks";
 import WeatherSection from "./components/Weather";
+import EconomySection from "./components/Economy";
+import RoleplayEvents from "./components/RoleplayEvents";
+import DownloadRulebook from "./components/Rulebook";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <Overview />
         <HowItWorks />
         <WeatherSection />
+        <EconomySection />
+        <RoleplayEvents />
+        <DownloadRulebook />
         <SignUp />
       </main>
       <Footer />

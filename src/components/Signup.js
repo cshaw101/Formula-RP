@@ -4,9 +4,9 @@ import { Box, Typography, Button, TextField } from "@mui/material";
 const roles = [
   {
     name: "Owner",
-    brief: "Manage team budgets, hire drivers, and make strategic decisions.",
+    brief: "Make the rules for the leageu, hire drivers, and make strategic decisions.",
     details:
-      "As an Owner, you hold the keys to your team's success. Manage budgets, negotiate contracts, and guide your team to victory.",
+      "As an Owner, you hold the keys to your team's success. Make the rules , negotiate contracts, and guide your team to victory. ",
   },
   {
     name: "Principal",
