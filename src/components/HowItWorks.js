@@ -1,4 +1,14 @@
 import React from "react";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineDot,
+  TimelineConnector,
+  TimelineContent,
+  TimelineOppositeContent,
+} from "@mui/lab";
+import { Typography, Box } from "@mui/material";
 
 const HowItWorks = () => {
   const steps = [
@@ -34,46 +44,63 @@ const HowItWorks = () => {
       }}
       id="how-it-works"
     >
-      <h3
+      <Typography
+        variant="h3"
         style={{
           fontFamily: "'Formula1-Bold', sans-serif",
           marginBottom: "30px",
         }}
       >
         How the League Works
-      </h3>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-          gap: "20px",
+      </Typography>
+      <Box
+        sx={{
           maxWidth: "1200px",
           margin: "0 auto",
         }}
       >
-        {steps.map((step, index) => (
-          <div
-            key={index}
-            style={{
-              backgroundColor: "#000",
-              color: "#fff",
-              borderRadius: "10px",
-              padding: "20px",
-              boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.6)",
-            }}
-          >
-            <h5
-              style={{
-                fontFamily: "'Formula1-Bold', sans-serif",
-                marginBottom: "10px",
-              }}
-            >
-              {step.title}
-            </h5>
-            <p style={{ fontSize: "16px", lineHeight: "1.6" }}>{step.description}</p>
-          </div>
-        ))}
-      </div>
+        <Timeline position="alternate">
+          {steps.map((step, index) => (
+            <TimelineItem key={index}>
+              <TimelineOppositeContent
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                  fontFamily: "'Formula1-Bold', sans-serif",
+                  color: "rgba(255, 255, 255, 0.7)",
+                }}
+              >
+                <Typography variant="body2">{step.title}</Typography>
+              </TimelineOppositeContent>
+              <TimelineSeparator>
+                <TimelineDot color={index % 2 === 0 ? "primary" : "secondary"} />
+                {index < steps.length - 1 && <TimelineConnector />}
+              </TimelineSeparator>
+              <TimelineContent>
+                <Box
+                  sx={{
+                    backgroundColor: "#000",
+                    color: "#fff",
+                    borderRadius: "10px",
+                    padding: "20px",
+                    boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.6)",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    sx={{ fontFamily: "'Formula1-Bold', sans-serif", marginBottom: "10px" }}
+                  >
+                    {step.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: "16px", lineHeight: "1.6" }}>
+                    {step.description}
+                  </Typography>
+                </Box>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      </Box>
     </div>
   );
 };

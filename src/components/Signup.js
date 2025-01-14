@@ -4,9 +4,9 @@ import { Box, Typography, Button, TextField } from "@mui/material";
 const roles = [
   {
     name: "Owner",
-    brief: "Make the rules for the leageu, hire drivers, and make strategic decisions.",
+    brief: "Make the rules for the league, hire drivers, and make strategic decisions.",
     details:
-      "As an Owner, you hold the keys to your team's success. Make the rules , negotiate contracts, and guide your team to victory. ",
+      "As an Owner, you hold the keys to your team's success. Make the rules, negotiate contracts, and guide your team to victory.",
   },
   {
     name: "Principal",
@@ -28,11 +28,11 @@ const SignUp = () => {
 
   const handleRoleClick = (role) => {
     setSelectedRole(role);
-    setFormVisible(false); // Reset the form visibility when switching roles
+    setFormVisible(false); 
   };
 
   const handleSignUpClick = () => {
-    setFormVisible(true); // Show the sign-up form
+    setFormVisible(true);
   };
 
   const renderFormForRole = () => {
@@ -40,27 +40,12 @@ const SignUp = () => {
 
     return (
       <>
-        <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px", fontWeight: "bold" }}>
           {selectedRole} Sign-Up
         </Typography>
-        <TextField
-          label="Email"
-          variant="outlined"
-          fullWidth
-          sx={{ marginBottom: "15px" }}
-        />
-        <TextField
-          label="Discord Name"
-          variant="outlined"
-          fullWidth
-          sx={{ marginBottom: "15px" }}
-        />
-        <TextField
-          label="RolePlay Character Name"
-          variant="outlined"
-          fullWidth
-          sx={{ marginBottom: "15px" }}
-        />
+        <TextField label="Email" variant="outlined" fullWidth sx={{ marginBottom: "15px" }} />
+        <TextField label="Discord Name" variant="outlined" fullWidth sx={{ marginBottom: "15px" }} />
+        <TextField label="RolePlay Character Name" variant="outlined" fullWidth sx={{ marginBottom: "15px" }} />
         <TextField
           label={`Why do you want to join as a ${selectedRole}?`}
           variant="outlined"
@@ -69,11 +54,7 @@ const SignUp = () => {
           fullWidth
           sx={{ marginBottom: "15px" }}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{ width: "100%", marginTop: "10px" }}
-        >
+        <Button variant="contained" color="primary" sx={{ width: "100%", marginTop: "15px", padding: "14px" }}>
           Submit
         </Button>
       </>
@@ -84,32 +65,24 @@ const SignUp = () => {
     <Box
       id="signup"
       sx={{
-        padding: "50px 20px",
+        padding: "60px 20px",
         textAlign: "center",
         backgroundColor: "#f5f5f5",
+        maxWidth: "1200px",
+        margin: "0 auto",
       }}
     >
-      <Typography
-        variant="h4"
-        sx={{
-          fontFamily: "'Roboto', sans-serif",
-          marginBottom: "20px",
-          fontWeight: "bold",
-        }}
-      >
+      <Typography variant="h4" sx={{ fontFamily: "'Roboto', sans-serif", marginBottom: "25px", fontWeight: "bold" }}>
         Sign Up for the F1 Roleplay League
       </Typography>
-      <Typography
-        variant="body1"
-        sx={{ marginBottom: "20px", fontSize: "18px", lineHeight: "1.6" }}
-      >
+      <Typography variant="body1" sx={{ marginBottom: "30px", fontSize: "18px", lineHeight: "1.6", color: "#555" }}>
         Select a role to explore its responsibilities and join the league.
       </Typography>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
-          gap: "15px",
+          gap: "30px",
           flexWrap: "wrap",
         }}
       >
@@ -118,13 +91,14 @@ const SignUp = () => {
             key={role.name}
             sx={{
               width: selectedRole === role.name ? "100%" : "30%",
-              padding: "20px",
+              padding: "25px",
               textAlign: "left",
               backgroundColor: "#ffffff",
-              borderRadius: "10px",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              borderRadius: "12px",
+              boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
               cursor: "pointer",
-              transition: "width 0.3s ease",
+              transition: "all 0.3s ease",
+              "&:hover": { boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" },
             }}
             onClick={() => handleRoleClick(role.name)}
           >
@@ -132,7 +106,7 @@ const SignUp = () => {
               variant="h5"
               sx={{
                 fontWeight: "bold",
-                marginBottom: "10px",
+                marginBottom: "12px",
                 textAlign: selectedRole === role.name ? "center" : "left",
               }}
             >
@@ -141,7 +115,7 @@ const SignUp = () => {
             <Typography
               variant="body2"
               sx={{
-                marginBottom: "10px",
+                marginBottom: "12px",
                 textAlign: selectedRole === role.name ? "center" : "left",
               }}
             >
@@ -155,7 +129,7 @@ const SignUp = () => {
                   e.stopPropagation();
                   handleSignUpClick();
                 }}
-                sx={{ margin: "10px auto", display: "block" }}
+                sx={{ margin: "15px auto", display: "block" }}
               >
                 Sign Up as {role.name}
               </Button>
@@ -169,8 +143,8 @@ const SignUp = () => {
             marginTop: "30px",
             padding: "20px",
             backgroundColor: "#ffffff",
-            borderRadius: "10px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            borderRadius: "12px",
+            boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
             maxWidth: "600px",
             margin: "30px auto",
           }}
