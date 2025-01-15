@@ -1,5 +1,7 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
+import SportsMotorsportsIcon from "@mui/icons-material/SportsMotorsports"; // Icon for F1 theme
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward"; // Icon for button
 
 const Overview = () => {
   return (
@@ -16,66 +18,73 @@ const Overview = () => {
         position: "relative",
         overflow: "hidden",
         borderRadius: "12px", // Add some rounded corners for a softer look
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)", // Adding a subtle shadow for depth
+        marginTop: "250px", // Space above this component
+        marginBottom: "250px", // Space below this component
       }}
     >
+      <SportsMotorsportsIcon
+        sx={{
+          fontSize: { xs: "4rem", sm: "5rem" },
+          color: "#FFD700", // Gold color for F1 theme
+          marginBottom: "20px",
+        }}
+      />
       <Typography
         variant="h2"
         sx={{
           fontFamily: "'F1-Wide', sans-serif",
-          fontSize: { xs: "3.5rem", sm: "5rem" }, // Larger font size
+          fontSize: { xs: "3.5rem", sm: "5rem" },
           fontWeight: "bold",
           color: "#FFD700", // F1 gold color for the header
-          marginBottom: "50px", // Increased margin for more space between title and text
-          maxWidth: "80%", // Ensure the title doesn’t stretch too wide on large screens
-          margin: "0 auto", // Center the title
-          letterSpacing: "2px", // Add letter spacing for clarity
+          marginBottom: "30px",
+          maxWidth: "80%",
+          margin: "0 auto",
+          letterSpacing: "2px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
         }}
       >
-        Your Journey Starts Here
+        <span>Your Journey Starts Here</span>
       </Typography>
-      
+
       <Typography
         variant="body1"
         sx={{
           fontFamily: "'F1-Regular', sans-serif",
-          fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Increased font size for better readability
-          lineHeight: "2", // Increased line height for better spacing between lines
-          marginBottom: "30px", // Added space between paragraphs
-          color: "#FFFFFF", // Keeping the text white for contrast
-          maxWidth: "80%", // Prevent text from going too wide on large screens
-          margin: "0 auto", // Center text
-          letterSpacing: "1px", // Add letter spacing for improved readability
-          textAlign: "center", // Ensure the text is centered
+          fontSize: { xs: "1.6rem", sm: "1.8rem" },
+          lineHeight: "2",
+          marginBottom: "30px",
+          color: "#FFFFFF",
+          maxWidth: "80%",
+          margin: "0 auto",
+          letterSpacing: "1px",
         }}
       >
         Experience the thrill of Formula 1 like never before! Join a dynamic
         league where every player takes on a unique role: Owners manage budgets
         and teams, Principals strategize for success, Drivers race for glory,
-        and FIA members enforce the rules. Whether you're building your empire
-        or chasing the podium, every decision matters.
+        and FIA members enforce the rules.
       </Typography>
-      
+
       <Typography
         variant="body1"
         sx={{
           fontFamily: "'F1-Regular', sans-serif",
-          fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Increased font size
-          lineHeight: "2", // Increased line height
-          marginBottom: "50px", // Added more space after the last paragraph
-          color: "#FFFFFF", // Keeping the text white for contrast
-          maxWidth: "80%", // Prevent text from going too wide on large screens
-          margin: "0 auto", // Center text
-          letterSpacing: "1px", // Add letter spacing
-          textAlign: "center", // Center the text
+          fontSize: { xs: "1.6rem", sm: "1.8rem" },
+          lineHeight: "2",
+          marginBottom: "50px",
+          color: "#FFFFFF",
+          maxWidth: "80%",
+          margin: "0 auto",
+          letterSpacing: "1px",
         }}
       >
-        Are you ready to make your mark on the F1 Roleplay League? This is your
-        chance to live the world of Formula 1, from strategy meetings to
-        high-stakes races. Take the wheel, make bold decisions, and create
-        unforgettable moments in this immersive roleplay experience.
+        Take the wheel, make bold decisions, and create unforgettable moments in
+        this immersive roleplay experience.
       </Typography>
-      
+
       <Button
         variant="contained"
         sx={{
@@ -86,18 +95,20 @@ const Overview = () => {
           fontWeight: "bold",
           fontSize: "1.1rem",
           borderRadius: "8px",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
           "&:hover": {
             backgroundColor: "#FFB300",
             transform: "scale(1.05)",
             boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)", // Adding hover shadow effect
           },
-          maxWidth: "200px", // Restrict the button size for better responsiveness
-          marginLeft: "auto", // Align button to the center
-          marginRight: "auto", // Align button to the center
+          maxWidth: "240px",
+          margin: "0 auto",
         }}
-        href="#signup" // Button link for sign-up
+        href="#signup"
       >
-        Join the League
+        <ArrowForwardIcon /> Join the League
       </Button>
     </Box>
   );

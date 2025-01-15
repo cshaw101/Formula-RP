@@ -10,6 +10,7 @@ import RoleplayEvents from "./components/RoleplayEvents";
 import DownloadRulebook from "./components/Rulebook";
 import HeroSection from "./components/HeroSection";
 import './styles/styles.css'
+import './styles/fonts.css';
 
 function App() {
   return (
@@ -19,9 +20,9 @@ function App() {
       <main>
         <Overview />
         <HowItWorks />
-        <WeatherSection />
         <EconomySection />
         <RoleplayEvents />
+        <WeatherSection />
         <DownloadRulebook />
         <SignUp />
       </main>

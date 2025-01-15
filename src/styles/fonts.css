@@ -1,15 +1,13 @@
-/* Ensure the font is loaded properly */
 @font-face {
   font-family: 'Formula Condensed Light';
   font-style: normal;
   font-weight: normal;
-  src: local('Formula Condensed Light'), url('FormulaCondensed-Light.woff') format('woff');
-  }
-  
+  src: local('Formula Condensed Light'), url('/public/FormulaCondensed-Light.woff') format('woff');
+}
 
-  @font-face {
+@font-face {
   font-family: 'Formula Condensed Bold';
   font-style: normal;
   font-weight: normal;
-  src: local('Formula Condensed Bold'), url('FormulaCondensed-Bold.woff') format('woff');
-  }
+  src: local('Formula Condensed Bold'), url('/public/FormulaCondensed-Bold.woff') format('woff');
+}
