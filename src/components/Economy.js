@@ -7,8 +7,7 @@ const EconomySection = () => {
       id="economy-section"
       sx={{
         padding: { xs: "40px 20px", sm: "80px 40px" },
-        textAlign: "center",
-       
+        textAlign: "center",  
         color: "#FFFFFF",
         position: "relative",
         overflow: "hidden",

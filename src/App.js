@@ -18,13 +18,27 @@ function App() {
       <Header />
       <HeroSection />
       <main>
-        <Overview />
-        <HowItWorks />
-        <EconomySection />
-        <RoleplayEvents />
-        <WeatherSection />
-        <DownloadRulebook />
-        <SignUp />
+        <section id="overview">
+          <Overview />
+        </section>
+        <section id="howItWorks">
+          <HowItWorks />
+        </section>
+        <section id="economy">
+          <EconomySection />
+        </section>
+        <section id="roleplayEvents">
+          <RoleplayEvents />
+        </section>
+        <section id="weather">
+          <WeatherSection />
+        </section>
+        <section id="rulebook">
+          <DownloadRulebook />
+        </section>
+        <section id="signUp">
+          <SignUp />
+        </section>
       </main>
       <Footer />
     </>
