@@ -19,6 +19,10 @@ const EconomySection = () => {
         minHeight: "100vh", // Ensure the container takes up the full height of the screen
         margin: 0, // Ensures there's no body margin affecting this section
         paddingTop: "80px", // Adds space from the top of the page
+        display: "flex", // Flexbox to allow flexible layout
+        flexDirection: "column", // Stack children vertically
+        justifyContent: "center", // Center content vertically
+        alignItems: "center", // Center content horizontally
       }}
     >
       <Typography
@@ -58,8 +62,8 @@ const EconomySection = () => {
 
       <Divider sx={{ marginBottom: "40px" }} />
 
-      <Grid container justifyContent="center" spacing={4}>
-        <Grid item xs={12} sm={6} md={3} sx={{ marginBottom: "40px" }}>
+      <Grid container justifyContent="center" spacing={4} sx={{ maxWidth: "1200px", width: "100%" }}>
+        <Grid item xs={12} sm={6} md={3}>
           <SectionBox title="For Drivers">
             <Typography variant="body1" sx={{ fontFamily: "'F1-Regular', sans-serif", fontSize: "1.6rem" }}>
               <strong>Earning Money:</strong> Drivers can earn funds through race performance and Driver contracts. <br />
@@ -67,8 +71,7 @@ const EconomySection = () => {
             </Typography>
           </SectionBox>
         </Grid>
-
-        <Grid item xs={12} sm={6} md={3} sx={{ marginBottom: "40px" }}>
+        <Grid item xs={12} sm={6} md={3}>
           <SectionBox title="For Team Owners">
             <Typography variant="body1" sx={{ fontFamily: "'F1-Regular', sans-serif", fontSize: "1.6rem" }}>
               <strong>Sponsorship Deals:</strong> Secure sponsors to bring in extra income, but beware—poor performance could cause sponsors to pull out! <br />
@@ -76,16 +79,14 @@ const EconomySection = () => {
             </Typography>
           </SectionBox>
         </Grid>
-
-        <Grid item xs={12} sm={6} md={3} sx={{ marginBottom: "40px" }}>
+        <Grid item xs={12} sm={6} md={3}>
           <SectionBox title="For Team Principals">
             <Typography variant="body1" sx={{ fontFamily: "'F1-Regular', sans-serif", fontSize: "1.6rem" }}>
               <strong>Strategic Spending:</strong> Principals play a key role in advising how team funds are spent, from deciding on tire purchases to recommending key upgrades.
             </Typography>
           </SectionBox>
         </Grid>
-
-        <Grid item xs={12} sm={6} md={3} sx={{ marginBottom: "40px" }}>
+        <Grid item xs={12} sm={6} md={3}>
           <SectionBox title="For FIA Members">
             <Typography variant="body1" sx={{ fontFamily: "'F1-Regular', sans-serif", fontSize: "1.6rem" }}>
               <strong>Fines & Penalties:</strong> FIA members can issue financial penalties for rule violations or dangerous wrecks, affecting a team or driver’s bottom line.
@@ -106,7 +107,7 @@ const SectionBox = ({ title, children }) => {
         padding: "30px", // Increased padding for bigger boxes
         borderRadius: "8px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
-        marginBottom: "30px", // Adjust this value to control spacing between the boxes
+        marginBottom: "60px", // Increased space between each section box
         width: "100%", // Ensure the box takes full width available
         height: "100%", // Ensure boxes expand vertically to take up full space
         animation: "popIn 1s ease-out", // Animation for each section box

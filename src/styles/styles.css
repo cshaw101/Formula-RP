@@ -1,183 +1,48 @@
-/* Global body styling */
-body {
+/* Resetting and ensuring proper layout */
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Formula Condensed Light', sans-serif;
-  background-color: #2e2e2e; /* Dark grey background */
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh; /* Ensure the body fills the viewport */
-  display: block;
-  color: white; /* Default text color */
+  box-sizing: border-box; /* Include padding and borders in width/height calculation */
 }
-/* Add this to your CSS file, or inline in the JSX with sx */
-.custom-title {
-  font-size: 48px !important;  /* Larger title */
-  font-weight: bold;
-  color: #ffd700 !important;  /* Gold color */
-}
-
-.custom-subheading {
-  font-size: 28px !important;  /* Larger subheading */
-  font-weight: bold;
-  color: #ffd700 !important;  /* Gold color */
-}
-
-.custom-body {
-  font-size: 18px !important;  /* Larger body text */
-  line-height: 1.8;
-  color: #fff !important;  /* White color */
+body {
+  background-color: #2e2e2e;  /* Background color for the whole page */
+  color: #ffd700;  /* Text color for contrast */
 }
 
 
-/* Global header styling for all headers */
-h1, h2, h3, h4, h5, h6 {
-
-  color: #FFD700; /* Gold color */
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-align: center;
-}
-h1, h2, h3 {
-  font-family: 'Formula Condensed Bold', sans-serif;
-}
-
-/* Main section styling */
-main {
-  display: block;
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  box-sizing: border-box;
-  min-height: 100vh;
-  /* Ensures the main section takes the full screen height */
-}
-
-/* Hero Section */
-section.hero {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.8)); /* Gold gradient */
-  padding: 80px 20px;
-  border-radius: 12px;
-  margin-bottom: 40px;
-}
-
-section.hero h2 {
-  font-size: 3rem;
-  color: #000; /* Dark text for contrast */
-}
-
-/* Section Styling */
-section {
-  padding: 40px 20px;
-  background-color: rgba(0, 0, 0, 0.6); /* Dark background for contrast */
-  border-radius: 12px;
-  margin-bottom: 40px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-section .page-content {
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-section .page-content h3 {
-  font-size: 2rem; /* Larger headings within each section */
-  color: #333;
-}
-
-/* Button styling */
-button {
-  font-size: 1rem;
-  background-color: #FFD700; /* Gold color */
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 20px; /* Adds space above button */
-}
-
-button:hover {
-  background-color: #e6c300; /* Slightly darker gold on hover */
-}
-
-/* Footer styling */
-footer {
-  padding: 20px;
-  background-color: #212121;
-  text-align: center;
-  color: #fff;
-  margin-top: 40px; /* Adds space from content */
-}
-
-footer a {
-  color: #FFD700;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Ensure the driver container has spacing */
+/* Container that holds the driver boxes */
 .driver-container {
   display: flex;
-  justify-content: space-between; /* Evenly spaces out the boxes */
-  gap: 20px; /* Adds space between the driver boxes */
-  padding: 20px; /* Optional padding around the container */
-  flex-wrap: wrap; /* Allow the boxes to wrap if needed */
+  flex-wrap: wrap;  /* Allow wrapping of items if needed */
+  justify-content: space-between; /* Space items evenly */
+  gap: 20px;  /* Space between items */
+  width: 100%;
+  box-sizing: border-box; /* Ensure no overflow */
+  margin: 0 auto;  /* Center the container if needed */
+  overflow: hidden; /* Prevent overflow issues */
 }
 
 /* Individual driver box styling */
 .driver-box {
-  background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+  flex: 1 1 250px; /* Flex item with a base size of 250px */
+  min-width: 250px; /* Minimum width of 250px */
+  max-width: 300px; /* Optional: limit max width */
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background */
   border-radius: 12px;
-  width: 250px; /* Adjust width as per your requirement */
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   text-align: center;
-  color: #ffd700; /* Gold text color */
-  margin: 10px; /* Optional: Adds space between boxes in case flex isn't enough */
+  color: #ffd700; /* Gold text */
+  margin: 10px; /* Optional margin between items */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Optional responsiveness for smaller screens */
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .driver-container {
-    justify-content: center; /* Center driver boxes on smaller screens */
-  }
-
   .driver-box {
-    width: 100%; /* Full width on small screens */
-    max-width: 300px; /* Limit the max width */
-  }
-}
-
-/* Adding media queries for better responsiveness */
-@media (max-width: 768px) {
-  main {
-    padding: 20px;
-  }
-
-  section {
-    padding: 20px 10px;
-  }
-
-  button {
-    width: 100%; /* Full width for buttons on small screens */
-  }
-}
-
-@keyframes popIn {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
+    flex: 1 1 100%; /* Full width on smaller screens */
+    max-width: 100%;  /* Allow full use of available space */
   }
 }

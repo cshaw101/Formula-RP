@@ -1,4 +1,5 @@
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, IconButton } from '@mui/material';
+import { SportsMotorsports } from '@mui/icons-material'; // Example icon (you can change it)
 
 const Header = () => (
   <AppBar 
@@ -15,22 +16,30 @@ const Header = () => (
         justifyContent: 'space-between', 
         alignItems: 'center', 
         height: '100%', // Ensure the toolbar fills the AppBar height
-        fontFamily: 'Roboto, sans-serif', // Apply custom font
+        fontFamily: 'Formula Condensed Light, sans-serif', // Apply custom font
       }}
     >
-      <Typography 
-        variant="h6" 
-        sx={{
-          flexGrow: 1, 
-          color: '#FFFFFF', 
-          fontWeight: 'bold', 
-          fontSize: '3rem', // Adjusted title size if needed
-          letterSpacing: '1px', 
-          lineHeight: 1.1, 
-        }}
-      >
-        Formula RP
-      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <IconButton 
+          color="inherit" 
+          sx={{ fontSize: '3rem' }} 
+          aria-label="Formula RP Icon"
+        >
+          <SportsMotorsports />
+        </IconButton>
+        <Typography 
+          variant="h6" 
+          sx={{
+            color: '#FFFFFF', 
+            fontWeight: 'bold', 
+            fontSize: '3rem', // Adjusted title size if needed
+            letterSpacing: '1px', 
+            lineHeight: 1.1, 
+          }}
+        >
+          Formula RP
+        </Typography>
+      </Box>
       <Box sx={{ display: 'flex', gap: 2 }}>
         <Button 
           color="inherit" 
