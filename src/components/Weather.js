@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { WiDayCloudy, WiDayLightning, WiDaySunny } from "react-icons/wi";
+import '../styles/styles.css';
 
 const WeatherSection = () => {
   return (
@@ -33,7 +34,7 @@ const WeatherSection = () => {
             marginBottom: "60px", // Increased margin for better spacing
             fontWeight: "bold",
             color: "#FFD700", // Gold color for the title
-            fontSize: { xs: "3.5rem", sm: "5rem" }, // Header size similar to Overview
+            fontSize: { xs: "3rem", sm: "4rem" }, // Header size similar to Overview
             textAlign: "center", // Ensure title is centered
             letterSpacing: "2px", // Adding letter spacing for clarity
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)", // Add subtle shadow for depth
@@ -48,36 +49,21 @@ const WeatherSection = () => {
             <WiDaySunny
               size={120} // Increased icon size
               color="#FF9800"
-              sx={{
-                "&:hover": {
-                  transform: "scale(1.2)", // Slightly bigger hover effect
-                  transition: "transform 0.3s ease-in-out",
-                },
-              }}
+              className="sun-icon" // Added className
             />
           </Grid>
           <Grid item xs={4} sm={2} md={2}>
             <WiDayCloudy
               size={120} // Increased icon size
               color="#FF9800"
-              sx={{
-                "&:hover": {
-                  transform: "scale(1.2)",
-                  transition: "transform 0.3s ease-in-out",
-                },
-              }}
+              className="cloud-icon" // Added className
             />
           </Grid>
           <Grid item xs={4} sm={2} md={2}>
             <WiDayLightning
               size={120} // Increased icon size
               color="#FF9800"
-              sx={{
-                "&:hover": {
-                  transform: "scale(1.2)",
-                  transition: "transform 0.3s ease-in-out",
-                },
-              }}
+              className="lightning-icon" // Added className
             />
           </Grid>
         </Grid>
@@ -87,12 +73,12 @@ const WeatherSection = () => {
           <Typography
             variant="body1"
             sx={{
-              fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Larger font size for better readability
-              lineHeight: "2", // Increased line height for readability
+              fontSize: { xs: "1.4rem", sm: "1.6rem" }, // Slightly smaller font for better readability
+              lineHeight: "1.8", // Increased line height for readability
               color: "#fff", // White text for contrast on dark background
               marginBottom: "60px", // Increased margin for more space between paragraphs
               textAlign: "left",
-              letterSpacing: "1px", // Add letter spacing for readability
+              letterSpacing: "0.5px", // Added letter spacing for readability
             }}
           >
             The weather in our league is just like real life—unpredictable! While we have a dedicated Weather Channel in the Discord for all race-related forecasts, keep in mind that these predictions are not always perfect. Races can be impacted by sudden changes, making strategy decisions tricky for teams.
@@ -101,12 +87,12 @@ const WeatherSection = () => {
           <Typography
             variant="body1"
             sx={{
-              fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Larger font size for better readability
-              lineHeight: "2",
+              fontSize: { xs: "1.4rem", sm: "1.6rem" }, // Adjusted font size for readability
+              lineHeight: "1.8", // Increased line height
               color: "#fff", // White text for contrast on dark background
-              marginTop: "60px", // Increased margin for spacing
+              marginTop: "40px", // Reduced margin for better spacing between paragraphs
               textAlign: "left",
-              letterSpacing: "1px", // Add letter spacing for readability
+              letterSpacing: "0.5px", // Added letter spacing for readability
             }}
           >
             Teams with enough funds can purchase an Enhanced Weather Monitor to get more accurate and reliable weather predictions. This will help your team make better-informed decisions about tire choices and race strategy.

@@ -22,7 +22,7 @@ const HeroSection = () => {
   return (
     <Box sx={{
       position: 'relative',
-      padding: { xs: '2rem', sm: '4rem' },
+      padding: { xs: '1rem', sm: '2rem' }, // Smaller padding
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
@@ -73,19 +73,19 @@ const HeroSection = () => {
 
       {/* Text and Button */}
       <Typography variant="h1" sx={{
-        fontSize: { xs: '3rem', sm: '5rem' }, // Increased font size
+        fontSize: { xs: '2rem', sm: '3.5rem' }, // Reduced font size even more
         fontWeight: 'bold',
         textTransform: 'uppercase',
         letterSpacing: '0.1rem',
-        marginBottom: 3,
+        marginBottom: 2,
         color: '#FFD700', // Gold color for the title text
         zIndex: 1,
       }}>
         Welcome to Formula RP
       </Typography>
       <Typography variant="h4" sx={{
-        fontSize: { xs: '2rem', sm: '3rem' }, // Increased font size
-        marginBottom: 4,
+        fontSize: { xs: '1.25rem', sm: '2rem' }, // Reduced font size even more
+        marginBottom: 2,
         fontWeight: 300,
         color: '#FFD700', // Gold color for the subtitle text
         zIndex: 1,
@@ -102,8 +102,8 @@ const HeroSection = () => {
         <Button variant="contained" sx={{
           backgroundColor: '#FFD700',
           color: '#212121',
-          padding: '16px 32px', // Increased padding
-          fontSize: '1.25rem', // Increased font size
+          padding: '10px 20px', // Further reduced padding
+          fontSize: '0.875rem', // Reduced font size
           fontWeight: 'bold',
           borderRadius: '8px',
           '&:hover': { backgroundColor: '#FFB300', transform: 'scale(1.05)' },
@@ -118,18 +118,18 @@ const HeroSection = () => {
         onClick={togglePlayPause}
         sx={{
           position: 'absolute',
-          bottom: '20px',
-          right: '20px',
+          bottom: '10px',
+          right: '10px',
           backgroundColor: '#FFD700',
           color: '#212121',
           borderRadius: '50%',
-          padding: '15px', // Increased padding
-          fontSize: '1.25rem', // Increased font size
+          padding: '10px', // Reduced padding
+          fontSize: '0.875rem', // Reduced font size
           zIndex: 2,
           '&:hover': { backgroundColor: '#FFB300', transform: 'scale(1.05)' },
         }}
       >
-        {isPlaying ? <PauseIcon /> : <PlayArrowIcon />} 
+        {isPlaying ? <PauseIcon sx={{ fontSize: '1.25rem' }} /> : <PlayArrowIcon sx={{ fontSize: '1.25rem' }} />} 
       </Button>
     </Box>
   );

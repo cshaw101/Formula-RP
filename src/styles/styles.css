@@ -1,3 +1,16 @@
+/* Weather icon animations */
+.sun-icon {
+  animation: spin 6s linear infinite;
+}
+
+.cloud-icon {
+  animation: floatClouds 10s ease-in-out infinite;
+}
+
+.lightning-icon {
+  animation: flicker 1s infinite alternate;
+}
+
 /* Resetting and ensuring proper layout */
 * {
   margin: 0;
@@ -8,7 +21,6 @@ body {
   background-color: #2e2e2e;  /* Background color for the whole page */
   color: #ffd700;  /* Text color for contrast */
 }
-
 
 /* Container that holds the driver boxes */
 .driver-container {
@@ -44,5 +56,38 @@ body {
   .driver-box {
     flex: 1 1 100%; /* Full width on smaller screens */
     max-width: 100%;  /* Allow full use of available space */
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatClouds {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
   }
 }

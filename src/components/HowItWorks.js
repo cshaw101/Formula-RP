@@ -39,30 +39,30 @@ const HowItWorks = () => {
       style={{
         backgroundColor: "#2e2e2e", // Dark grey background
         color: "#fff",
-        padding: "120px 20px", // Increased padding for better space
+        padding: "40px 10px", // Further reduced padding
         textAlign: "center",
-        borderRadius: "10px",
+        borderRadius: "8px", // Smaller border radius
       }}
       id="how-it-works"
     >
       <Typography
         variant="h2"
         sx={{
-          fontFamily: "'F1-Wide', sans-serif", // Changed to match Overview font family
-          fontSize: { xs: "3.5rem", sm: "5rem" }, // Updated font size
+          fontFamily: "'F1-Wide', sans-serif", // F1-style font
+          fontSize: { xs: "1.8rem", sm: "2.5rem" }, // Adjusted font size for mobile
           fontWeight: "bold",
-          color: "#FFD700", // F1 gold color for the header
-          marginBottom: "50px", // Increased margin for more space between title and text
-          maxWidth: "80%", // Ensure the title doesn’t stretch too wide on large screens
+          color: "#FFD700", // F1 gold color
+          marginBottom: "20px", // Reduced margin
+          maxWidth: "90%", // Slightly smaller width
           margin: "0 auto", // Center the title
-          letterSpacing: "2px", // Add letter spacing for clarity
+          letterSpacing: "1px", // Reduced letter spacing for compactness
         }}
       >
         How the League Works
       </Typography>
       <Box
         sx={{
-          maxWidth: "1400px", // Larger max width for the content area
+          maxWidth: "1000px", // Smaller max width for content
           margin: "0 auto",
         }}
       >
@@ -71,11 +71,11 @@ const HowItWorks = () => {
             <TimelineItem key={index}>
               <TimelineOppositeContent
                 sx={{
-                  display: { xs: "none", sm: "block" },
-                  fontFamily: "'F1-Regular', sans-serif", // Updated to match Overview font
+                  display: { xs: "none", sm: "block" }, // Hide on mobile
+                  fontFamily: "'F1-Regular', sans-serif", // F1-style font
                   color: "rgba(255, 255, 255, 0.7)",
-                  fontSize: "22px", // Increased font size for step titles
-                  fontWeight: "bold", // Bold text for step titles
+                  fontSize: "16px", // Smaller font size
+                  fontWeight: "bold", // Bold text
                 }}
               >
                 <Typography variant="body2">{step.title}</Typography>
@@ -89,24 +89,24 @@ const HowItWorks = () => {
                   sx={{
                     backgroundColor: "#333", // Dark background for cards
                     color: "#fff",
-                    borderRadius: "10px",
-                    padding: "40px", // Increased padding for larger cards
-                    boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.6)", // Stronger shadow
-                    marginBottom: "60px", // Increased margin between steps
+                    borderRadius: "6px", // Smaller border radius
+                    padding: { xs: "10px", sm: "15px" }, // Adjusted padding
+                    boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.4)", // Smaller shadow
+                    marginBottom: "15px", // Reduced margin between steps
                     transition: "all 0.3s ease-in-out", // Hover transition
                     "&:hover": {
-                      transform: "translateY(-8px)", // Slight lift on hover
-                      boxShadow: "0px 16px 40px rgba(0, 0, 0, 0.8)", // Hover shadow effect
+                      transform: "translateY(-2px)", // Slight lift on hover
+                      boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.6)", // Stronger shadow on hover
                     },
                   }}
                 >
                   <Typography
                     variant="h5"
                     sx={{
-                      fontFamily: "'F1-Wide', sans-serif", // Changed to match Overview font family
-                      marginBottom: "20px", // Increased margin for more space
-                      fontSize: "28px", // Larger title size
-                      color: "#FFD700", // Gold color for titles
+                      fontFamily: "'F1-Wide', sans-serif", // F1-style font
+                      marginBottom: "10px", // Smaller margin for title
+                      fontSize: { xs: "1.2rem", sm: "18px" }, // Responsive font size for title
+                      color: "#FFD700", // Gold color for title
                     }}
                   >
                     {step.title}
@@ -114,9 +114,9 @@ const HowItWorks = () => {
                   <Typography
                     variant="body2"
                     sx={{
-                      fontFamily: "'F1-Regular', sans-serif", // Updated to match Overview font
-                      fontSize: { xs: "1.6rem", sm: "1.8rem" }, // Increased font size for description
-                      lineHeight: "2", // Increased line height for better spacing
+                      fontFamily: "'F1-Regular', sans-serif", // F1-style font
+                      fontSize: { xs: "1rem", sm: "1.2rem" }, // Further reduced font size
+                      lineHeight: "1.4", // Slightly tighter line height
                       color: "#ccc", // Lighter text for description
                     }}
                   >

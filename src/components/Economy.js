@@ -6,12 +6,12 @@ const EconomySection = () => {
     <Box
       id="economy-section"
       sx={{
-        padding: { xs: "40px 20px", sm: "80px 40px" },
-        textAlign: "center",  
+        padding: { xs: "20px 10px", sm: "40px 20px" }, // Further reduced padding
+        textAlign: "center",
         color: "#FFFFFF",
         position: "relative",
         overflow: "hidden",
-        borderRadius: "12px",
+        borderRadius: "6px", // Smaller border radius
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -23,11 +23,11 @@ const EconomySection = () => {
         variant="h2"
         sx={{
           fontFamily: "'F1-Wide', sans-serif",
-          fontSize: { xs: "3rem", sm: "4rem" },
+          fontSize: { xs: "2rem", sm: "2.5rem" }, // Reduced font size
           fontWeight: "bold",
           color: "#ffd700",
-          marginBottom: "40px",
-          letterSpacing: "2px",
+          marginBottom: "20px", // Reduced margin
+          letterSpacing: "0.5px", // Smaller letter spacing
         }}
       >
         💰 The Economy: The Heart of the League
@@ -37,29 +37,28 @@ const EconomySection = () => {
         variant="body1"
         sx={{
           fontFamily: "'F1-Regular', sans-serif",
-          fontSize: { xs: "1.5rem", sm: "1.8rem" },
-          lineHeight: "1.8",
-          marginBottom: "50px",
-          maxWidth: "800px",
+          fontSize: { xs: "1rem", sm: "1.2rem" }, // Reduced font size
+          lineHeight: "1.4",
+          marginBottom: "20px", // Reduced margin
+          maxWidth: "600px", // Smaller max width
           textAlign: "center",
           color: "#f0f0f0",
         }}
       >
         Money makes the world—and our league—go round! The economy is a core
-        part of our F1 roleplaying experience, creating an added layer of
-        strategy and competition for every role. Managing your finances wisely
-        could make the difference between victory and defeat. Here’s how it
-        works:
+        part of our F1 roleplaying experience, adding layers of strategy and
+        competition. Managing finances wisely could determine victory or defeat.
+        Here’s how it works:
       </Typography>
 
-      <Divider sx={{ width: "80%", marginBottom: "40px", borderColor: "#ffd700" }} />
+      <Divider sx={{ width: "70%", marginBottom: "20px", borderColor: "#ffd700" }} /> {/* Reduced margin */}
 
       <Grid
         container
         justifyContent="center"
-        spacing={4}
+        spacing={1} // Reduced spacing
         sx={{
-          maxWidth: "1000px",
+          maxWidth: "700px", // Smaller max width
           width: "100%",
         }}
       >
@@ -68,10 +67,8 @@ const EconomySection = () => {
             title: "For Drivers",
             content: (
               <>
-                <strong>Earning Money:</strong> Drivers can earn funds through
-                race performance and Driver contracts. <br />
-                <strong>Expenses:</strong> Be prepared for costs like fines for
-                bad wrecks, repair fees, and recovery expenses for injuries.
+                <strong>Earning Money:</strong> Drivers earn funds through race performance and contracts. <br />
+                <strong>Expenses:</strong> Be prepared for fines, repair fees, and recovery costs.
               </>
             ),
           },
@@ -79,12 +76,8 @@ const EconomySection = () => {
             title: "For Team Owners",
             content: (
               <>
-                <strong>Sponsorship Deals:</strong> Secure sponsors to bring in
-                extra income, but beware—poor performance could cause sponsors
-                to pull out! <br />
-                <strong>Supporting the Team:</strong> Owners must ensure their
-                drivers have what they need to succeed, balancing spending with
-                strategy.
+                <strong>Sponsorship Deals:</strong> Secure sponsors, but poor performance may cause sponsors to drop out. <br />
+                <strong>Supporting the Team:</strong> Owners balance spending with strategy to support their team.
               </>
             ),
           },
@@ -92,9 +85,7 @@ const EconomySection = () => {
             title: "For Team Principals",
             content: (
               <>
-                <strong>Strategic Spending:</strong> Principals play a key role
-                in advising how team funds are spent, from deciding on tire
-                purchases to recommending key upgrades.
+                <strong>Strategic Spending:</strong> Principals advise on how to spend team funds effectively.
               </>
             ),
           },
@@ -102,9 +93,7 @@ const EconomySection = () => {
             title: "For FIA Members",
             content: (
               <>
-                <strong>Fines & Penalties:</strong> FIA members can issue
-                financial penalties for rule violations or dangerous wrecks,
-                affecting a team or driver’s bottom line.
+                <strong>Fines & Penalties:</strong> FIA members issue financial penalties for rule violations.
               </>
             ),
           },
@@ -123,20 +112,20 @@ const SectionBox = ({ title, children }) => {
     <Box
       sx={{
         backgroundColor: "#242424",
-        padding: "30px",
-        borderRadius: "12px",
-        boxShadow: "0 8px 16px rgba(0, 0, 0, 0.5)",
+        padding: "15px", // Further reduced padding
+        borderRadius: "6px", // Smaller border radius
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)", // Lighter shadow
         transition: "transform 0.3s, box-shadow 0.3s",
         "&:hover": {
-          transform: "translateY(-10px)",
-          boxShadow: "0 12px 24px rgba(0, 0, 0, 0.8)",
+          transform: "translateY(-4px)", // Smaller hover effect
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.8)", // Lighter hover shadow
         },
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-start", // Center the content vertically
+        justifyContent: "flex-start",
         alignItems: "center",
         textAlign: "center",
-        height: "400px", // Consistent height for all cards
+        height: "250px", // Reduced card height
       }}
     >
       <Typography
@@ -145,8 +134,8 @@ const SectionBox = ({ title, children }) => {
           fontFamily: "'F1-Wide', sans-serif",
           fontWeight: "bold",
           color: "#FFD700",
-          marginBottom: "20px",
-          fontSize: "1.8rem",
+          marginBottom: "10px", // Reduced margin
+          fontSize: "1.4rem", // Smaller font size
         }}
       >
         {title}
@@ -155,7 +144,7 @@ const SectionBox = ({ title, children }) => {
         variant="body1"
         sx={{
           fontFamily: "'F1-Regular', sans-serif",
-          fontSize: "1.4rem",
+          fontSize: "1rem", // Smaller font size
           color: "#f0f0f0",
         }}
       >
