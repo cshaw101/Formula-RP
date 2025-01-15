@@ -89,7 +89,7 @@ const HeroSection = () => {
         color: '#FFFFFF',
         zIndex: 1, // Text will be above the video and filter
       }}>
-        Join the most fun Formula League!
+        Join the most realistic Formula League!
       </Typography>
       <Button variant="contained" sx={{
         backgroundColor: '#FFD700',
