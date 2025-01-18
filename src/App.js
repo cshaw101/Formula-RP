@@ -11,6 +11,7 @@ import DownloadRulebook from "./components/Rulebook";
 import HeroSection from "./components/HeroSection";
 import './styles/styles.css'
 import './styles/fonts.css';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <section id="signUp">
           <SignUp />
         </section>
+        <Analytics />
       </main>
       <Footer />
     </>
