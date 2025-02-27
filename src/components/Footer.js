@@ -8,8 +8,7 @@ const Footer = () => (
         www.webdevcaleb.xyz
       </Link>
     </Typography>
-    <Typography variant="body2" sx={{ color: '#FFD700', marginTop: 1 }}>
-      <Link href="#" sx={{ color: '#FFD700' }}>RIP DIVA 01/16/25</Link> | 
+    <Typography variant="body2" sx={{ color: '#FFD700', marginTop: 1 }}> 
       <Link href="#" sx={{ color: '#FFD700' }}> Privacy Policy</Link>
     </Typography>
   </Box>
