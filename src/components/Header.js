@@ -66,7 +66,7 @@ const Header = () => {
               animation: 'fadeIn 2s ease-out', // Subtle fade-in effect
             }}
           >
-            Formula RP
+            Intrepid Racing League
           </Typography>
         </Box>
         
