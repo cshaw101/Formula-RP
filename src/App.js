@@ -9,26 +9,12 @@ import './styles/styles.css'
 import './styles/fonts.css';
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import UnderConstruction from "./components/UnderConstruction";
 
 function App() {
   return (
     <>
-      <Header />
-      <HeroSection />
-      <main>
-        <section id="overview">
-          <Overview />
-        </section>
-        <section id="rulebook">
-          <DownloadRulebook />
-        </section>
-        <section id="signUp">
-          <SignUp />
-        </section>
-        <Analytics />
-        <SpeedInsights />
-      </main>
-      <Footer />
+ <UnderConstruction />
     </>
   );
 }
