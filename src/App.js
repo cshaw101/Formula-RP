@@ -11,6 +11,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './styles/styles.css';
 import './styles/fonts.css';
+import Champions from "./components/Champions";
+import Staff from "./components/Staff";
 
 function MainPage() {
   return (
@@ -41,6 +43,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/highlights" element={<Highlights />} />
+        <Route path="/champions" element={<Champions />} />
+        <Route path="/staff" element={<Staff />} />
       </Routes>
     </Router>
   );
