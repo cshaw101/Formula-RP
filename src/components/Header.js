@@ -83,7 +83,7 @@ const Header = () => {
 
         {/* Desktop Navigation Links */}
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
-          {['overview', 'howItWorks', 'weather', 'economy', 'roleplayEvents', 'signUp'].map((section) => (
+          {['Overview', 'signUp', 'Highlights', 'Leaderboard','Champions', 'Archive'].map((section) => (
             <Link 
               to={section} // Use the section name for scroll target
               smooth={true} 
@@ -120,7 +120,7 @@ const Header = () => {
           onClose={handleMenuClose}
           sx={{ display: { xs: 'block', sm: 'none' } }}
         >
-          {['Overview', 'How It Works', 'Weather', 'Economy', 'Roleplay Events', 'Sign Up'].map((section) => (
+          {['Overview', 'signUp', 'Highlights', 'Leaderboard','Champions', 'Archive'].map((section) => (
             <MenuItem 
               key={section} 
               onClick={handleMenuClose} 

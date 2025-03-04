@@ -81,7 +81,7 @@ const HeroSection = () => {
         color: '#FFD700', // Gold color for the title text
         zIndex: 1,
       }}>
-        Welcome to Formula RP
+        Welcome to Intrepid Racing
       </Typography>
       <Typography variant="h4" sx={{
         fontSize: { xs: '1.25rem', sm: '2rem' }, // Reduced font size even more
