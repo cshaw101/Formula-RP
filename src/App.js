@@ -13,6 +13,7 @@ import './styles/styles.css';
 import './styles/fonts.css';
 import Champions from "./components/Champions";
 import Staff from "./components/Staff";
+import Leaderboard from "./components/Leaderboard";
 
 function MainPage() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/highlights" element={<Highlights />} />
         <Route path="/champions" element={<Champions />} />
         <Route path="/staff" element={<Staff />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </Router>
   );
