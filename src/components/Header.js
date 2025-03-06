@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   Box,
   IconButton,
@@ -14,7 +13,7 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material';
-import { SportsMotorsports, Menu as MenuIcon } from '@mui/icons-material';
+import { Menu as MenuIcon } from '@mui/icons-material';
 import { Link } from 'react-scroll';
 
 const Header = () => {
@@ -39,8 +38,8 @@ const Header = () => {
     <AppBar
       position="sticky"
       sx={{
-        background: 'linear-gradient(45deg, #D50032, #FFD700)',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+        backgroundColor: '#f89535', // Orange background color
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)', // Retain the shadow effect
         height: { xs: '50px', sm: '70px' },
         transition: 'all 0.3s ease',
       }}
@@ -70,21 +69,15 @@ const Header = () => {
             }}
             aria-label="Formula RP Icon"
           >
-            <SportsMotorsports />
           </IconButton>
-          <Typography
-            variant="h6"
-            sx={{
-              color: '#FFFFFF',
-              fontWeight: 'bold',
-              fontSize: { xs: '1.3rem', sm: '2rem' },
-              letterSpacing: '0.5px',
-              textTransform: 'uppercase',
-              animation: 'fadeIn 2s ease-out',
+          <img
+            src="/logo1.jpg"  // Use path relative to the public folder
+            alt="Intrepid Racing League"
+            style={{
+              height: '40px', // You can adjust the height as needed
+              width: 'auto',
             }}
-          >
-            Intrepid Racing League
-          </Typography>
+          />
         </Box>
 
         {/* Desktop Navigation Links */}
@@ -95,8 +88,8 @@ const Header = () => {
                 color="inherit"
                 sx={{
                   '&:hover': {
-                    backgroundColor: '#FFD700',
-                    color: '#212121',
+                    backgroundColor: '#7d3569', // Purple hover effect for the links
+                    color: '#ffffff',
                     transform: 'scale(1.05)',
                   },
                   fontSize: { xs: '0.85rem', sm: '1rem' },
@@ -116,9 +109,13 @@ const Header = () => {
               onClick={handleArchiveOpen}
               sx={{
                 '&:hover': {
-                  backgroundColor: '#FFD700',
-                  color: '#212121',
+                  backgroundColor: '#7d3569', // Purple background on hover
+                  color: '#ffffff',
                   transform: 'scale(1.05)',
+                },
+                '&:active': {
+                  backgroundColor: '#7d3569', // Purple background on click
+                  color: '#ffffff',
                 },
                 fontSize: { xs: '0.85rem', sm: '1rem' },
                 padding: '4px 12px',
@@ -165,7 +162,7 @@ const Header = () => {
         sx={{
           '& .MuiDrawer-paper': {
             width: 250,
-            background: '#D50032',
+            background: '#f89535', // Orange background for drawer
             color: '#FFFFFF',
           },
         }}
