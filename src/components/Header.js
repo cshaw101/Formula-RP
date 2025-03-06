@@ -13,7 +13,6 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material';
-import { Menu as MenuIcon } from '@mui/icons-material';
 import { Link } from 'react-scroll';
 
 const Header = () => {
