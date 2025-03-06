@@ -1,141 +1,203 @@
-import { AppBar, Toolbar, Typography, Button, Box, IconButton, Menu, MenuItem } from '@mui/material';
-import { SportsMotorsports } from '@mui/icons-material'; // Example icon
-import { Link } from 'react-scroll'; // Import the Link component from react-scroll
 import React, { useState } from 'react';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from '@mui/material';
+import { SportsMotorsports, Menu as MenuIcon } from '@mui/icons-material';
+import { Link } from 'react-scroll';
 
 const Header = () => {
-  // State for mobile menu toggle
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElArchive, setAnchorElArchive] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Open mobile menu
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleArchiveOpen = (event) => {
+    setAnchorElArchive(event.currentTarget);
   };
 
-  // Close mobile menu
-  const handleMenuClose = () => {
-    setAnchorEl(null);
+  const handleArchiveClose = () => {
+    setAnchorElArchive(null);
   };
+
+  const handleMobileToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const navLinks = ['Overview', 'signUp', 'Highlights', 'Leaderboard', 'Champions'];
 
   return (
-    <AppBar 
-      position="sticky" 
+    <AppBar
+      position="sticky"
       sx={{
-        background: 'linear-gradient(45deg, #D50032, #FFD700)', // Gradient background
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)', 
-        height: { xs: '50px', sm: '70px' }, // Adjusted height for responsiveness
-        transition: 'all 0.3s ease', // Smooth transition for scroll
+        background: 'linear-gradient(45deg, #D50032, #FFD700)',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+        height: { xs: '50px', sm: '70px' },
+        transition: 'all 0.3s ease',
       }}
     >
-      <Toolbar 
-        sx={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center', 
-          height: '100%', 
-          fontFamily: 'Formula Condensed Light, sans-serif', 
-          paddingX: { xs: '0.25rem', sm: '1rem' }, // Adjusted padding for responsiveness
+      <Toolbar
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          height: '100%',
+          fontFamily: 'Formula Condensed Light, sans-serif',
+          paddingX: { xs: '0.5rem', sm: '1rem' },
         }}
       >
         {/* Logo Section */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-          <IconButton 
-            color="inherit" 
-            sx={{ 
-              fontSize: '2rem', // Further reduced icon size
-              textShadow: '0 0 8px rgba(255, 255, 255, 0.8)', // Slight glow effect
-              transition: 'all 0.3s ease', // Smooth transition on hover
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <IconButton
+            color="inherit"
+            sx={{
+              fontSize: '2rem',
+              textShadow: '0 0 8px rgba(255, 255, 255, 0.8)',
+              transition: 'all 0.3s ease',
               '&:hover': {
-                textShadow: '0 0 16px rgba(255, 255, 255, 1)', // Stronger glow on hover
-                transform: 'scale(1.05)', // Slight zoom effect on hover
+                textShadow: '0 0 16px rgba(255, 255, 255, 1)',
+                transform: 'scale(1.05)',
               },
-            }} 
+            }}
             aria-label="Formula RP Icon"
           >
             <SportsMotorsports />
           </IconButton>
-          <Typography 
-            variant="h6" 
+          <Typography
+            variant="h6"
             sx={{
-              color: '#FFFFFF', 
-              fontWeight: 'bold', 
-              fontSize: { xs: '1.5rem', sm: '2rem' }, // Further reduced font size
-              letterSpacing: '0.5px', 
-              lineHeight: 1.1, 
+              color: '#FFFFFF',
+              fontWeight: 'bold',
+              fontSize: { xs: '1.3rem', sm: '2rem' },
+              letterSpacing: '0.5px',
               textTransform: 'uppercase',
-              animation: 'fadeIn 2s ease-out', // Subtle fade-in effect
+              animation: 'fadeIn 2s ease-out',
             }}
           >
             Intrepid Racing League
           </Typography>
         </Box>
-        
-        {/* Mobile Menu Icon (Hamburger for small screens) */}
-        <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
-          <IconButton 
-            color="inherit" 
-            onClick={handleMenuOpen}
-            sx={{ fontSize: '2rem' }}
-          >
-            &#9776; {/* Hamburger icon */}
-          </IconButton>
-        </Box>
 
         {/* Desktop Navigation Links */}
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
-          {['Overview', 'signUp', 'Highlights', 'Leaderboard','Champions', 'Archive'].map((section) => (
-            <Link 
-              to={section} // Use the section name for scroll target
-              smooth={true} 
-              duration={500} 
-              key={section}
-            >
-              <Button 
-                color="inherit" 
-                sx={{ 
-                  '&:hover': { 
-                    backgroundColor: '#FFD700', 
-                    color: '#212121', 
-                    transform: 'scale(1.05)', // Add scaling effect on hover
+          {navLinks.map((section) => (
+            <Link to={section} smooth={true} duration={500} key={section}>
+              <Button
+                color="inherit"
+                sx={{
+                  '&:hover': {
+                    backgroundColor: '#FFD700',
+                    color: '#212121',
+                    transform: 'scale(1.05)',
                   },
-                  fontSize: { xs: '0.85rem', sm: '1rem' }, // Further reduced font size
-                  padding: '4px 12px', // Reduced padding
-                  transition: 'transform 0.3s ease', // Smooth transition on hover
+                  fontSize: { xs: '0.85rem', sm: '1rem' },
+                  padding: '4px 12px',
+                  transition: 'transform 0.3s ease',
                 }}
               >
-                {section.split(/(?=[A-Z])/).map((word, index) => (
-                  <span key={index} style={{ marginRight: '4px' }}>
-                    {word}
-                  </span>
-                ))}
+                {section}
               </Button>
             </Link>
           ))}
+
+          {/* Archive Button with Clickable Dropdown */}
+          <Box sx={{ position: 'relative' }}>
+            <Button
+              color="inherit"
+              onClick={handleArchiveOpen}
+              sx={{
+                '&:hover': {
+                  backgroundColor: '#FFD700',
+                  color: '#212121',
+                  transform: 'scale(1.05)',
+                },
+                fontSize: { xs: '0.85rem', sm: '1rem' },
+                padding: '4px 12px',
+                transition: 'transform 0.3s ease',
+              }}
+            >
+              Archive
+            </Button>
+
+            {/* Archive Dropdown Menu */}
+            <Menu
+              anchorEl={anchorElArchive}
+              open={Boolean(anchorElArchive)}
+              onClose={handleArchiveClose}
+              sx={{
+                mt: 1,
+              }}
+            >
+              <MenuItem onClick={handleArchiveClose} component="a" href="/season1">
+                Season 1
+              </MenuItem>
+              <MenuItem onClick={handleArchiveClose} component="a" href="/season2">
+                Season 2
+              </MenuItem>
+            </Menu>
+          </Box>
         </Box>
 
-        {/* Mobile Menu - Dropdown */}
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
+        {/* Mobile Menu Button */}
+        <IconButton
+          color="inherit"
+          onClick={handleMobileToggle}
           sx={{ display: { xs: 'block', sm: 'none' } }}
         >
-          {['Overview', 'signUp', 'Highlights', 'Leaderboard','Champions', 'Archive'].map((section) => (
-            <MenuItem 
-              key={section} 
-              onClick={handleMenuClose} 
-              component="a" 
-              href={`#${section}`}
-            >
-              {section.split(/(?=[A-Z])/).map((word, index) => (
-                <span key={index} style={{ marginRight: '4px' }}>
-                  {word}
-                </span>
-              ))}
-            </MenuItem>
-          ))}
-        </Menu>
+          <MenuIcon />
+        </IconButton>
       </Toolbar>
+
+      {/* Mobile Drawer Menu */}
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleMobileToggle}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: 250,
+            background: '#D50032',
+            color: '#FFFFFF',
+          },
+        }}
+      >
+        <List>
+          {navLinks.map((section) => (
+            <ListItem key={section} disablePadding>
+              <ListItemButton onClick={handleMobileToggle}>
+                <Link
+                  to={section}
+                  smooth={true}
+                  duration={500}
+                  style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}
+                >
+                  <ListItemText primary={section} />
+                </Link>
+              </ListItemButton>
+            </ListItem>
+          ))}
+          {/* Archive Section */}
+          <ListItem disablePadding>
+            <ListItemButton onClick={handleArchiveClose} component="a" href="/season1">
+              <ListItemText primary="Season 1" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton onClick={handleArchiveClose} component="a" href="/season2">
+              <ListItemText primary="Season 2" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Drawer>
     </AppBar>
   );
 };
