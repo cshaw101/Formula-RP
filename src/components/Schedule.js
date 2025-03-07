@@ -1,42 +1,113 @@
-import React, { useState } from 'react';
-import { Box, Typography, IconButton, Card, CardContent, CardMedia, Button } from '@mui/material';
-import { ArrowBack, ArrowForward } from '@mui/icons-material';
+import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  IconButton,
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+} from "@mui/material";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
 const races = [
   {
-    name: 'Grand Prix of Monaco',
-    date: '2025-04-25',
-    time: '14:00 UTC',
-    venue: 'Monaco Circuit',
-    image: '/monaco.jpg',
+    name: "Spanish Grand Prix",
+    date: "2025-03-08",
+    time: "7:00 EST",
+    venue: "The Circuit de Barcelona-Catalunya",
+    image: "/track-images/Spain_Circuit.avif",
   },
   {
-    name: 'Formula 1 British Grand Prix',
-    date: '2025-05-15',
-    time: '13:00 UTC',
-    venue: 'Silverstone Circuit',
-    image: '/silverstone.jpg',
+    name: "Azerbaijan Grand Prix",
+    date: "2025-03-15",
+    time: "7:00 EST",
+    venue: "Baku City Circuit",
+    image: "/track-images/Baku.avif",
   },
   {
-    name: 'Italian Grand Prix',
-    date: '2025-06-06',
-    time: '15:00 UTC',
-    venue: 'Monza Circuit',
-    image: '/monza.jpg',
+    name: "Netherlands Grand Prix",
+    date: "2025-03-22",
+    time: "7:00 ESt",
+    venue: "Zandvoort Circuit",
+    image: "/track-images/zandvoort.avif",
   },
   {
-    name: 'Canadian Grand Prix',
-    date: '2025-07-10',
-    time: '17:00 UTC',
-    venue: 'Circuit Gilles Villeneuve',
-    image: '/canada.jpg',
+    name: "Austrian Grand Prix",
+    date: "2025-03-29",
+    time: "7:00 PM",
+    venue: "Red Bull Ring",
+    image: "/track-images/ring.avif",
   },
   {
-    name: 'Spanish Grand Prix',
-    date: '2025-08-01',
-    time: '14:30 UTC',
-    venue: 'Circuit de Barcelona-Catalunya',
-    image: '/spain.jpg',
+    name: "British Grand Prix",
+    date: "2025-04-05",
+    time: "7:00 PM",
+    venue: "Silverstone Circuit",
+    image: "/track-images/silverstone.avif",
+  },
+  {
+    name: "Canadian Grand Prix",
+    date: "2025-04-12",
+    time: "7:00 PM",
+    venue: "Circuit Gilles Villeneuve",
+    image: "/track-images/canada.avif",
+  },
+  {
+    name: "Mexican Grand Prix",
+    date: "2025-04-26",
+    time: "7:00 PM",
+    venue: "Autódromo Hermanos Rodríguez",
+    image: "/track-images/mexico.avif",
+  },
+  {
+    name: "Miami Grand Prix",
+    date: "2025-05-03",
+    time: "7:00 PM",
+    venue: "Miami International Autodrome",
+    image: "/track-images/miami.avif",
+  },
+  {
+    name: "Brazilian Grand Prix",
+    date: "2025-05-17",
+    time: "7:00 PM",
+    venue: "Autódromo de Interlagos",
+    image: "/track-images/brazil.avif",
+  },
+  {
+    name: "Las Vegas Grand Prix",
+    date: "2025-05-24",
+    time: "7:00 PM",
+    venue: "Las Vegas Strip Circuit",
+    image: "/track-images/vegas.avif",
+  },
+  {
+    name: "Singapore Grand Prix",
+    date: "2025-05-31",
+    time: "7:00 PM",
+    venue: "Marina Bay Street Circuit",
+    image: "/track-images/singapore.avif",
+  },
+  {
+    name: "Japanese Grand Prix",
+    date: "2025-06-07",
+    time: "7:00 PM",
+    venue: "Suzuka International Racing Course",
+    image: "/track-images/japan.avif",
+  },
+  {
+    name: "Saudi Arabian Grand Prix",
+    date: "2025-06-21",
+    time: "7:00 PM",
+    venue: "Jeddah Corniche Circuit",
+    image: "/track-images/saudi.avif",
+  },
+  {
+    name: "Qatar Grand Prix",
+    date: "2025-06-28",
+    time: "7:00 PM",
+    venue: "Lusail International Circuit",
+    image: "/track-images/qatar.avif",
   },
 ];
 
@@ -44,108 +115,117 @@ const RaceSchedule = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextRace = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % races.length); // Loop back to first race
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % races.length);
   };
 
   const prevRace = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + races.length) % races.length // Loop to last race
+      (prevIndex) => (prevIndex - 1 + races.length) % races.length
     );
   };
 
   return (
-    <Box sx={{ padding: '2rem', backgroundColor: '#F1F1F1' }}>
-      <Typography variant="h3" sx={{ textAlign: 'center', color: '#7D3569', marginBottom: '2rem' }}>
+    <Box sx={{ padding: "3rem", backgroundColor: "#F1F1F1", textAlign: "center" }}>
+      <Typography variant="h3" sx={{ color: "#7D3569", marginBottom: "2rem", fontWeight: "bold" }}>
         Upcoming Races
       </Typography>
 
       <Box
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          position: 'relative',
-          justifyContent: 'center',
-          overflow: 'hidden',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
         }}
       >
         {/* Left Arrow */}
         <IconButton
           onClick={prevRace}
           sx={{
-            position: 'absolute',
-            left: 0,
+            position: "absolute",
+            left: -50,
             zIndex: 1,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            "&:hover": {
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
             },
           }}
         >
-          <ArrowBack sx={{ color: '#fff' }} />
+          <ArrowBack sx={{ color: "#fff" }} />
         </IconButton>
 
-        {/* Carousel Container */}
-        <Box
+        {/* Race Card */}
+        <Card
           sx={{
-            display: 'flex',
-            transform: `translateX(-${currentIndex * 100}%)`, // Moves the carousel
-            transition: 'transform 0.5s ease',
-            width: '100%', // Ensure the container takes up full width
+            width: 320, // Slightly bigger card
+            height: 420, // Taller card for better spacing
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
+            boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.2)",
+            borderRadius: "12px",
+            padding: "1rem",
+            textAlign: "center",
+            backgroundColor: "#fff",
           }}
         >
-          {races.map((race, index) => (
-            <Box key={index} sx={{ flex: '0 0 100%', maxWidth: '100%' }}>
-              <Card sx={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', height: '100%' }}>
-                <CardMedia
-                  component="img"
-                  height="180"
-                  image={race.image} // Replace with actual image URLs
-                  alt={race.name}
-                  sx={{
-                    borderRadius: '8px 8px 0 0',
-                    objectFit: 'cover',
-                  }}
-                />
-                <CardContent sx={{ padding: '1.5rem', textAlign: 'center' }}>
-                  <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#7D3569' }}>
-                    {race.name}
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: '#555', marginBottom: '1rem' }}>
-                    {race.date} | {race.time} | {race.venue}
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    href="#"
-                    sx={{
-                      backgroundColor: '#F79535',
-                      '&:hover': {
-                        backgroundColor: '#D16C2C',
-                      },
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </CardContent>
-              </Card>
-            </Box>
-          ))}
-        </Box>
+          <CardMedia
+            component="img"
+            image={races[currentIndex].image}
+            alt={races[currentIndex].name}
+            sx={{
+              width: 220, // Wider image
+              height: 140, // Proportionally adjusted height
+              objectFit: "cover",
+              borderRadius: "10px",
+              marginTop: "10px",
+            }}
+          />
+          <CardContent sx={{ padding: "1.2rem", textAlign: "center" }}>
+            <Typography variant="h5" sx={{ fontWeight: "bold", color: "#7D3569" }}>
+              {races[currentIndex].name}
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#444", marginTop: "8px" }}>
+              {races[currentIndex].date} | {races[currentIndex].time}
+            </Typography>
+            <Typography variant="body2" sx={{ color: "#777", marginTop: "4px" }}>
+              {races[currentIndex].venue}
+            </Typography>
+          </CardContent>
+          <Button
+            variant="contained"
+            color="primary"
+            href="#"
+            sx={{
+              backgroundColor: "#F79535",
+              fontSize: "0.9rem",
+              padding: "8px 16px",
+              borderRadius: "6px",
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#D16C2C",
+              },
+            }}
+          >
+            View Details
+          </Button>
+        </Card>
 
         {/* Right Arrow */}
         <IconButton
           onClick={nextRace}
           sx={{
-            position: 'absolute',
-            right: 0,
+            position: "absolute",
+            right: -50,
             zIndex: 1,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            "&:hover": {
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
             },
           }}
         >
-          <ArrowForward sx={{ color: '#fff' }} />
+          <ArrowForward sx={{ color: "#fff" }} />
         </IconButton>
       </Box>
     </Box>
