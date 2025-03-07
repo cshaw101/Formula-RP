@@ -31,19 +31,19 @@ const Header = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const navLinks = ['Overview', 'signUp', 'Highlights', 'Leaderboard', 'Champions'];
+  const navLinks = ['Highlights', 'Leaderboard', 'Champions'];
 
   return (
 <AppBar
   position="sticky"
   sx={{
-    background: 'linear-gradient(135deg, rgba(125, 53, 105, 0.8), rgba(125, 53, 105, 0.6))', 
+    background: '#7D3569',  // Solid color
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)', 
     height: { xs: '70px', sm: '90px' },
     transition: 'all 0.3s ease',
-    backdropFilter: 'blur(10px)', 
+    backdropFilter: 'none',
     '&:hover': {
-      boxShadow: '0 4px 30px rgba(255, 165, 0, 0.6)', // Glowing effect on hover
+      boxShadow: '0 4px 30px rgba(255, 165, 0, 0.6)', 
     },
   }}
 >
@@ -56,6 +56,7 @@ const Header = () => {
       fontFamily: 'Helvetica, Arial, sans-serif',
       paddingX: { xs: '1rem', sm: '1.5rem' },
       letterSpacing: '1px',
+      color: '#fff',  // Set text color to white here
     }}
   >
     {/* Logo Section */}
@@ -92,7 +93,7 @@ const Header = () => {
             sx={{
               '&:hover': {
                 backgroundColor: '#F79535', 
-                color: '#ffffff',
+                color: '#ffffff', // Make sure the text is white on hover
                 transform: 'scale(1.05)',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
               },
@@ -114,7 +115,7 @@ const Header = () => {
           sx={{
             '&:hover': {
               backgroundColor: '#F79535', // Same orange background on hover
-              color: '#ffffff',
+              color: '#ffffff',  // Ensure text is white
               transform: 'scale(1.05)',
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
             },
@@ -159,7 +160,7 @@ const Header = () => {
       '& .MuiDrawer-paper': {
         width: 250,
         background: '#f89535',
-        color: '#FFFFFF',
+        color: '#FFFFFF',  // Set mobile drawer text color to white
       },
     }}
   >
@@ -173,7 +174,7 @@ const Header = () => {
               duration={500}
               style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}
             >
-              <ListItemText primary={section} />
+              <ListItemText primary={section} sx={{ color: 'white' }} />  {/* Set text color to white here */}
             </Link>
           </ListItemButton>
         </ListItem>
@@ -181,17 +182,18 @@ const Header = () => {
       {/* Archive Section */}
       <ListItem disablePadding>
         <ListItemButton onClick={handleArchiveClose} component="a" href="/season1">
-          <ListItemText primary="Season 1" />
+          <ListItemText primary="Season 1" sx={{ color: 'white' }} />
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding>
         <ListItemButton onClick={handleArchiveClose} component="a" href="/season2">
-          <ListItemText primary="Season 2" />
+          <ListItemText primary="Season 2" sx={{ color: 'white' }} />
         </ListItemButton>
       </ListItem>
     </List>
   </Drawer>
 </AppBar>
+
   );
 };
 
