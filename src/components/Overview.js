@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Typography, Button, Card, CardContent } from "@mui/material";
-import SportsMotorsportsIcon from "@mui/icons-material/SportsMotorsports"; // Icon for F1 theme
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"; // Icon for button
 import { Link } from "react-scroll"; // Import Link from react-scroll
 
@@ -23,18 +22,7 @@ const Overview = () => {
         marginBottom: "100px", // Further reduced space below
       }}
     >
-      <SportsMotorsportsIcon
-        sx={{
-          fontSize: { xs: "3rem", sm: "4rem" }, // Reduced icon size further
-          color: "#F79535", // Match the text color (Orange)
-          marginBottom: "10px",
-          marginRight: "8px", // Move icon to the left (increased space between icon and text)
-          position: "relative", // Allow precise positioning
-          top: "4px", // Adjust vertically to align with text
-          left: "-15px", // Move icon further to the left
-          display: "inline", // Align with text
-        }}
-      />
+    
       <Typography
         variant="h2"
         sx={{

@@ -1,21 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Box, Typography, Button, Paper } from '@mui/material';
 
-// Placeholder data for videos (replace with actual video URLs later)
-const videos = [
-  { title: 'Race Highlights - Monaco', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-  { title: 'Race Highlights - Silverstone', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-  { title: 'Race Highlights - Monza', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-  { title: 'Race Highlights - Canada', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-  { title: 'Race Highlights - Spain', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-];
+const YOUTUBE_API_KEY = 'AIzaSyApBfgFs1qBgsALgwpy4xXpwTxxx0mTHBY';  // Replace with your API key
+const CHANNEL_ID = 'UCOEkVCYBRH2ycIbVQvHVWRQ';  // Replace with the YouTube channel ID
+const MAX_RESULTS = 5;  // Number of videos to fetch
 
 const HighlightsPage = () => {
-  const [currentVideo, setCurrentVideo] = useState(videos[0]);
+  const [videos, setVideos] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState(null);
 
-  const handleVideoChange = (video) => {
-    setCurrentVideo(video);
-  };
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const playlistRes = await axios.get(
+          `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${YOUTUBE_API_KEY}`
+        );
+
+        const uploadsPlaylistId = playlistRes.data.items[0].contentDetails.relatedPlaylists.uploads;
+
+        const videoRes = await axios.get(
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=${MAX_RESULTS}&key=${YOUTUBE_API_KEY}`
+        );
+
+        const fetchedVideos = videoRes.data.items.map(item => ({
+          title: item.snippet.title,
+          url: `https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`,
+        }));
+
+        setVideos(fetchedVideos);
+        setCurrentVideo(fetchedVideos[0]); // Set the latest video
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    };
+
+    fetchVideos();
+  }, []);
 
   return (
     <Box sx={{ padding: '2rem', backgroundColor: '#F1F1F1' }}>
@@ -26,15 +47,17 @@ const HighlightsPage = () => {
       {/* Main video section */}
       <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
         <Paper sx={{ width: '80%', maxWidth: '1200px', padding: '1rem', boxShadow: 3 }}>
-          <iframe
-            width="100%"
-            height="600"
-            src={currentVideo.url}
-            title={currentVideo.title}
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          {currentVideo && (
+            <iframe
+              width="100%"
+              height="600"
+              src={currentVideo.url}
+              title={currentVideo.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          )}
         </Paper>
       </Box>
 
@@ -47,7 +70,7 @@ const HighlightsPage = () => {
         {videos.map((video, index) => (
           <Button
             key={index}
-            onClick={() => handleVideoChange(video)}
+            onClick={() => setCurrentVideo(video)}
             sx={{
               margin: '0.5rem 0',
               padding: '0.8rem',
