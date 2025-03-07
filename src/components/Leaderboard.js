@@ -7,7 +7,6 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TableRow,
   Paper,
   CircularProgress,
@@ -29,9 +28,11 @@ const F1Leaderboard = () => {
           `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${SHEET_NAME}?key=${GOOGLE_API_KEY}`
         );
         const rows = response.data.values.slice(1); // Skip header row
+
         const formattedData = rows.map((row) => ({
           name: row[1],
           points: parseInt(row[2], 10),
+          team: row[3], // Assuming the team name is in column D (index 3)
         }));
 
         formattedData.sort((a, b) => b.points - a.points);
@@ -63,47 +64,29 @@ const F1Leaderboard = () => {
         padding: 5,
         borderRadius: 8,
         textAlign: "center",
-        boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.7)", // Soft shadow for professional feel
+        boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.7)",
         minHeight: "100vh",
+        fontFamily: "'Anton', sans-serif", // Bolder, thicker text
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       {/* Title */}
       <Typography
         variant="h3"
         sx={{
-          fontWeight: "bold",
+          fontWeight: "900", // Set to the heaviest font weight for maximum boldness
           mb: 4,
-          color: "#ff1801", 
+          color: "#ff1801",
           textTransform: "uppercase",
           letterSpacing: "3px",
           fontFamily: "'Orbitron', sans-serif",
+          zIndex: 10,
+          textShadow: "0px 0px 10px #ff1801", // Neon glow effect on title
         }}
       >
         F1 Drivers Championship Leaderboard
       </Typography>
-
-      {/* Top Driver Highlight */}
-      {leaderboard.length > 0 && (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          sx={{
-            background: "linear-gradient(90deg, #FFD700, #FF6F00)", // Gold and orange gradient
-            padding: "18px 30px",
-            borderRadius: "12px",
-            mb: 4,
-            boxShadow: "0px 10px 40px rgba(255, 215, 0, 0.5)", // Enhanced glow
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{ fontWeight: "bold", color: "#000", fontFamily: "'Titillium Web', sans-serif" }}
-          >
-            🏆 {leaderboard[0].name} (P1) - {leaderboard[0].points} Points
-          </Typography>
-        </Box>
-      )}
 
       {/* Leaderboard Table */}
       <TableContainer
@@ -114,42 +97,116 @@ const F1Leaderboard = () => {
           borderRadius: "12px",
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.3)",
           overflow: "hidden",
+          position: "relative",
+          zIndex: 5,
         }}
       >
         <Table sx={{ minWidth: 650 }}>
-          <TableHead>
-            <TableRow sx={{ backgroundColor: "#ff1801" }}>
-              <TableCell sx={{ color: "white", fontWeight: "bold", fontSize: "1.2rem", textAlign: "center" }}>
-                🏁 Rank
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold", fontSize: "1.2rem", textAlign: "center" }}>
-                Driver
-              </TableCell>
-              <TableCell sx={{ color: "white", fontWeight: "bold", fontSize: "1.2rem", textAlign: "center" }}>
-                Points
-              </TableCell>
-            </TableRow>
-          </TableHead>
           <TableBody>
-            {leaderboard.map((driver, index) => (
-              <TableRow
-                key={index}
-                sx={{
-                  backgroundColor: index % 2 === 0 ? "#2C2C2C" : "#3C3C3C", // Dark alternating rows
-                  "&:hover": { backgroundColor: "#444", cursor: "pointer" }, // Hover effect
-                }}
-              >
-                <TableCell sx={{ color: index === 0 ? "gold" : "white", fontSize: "1.1rem", fontWeight: "bold", textAlign: "center" }}>
-                  P{index + 1}
-                </TableCell>
-                <TableCell sx={{ color: "white", fontSize: "1rem", textAlign: "center", fontWeight: index === 0 ? "bold" : "normal" }}>
-                  {driver.name}
-                </TableCell>
-                <TableCell sx={{ color: "white", fontSize: "1rem", fontWeight: "bold", textAlign: "center" }}>
-                  {driver.points}
-                </TableCell>
-              </TableRow>
-            ))}
+            {leaderboard.map((driver, index) => {
+              const teamImageSrc = `/logos/${driver.team?.toLowerCase().replace(/\s+/g, "")}.avif`;
+              const carImageSrc = `/cars/${driver.team?.toLowerCase().replace(/\s+/g, "")}.avif`; // Assuming car image is in the /cars/ folder
+              let backgroundColor = "";
+              if (index === 0) {
+                backgroundColor = "gold"; // 1st place - Gold
+              } else if (index === 1) {
+                backgroundColor = "silver"; // 2nd place - Silver
+              } else if (index === 2) {
+                backgroundColor = "#cd7f32"; // 3rd place - Bronze (using a bronze color code)
+              } else {
+                backgroundColor = index % 2 === 0 ? "#2C2C2C" : "#3C3C3C"; // Other positions - default alternating color
+              }
+
+              return (
+                <TableRow
+                  key={index}
+                  sx={{
+                    backgroundColor: backgroundColor,
+                    "&:hover": { backgroundColor: "#444", cursor: "pointer", transform: "scale(1.05)" }, // Hover effect
+                    position: "relative",
+                    padding: index < 3 ? "16px" : "8px", // Larger padding for top 3
+                    fontSize: index < 3 ? "1.8rem" : "1.2rem", // Larger font for top 3
+                    fontWeight: index < 3 ? "bold" : "normal",
+                    borderRadius: "8px",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease", // Smooth transition on hover
+                    zIndex: 5,
+                  }}
+                >
+                  {/* Team Logo */}
+                  <TableCell
+                    sx={{
+                      textAlign: "center",
+                      padding: "8px",
+                    }}
+                  >
+                    {driver.team && (
+                      <img
+                        src={teamImageSrc}
+                        alt={driver.team}
+                        style={{
+                          width: "100px", // Kept size for team logos
+                          height: "100px",
+                          objectFit: "contain",
+                          transition: "transform 0.3s ease",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+
+                  {/* Driver Name */}
+                  <TableCell
+                    sx={{
+                      color: index < 3 ? "black" : "white", // Black for top 3 to contrast with background
+                      fontSize: index < 3 ? "2.5rem" : "1.8rem", // Larger font for top 3
+                      fontWeight: "900", // Set the font weight to the heaviest for maximum boldness
+                      textAlign: "center",
+                      textTransform: "uppercase",
+                      textShadow: "0px 0px 10px rgba(255, 255, 255, 0.7)", // Neon glow effect
+                    }}
+                  >
+                    {driver.name}
+                  </TableCell>
+
+                  {/* Car Image */}
+                  <TableCell
+                    sx={{
+                      textAlign: "center",
+                      padding: "8px",
+                    }}
+                  >
+                    {driver.team && (
+                      <img
+                        src={carImageSrc}
+                        alt={`${driver.team} Car`}
+                        style={{
+                          width: "160px", // Increased width for the car images to match your preference
+                          height: "80px", // Adjusted height to keep it proportional
+                          objectFit: "contain", // Adjusts the aspect ratio to fit the container
+                          borderRadius: "8px",
+                          transform: "scale(1.1)", // Slight zoom effect on car image
+                          transition: "transform 0.3s ease",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+
+                  {/* Points */}
+                  <TableCell
+                    sx={{
+                      color: index < 3 ? "black" : "white",
+                      fontSize: index < 3 ? "2rem" : "1.6rem", // Larger points for top 3
+                      fontWeight: "900", // Set the font weight to the heaviest for maximum boldness
+                      textAlign: "center",
+                      padding: "16px",
+                      textShadow: "0px 0px 10px rgba(255, 255, 255, 0.7)", // Neon glow effect
+                    }}
+                  >
+                    {driver.points}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
