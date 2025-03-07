@@ -106,14 +106,13 @@ const HeroSection = () => {
       >
         <Button variant="contained" sx={{
           backgroundColor: '#7D3569', // Purple button background
-          color: '#F79535', // Orange text color
+          color: 'white', // Orange text color
           padding: '10px 20px', // Further reduced padding
           fontSize: '0.875rem', // Reduced font size
           fontWeight: 'bold',
           borderRadius: '8px',
           '&:hover': { 
             backgroundColor: '#F79535', // Orange background on hover
-            color: '#7D3569', // Purple text on hover
             transform: 'scale(1.05)' 
           },
           zIndex: 1,
