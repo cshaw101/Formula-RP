@@ -73,22 +73,27 @@ const HeroSection = () => {
 
       {/* Text and Button */}
       <Typography variant="h1" sx={{
-        fontSize: { xs: '2rem', sm: '3.5rem' }, // Reduced font size even more
-        fontWeight: 'bold',
+        fontSize: { xs: '2.5rem', sm: '4.5rem' }, // Bigger text
+        fontWeight: 900, // Maximum boldness
         textTransform: 'uppercase',
-        letterSpacing: '0.1rem',
+        letterSpacing: '0.15rem',
         marginBottom: 2,
-        color: '#FFD700', // Gold color for the title text
+        color: '#F79535', // Orange text color
         zIndex: 1,
+        display: 'inline', // To make the border wrap each letter
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 25px rgba(125, 53, 105, 0.8)' // Purple glow effect
       }}>
         Welcome to Intrepid Racing
       </Typography>
+
       <Typography variant="h4" sx={{
-        fontSize: { xs: '1.25rem', sm: '2rem' }, // Reduced font size even more
+        fontSize: { xs: '1.5rem', sm: '2.5rem' }, // Bigger text
+        fontWeight: 700, // Extra bold
         marginBottom: 2,
-        fontWeight: 300,
-        color: '#FFD700', // Gold color for the subtitle text
+        color: '#F79535', // Orange text color
         zIndex: 1,
+        display: 'inline', // To make the border wrap each letter
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 25px rgba(125, 53, 105, 0.8)' // Purple glow effect
       }}>
         Join the most realistic Formula League!
       </Typography>
@@ -100,13 +105,17 @@ const HeroSection = () => {
         duration={500}
       >
         <Button variant="contained" sx={{
-          backgroundColor: '#FFD700',
-          color: '#212121',
+          backgroundColor: '#7D3569', // Purple button background
+          color: '#F79535', // Orange text color
           padding: '10px 20px', // Further reduced padding
           fontSize: '0.875rem', // Reduced font size
           fontWeight: 'bold',
           borderRadius: '8px',
-          '&:hover': { backgroundColor: '#FFB300', transform: 'scale(1.05)' },
+          '&:hover': { 
+            backgroundColor: '#F79535', // Orange background on hover
+            color: '#7D3569', // Purple text on hover
+            transform: 'scale(1.05)' 
+          },
           zIndex: 1,
         }}>
           Join the League Now!
