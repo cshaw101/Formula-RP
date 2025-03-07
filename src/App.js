@@ -12,9 +12,9 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import './styles/styles.css';
 import './styles/fonts.css';
 import Champions from "./components/Champions";
-import Staff from "./components/Staff";
 import Leaderboard from "./components/Leaderboard";
 import RaceSchedule from "./components/Schedule";
+import StaffPage from "./components/Staff";
 
 function MainPage() {
   return (
@@ -27,6 +27,9 @@ function MainPage() {
         </section>
         <section id="schedule">
           <RaceSchedule />
+        </section>
+        <section id="staff">
+          <StaffPage />
         </section>
         <section id="rulebook">
           <DownloadRulebook />
@@ -49,7 +52,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/highlights" element={<Highlights />} />
         <Route path="/champions" element={<Champions />} />
-        <Route path="/staff" element={<Staff />} />
+        <Route path="/staff" element={<StaffPage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </Router>
