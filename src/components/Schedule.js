@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Typography,
@@ -28,7 +28,7 @@ const races = [
   {
     name: "Netherlands Grand Prix",
     date: "2025-03-22",
-    time: "7:00 ESt",
+    time: "7:00 EST",
     venue: "Zandvoort Circuit",
     image: "/track-images/zandvoort.avif",
   },
@@ -113,121 +113,107 @@ const races = [
 
 const RaceSchedule = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const today = new Date();
+    const nextRaceIndex = races.findIndex((race) => new Date(race.date) >= today);
+    if (nextRaceIndex !== -1) {
+      setCurrentIndex(nextRaceIndex);
+    }
+  }, []);
 
   const nextRace = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % races.length);
+    scrollRef.current?.scrollBy({ left: 350, behavior: "smooth" });
   };
 
   const prevRace = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + races.length) % races.length
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + races.length) % races.length);
+    scrollRef.current?.scrollBy({ left: -350, behavior: "smooth" });
   };
 
   return (
-    <Box sx={{ padding: "3rem", backgroundColor: "#F1F1F1", textAlign: "center" }}>
+    <Box sx={{ padding: "3rem", backgroundColor: "#2e2e2e", textAlign: "center" }}>
       <Typography variant="h3" sx={{ color: "#7D3569", marginBottom: "2rem", fontWeight: "bold" }}>
         Upcoming Races
       </Typography>
-
       <Box
+        ref={scrollRef}
         sx={{
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
+          overflowX: "auto",
+          scrollBehavior: "smooth",
+          gap: 2,
+          paddingBottom: "1rem",
         }}
       >
-        {/* Left Arrow */}
-        <IconButton
-          onClick={prevRace}
-          sx={{
-            position: "absolute",
-            left: -50,
-            zIndex: 1,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            "&:hover": {
-              backgroundColor: "rgba(0, 0, 0, 0.7)",
-            },
-          }}
-        >
-          <ArrowBack sx={{ color: "#fff" }} />
-        </IconButton>
-
-        {/* Race Card */}
-        <Card
-          sx={{
-            width: 320, // Slightly bigger card
-            height: 420, // Taller card for better spacing
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-between",
-            boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.2)",
-            borderRadius: "12px",
-            padding: "1rem",
-            textAlign: "center",
-            backgroundColor: "#fff",
-          }}
-        >
-          <CardMedia
-            component="img"
-            image={races[currentIndex].image}
-            alt={races[currentIndex].name}
+        {races.map((race, index) => (
+          <Card
+            key={index}
             sx={{
-              width: 220, // Wider image
-              height: 140, // Proportionally adjusted height
-              objectFit: "cover",
-              borderRadius: "10px",
-              marginTop: "10px",
-            }}
-          />
-          <CardContent sx={{ padding: "1.2rem", textAlign: "center" }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold", color: "#7D3569" }}>
-              {races[currentIndex].name}
-            </Typography>
-            <Typography variant="body1" sx={{ color: "#444", marginTop: "8px" }}>
-              {races[currentIndex].date} | {races[currentIndex].time}
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#777", marginTop: "4px" }}>
-              {races[currentIndex].venue}
-            </Typography>
-          </CardContent>
-          <Button
-            variant="contained"
-            color="primary"
-            href="#"
-            sx={{
-              backgroundColor: "#F79535",
-              fontSize: "0.9rem",
-              padding: "8px 16px",
-              borderRadius: "6px",
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#D16C2C",
-              },
+              minWidth: 450,
+              height: 400,
+              boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.3)",
+              borderRadius: "8px",
+              padding: "1rem",
+              textAlign: "center",
+              backgroundColor: "#FFF",
+              color: "#7D3569",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              border: `2px solid ${"#F79535"}`,
             }}
           >
-            View Details
-          </Button>
-        </Card>
-
-        {/* Right Arrow */}
-        <IconButton
-          onClick={nextRace}
-          sx={{
-            position: "absolute",
-            right: -50,
-            zIndex: 1,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            "&:hover": {
-              backgroundColor: "rgba(0, 0, 0, 0.7)",
-            },
-          }}
-        >
-          <ArrowForward sx={{ color: "#fff" }} />
-        </IconButton>
+            <CardMedia
+              component="img"
+              image={race.image}
+              alt={race.name}
+              sx={{
+                width: "100%",
+                height: "auto",
+                maxHeight: 200,
+                borderRadius: "8px",
+                objectFit: "contain",
+                marginBottom: "1rem",
+              }}
+            />
+            <CardContent>
+              <Typography variant="h5" sx={{ fontWeight: "bold", color: "#7D3569" }}>
+                {race.name}
+              </Typography>
+              <Typography sx={{ color: "#7D3569" }}>
+                {race.date} | {race.time}
+              </Typography>
+              <Typography sx={{ color: "#7D3569" }}>{race.venue}</Typography>
+            </CardContent>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#F79535",
+                color: "#FFF",
+                fontWeight: "bold",
+                fontSize: "1rem",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "8px",
+                border: `2px solid #F79535`,
+                "&:hover": {
+                  backgroundColor: "#7D3569",
+                  borderColor: "#7D3569",
+                  color: "#FFF",
+                },
+              }}
+              href="https://www.twitch.tv"
+              target="_blank"
+            >
+              Watch the Race
+            </Button>
+          </Card>
+        ))}
       </Box>
+      <IconButton onClick={prevRace}><ArrowBack /></IconButton>
+      <IconButton onClick={nextRace}><ArrowForward /></IconButton>
     </Box>
   );
 };
