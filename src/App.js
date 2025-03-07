@@ -14,6 +14,7 @@ import './styles/fonts.css';
 import Champions from "./components/Champions";
 import Staff from "./components/Staff";
 import Leaderboard from "./components/Leaderboard";
+import RaceSchedule from "./components/Schedule";
 
 function MainPage() {
   return (
@@ -23,6 +24,9 @@ function MainPage() {
       <main>
         <section id="overview">
           <Overview />
+        </section>
+        <section id="schedule">
+          <RaceSchedule />
         </section>
         <section id="rulebook">
           <DownloadRulebook />
