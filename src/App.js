@@ -39,7 +39,6 @@ function MainPage() {
         <Analytics />
         <SpeedInsights />
       </main>
-      <Footer />
     </>
   );
 }
