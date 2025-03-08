@@ -31,13 +31,17 @@ const Header = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const navLinks = ['Highlights', 'Leaderboard', 'Champions'];
+  const navLinks = [
+    { name: 'Highlights', path: '/highlights' },
+    { name: 'Leaderboard', path: '/leaderboard' },
+    { name: 'Champions', path: '/champions' },
+  ];
 
   return (
 <AppBar
   position="sticky"
   sx={{
-    background: '#7D3569',  // Solid color
+    background: '#7D3569',
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)', 
     height: { xs: '70px', sm: '90px' },
     transition: 'all 0.3s ease',
@@ -56,7 +60,7 @@ const Header = () => {
       fontFamily: 'Helvetica, Arial, sans-serif',
       paddingX: { xs: '1rem', sm: '1.5rem' },
       letterSpacing: '1px',
-      color: '#fff',  // Set text color to white here
+      color: '#fff',
     }}
   >
     {/* Logo Section */}
@@ -87,24 +91,24 @@ const Header = () => {
     {/* Desktop Navigation Links */}
     <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
       {navLinks.map((section) => (
-        <Link to={section} smooth={true} duration={500} key={section}>
-          <Button
-            color="inherit"
-            sx={{
-              '&:hover': {
-                backgroundColor: '#F79535', 
-                color: '#ffffff', // Make sure the text is white on hover
-                transform: 'scale(1.05)',
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-              },
-              fontSize: { xs: '1rem', sm: '1.2rem' },
-              padding: '8px 16px',
-              transition: 'transform 0.3s ease, box-shadow 0.2s ease',
-            }}
-          >
-            {section}
-          </Button>
-        </Link>
+        <Button
+          key={section.name}
+          color="inherit"
+          href={section.path}
+          sx={{
+            '&:hover': {
+              backgroundColor: '#F79535',
+              color: '#ffffff',
+              transform: 'scale(1.05)',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            },
+            fontSize: { xs: '1rem', sm: '1.2rem' },
+            padding: '8px 16px',
+            transition: 'transform 0.3s ease, box-shadow 0.2s ease',
+          }}
+        >
+          {section.name}
+        </Button>
       ))}
 
       {/* Archive Button with Clickable Dropdown */}
@@ -114,8 +118,8 @@ const Header = () => {
           onClick={handleArchiveOpen}
           sx={{
             '&:hover': {
-              backgroundColor: '#F79535', // Same orange background on hover
-              color: '#ffffff',  // Ensure text is white
+              backgroundColor: '#F79535',
+              color: '#ffffff',
               transform: 'scale(1.05)',
               boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
             },
@@ -140,10 +144,10 @@ const Header = () => {
             mt: 1,
           }}
         >
-          <MenuItem onClick={handleArchiveClose} component="a" href="/season1">
+          <MenuItem onClick={handleArchiveClose} component="a" href="/archive/season1">
             Season 1
           </MenuItem>
-          <MenuItem onClick={handleArchiveClose} component="a" href="/season2">
+          <MenuItem onClick={handleArchiveClose} component="a" href="/archive/season2">
             Season 2
           </MenuItem>
         </Menu>
@@ -160,33 +164,26 @@ const Header = () => {
       '& .MuiDrawer-paper': {
         width: 250,
         background: '#f89535',
-        color: '#FFFFFF',  // Set mobile drawer text color to white
+        color: '#FFFFFF',
       },
     }}
   >
     <List>
       {navLinks.map((section) => (
-        <ListItem key={section} disablePadding>
-          <ListItemButton onClick={handleMobileToggle}>
-            <Link
-              to={section}
-              smooth={true}
-              duration={500}
-              style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}
-            >
-              <ListItemText primary={section} sx={{ color: 'white' }} />  {/* Set text color to white here */}
-            </Link>
+        <ListItem key={section.name} disablePadding>
+          <ListItemButton onClick={handleMobileToggle} component="a" href={section.path}>
+            <ListItemText primary={section.name} sx={{ color: 'white' }} />
           </ListItemButton>
         </ListItem>
       ))}
       {/* Archive Section */}
       <ListItem disablePadding>
-        <ListItemButton onClick={handleArchiveClose} component="a" href="/season1">
+        <ListItemButton onClick={handleArchiveClose} component="a" href="/archive/season1">
           <ListItemText primary="Season 1" sx={{ color: 'white' }} />
         </ListItemButton>
       </ListItem>
       <ListItem disablePadding>
-        <ListItemButton onClick={handleArchiveClose} component="a" href="/season2">
+        <ListItemButton onClick={handleArchiveClose} component="a" href="/archive/season2">
           <ListItemText primary="Season 2" sx={{ color: 'white' }} />
         </ListItemButton>
       </ListItem>
