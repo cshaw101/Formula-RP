@@ -37,10 +37,27 @@ const staff = [
 
 const StaffPage = () => {
   return (
-    <Box sx={{ padding: '3rem', backgroundColor: '#F1F1F1' }}>
-      <Typography variant="h3" sx={{ textAlign: 'center', color: '#7D3569', marginBottom: '3rem' }}>
-        Meet Our Staff
-      </Typography>
+    <Box
+    sx={{
+      padding: "4rem 2rem",
+      background: "linear-gradient(135deg, #2e2e2e 30%, #1a1a1a 100%)",
+      textAlign: "center",
+      position: "relative",
+    }}
+  >
+    <Typography
+      variant="h3"
+      sx={{
+        color: "#F79535",
+        marginBottom: "2rem",
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        letterSpacing: "2px",
+        textShadow: "0px 0px 10px rgba(255, 165, 0, 0.6)",
+      }}
+    >
+      Meet The Staff
+    </Typography>
 
       <Grid container spacing={4} justifyContent="center">
         {staff.map((member, index) => (
