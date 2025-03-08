@@ -39,14 +39,23 @@ const HighlightsPage = () => {
   }, []);
 
   return (
-    <Box sx={{ padding: '2rem', backgroundColor: '#1C1C1C', color: '#fff', minHeight: '100vh' }}>
+    <Box
+      sx={{
+        padding: "4rem 2rem",
+        background: "linear-gradient(135deg, #2e2e2e 30%, #1a1a1a 100%)",
+        textAlign: "center",
+        position: "relative",
+      }}
+    >
       <Typography
         variant="h3"
         sx={{
-          textAlign: 'center',
-          color: '#F79535',
-          marginBottom: '2rem',
-          fontFamily: "'Orbitron', sans-serif", // More futuristic font for the header
+          color: "#F79535",
+          marginBottom: "2rem",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+          letterSpacing: "2px",
+          textShadow: "0px 0px 10px rgba(255, 165, 0, 0.6)",
         }}
       >
         Race Highlights
@@ -59,9 +68,9 @@ const HighlightsPage = () => {
             width: '80%',
             maxWidth: '1200px',
             padding: '1rem',
-            boxShadow: 10,
+            boxShadow: 4, // Softer shadow for a clean look
             borderRadius: '8px',
-            backgroundColor: '#2C2C2C',
+            backgroundColor: '#333',
           }}
         >
           {currentVideo && (
@@ -73,7 +82,9 @@ const HighlightsPage = () => {
               frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              style={{ borderRadius: '8px' }} // Rounded corners for iframe
+              style={{
+                borderRadius: '8px', // Rounded corners for iframe
+              }}
             ></iframe>
           )}
         </Paper>
@@ -83,15 +94,17 @@ const HighlightsPage = () => {
 
       {/* Scrollable vertical video list */}
       <Typography
-        variant="h5"
+        variant="h3"
         sx={{
-          textAlign: 'center',
-          color: '#F79535',
-          marginBottom: '1rem',
-          fontWeight: 'bold',
+          color: "#F79535",
+          marginBottom: "2rem",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+          letterSpacing: "2px",
+          textShadow: "0px 0px 10px rgba(255, 165, 0, 0.6)",
         }}
       >
-        Previous Highlights
+        Other Highlights
       </Typography>
 
       <Box
@@ -105,6 +118,7 @@ const HighlightsPage = () => {
           border: '2px solid #F79535',
           borderRadius: '12px',
           backgroundColor: '#333',
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)', // Subtle shadow for vertical list
         }}
       >
         {videos.map((video, index) => (
@@ -119,12 +133,13 @@ const HighlightsPage = () => {
               width: '90%',
               textAlign: 'left',
               borderRadius: '8px',
+              fontWeight: 'bold',
               '&:hover': {
                 backgroundColor: '#D16C2C',
                 transform: 'scale(1.05)', // Subtle hover effect
               },
               transition: 'transform 0.2s ease-in-out',
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)', // Light shadow for buttons
+              boxShadow: 'none', // No shadow effect on button
             }}
           >
             {video.title}

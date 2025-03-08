@@ -19,7 +19,6 @@ import StaffPage from "./components/Staff";
 function MainPage() {
   return (
     <>
-      <Header />
       <HeroSection />
       <main>
         <section id="overview">
@@ -48,6 +47,7 @@ function MainPage() {
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/highlights" element={<Highlights />} />
@@ -55,6 +55,7 @@ function App() {
         <Route path="/staff" element={<StaffPage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

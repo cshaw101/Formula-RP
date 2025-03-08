@@ -75,17 +75,15 @@ const F1Leaderboard = () => {
       <Typography
         variant="h3"
         sx={{
-          fontWeight: "900", // Set to the heaviest font weight for maximum boldness
-          mb: 4,
-          color: "#ff1801",
+          color: "#F79535",
+          marginBottom: "2rem",
+          fontWeight: "bold",
           textTransform: "uppercase",
-          letterSpacing: "3px",
-          fontFamily: "'Orbitron', sans-serif",
-          zIndex: 10,
-          textShadow: "0px 0px 10px #ff1801", // Neon glow effect on title
+          letterSpacing: "2px",
+          textShadow: "0px 0px 10px rgba(255, 165, 0, 0.6)",
         }}
       >
-        F1 Drivers Championship Leaderboard
+       Tier 1 Drivers Championship
       </Typography>
 
       {/* Leaderboard Table */}
