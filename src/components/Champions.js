@@ -1,44 +1,53 @@
-import React from 'react';
-import { Box, Typography, Grid, Card, CardContent, CardMedia } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Grid, Card, CardContent, CardMedia, Collapse } from '@mui/material';
 
 // Mock data for previous champions
 const champions = [
   {
-    name: 'John Doe',
-    season: '2024',
-    image: '/champion1.jpg', // Replace with actual image paths
+    name: 'VirtualDesigns',
+    season: '1',
+    image: '/logos/stake.avif',
+    stats: {
+      races: 10,
+      wins: 5,
+      podiums: 8,
+      points: 220,
+    },
   },
   {
-    name: 'Jane Smith',
-    season: '2023',
-    image: '/champion2.jpg',
-  },
-  {
-    name: 'Mike Johnson',
-    season: '2022',
-    image: '/champion3.jpg',
-  },
-  {
-    name: 'Emily Davis',
-    season: '2021',
-    image: '/champion4.jpg',
-  },
-  {
-    name: 'Chris Brown',
-    season: '2020',
-    image: '/champion5.jpg',
+    name: 'Hashbrown',
+    season: '2',
+    image: '/logos/ferrari.avif',
+    stats: {
+      races: 12,
+      wins: 7,
+      podiums: 10,
+      points: 275,
+    },
   },
 ];
 
+// Define solid background colors for each season
+const seasonColors = {
+  '1': '#00e701',
+  '2': '#EF1A2D',
+};
+
 const ChampionsPage = () => {
+  const [openCard, setOpenCard] = useState(null);
+
+  const handleCardClick = (index) => {
+    setOpenCard(openCard === index ? null : index);
+  };
+
   return (
     <Box sx={{ padding: '3rem', backgroundColor: '#1a1a1a', minHeight: '100vh' }}>
-      <Typography 
-        variant="h3" 
-        sx={{ 
-          textAlign: 'center', 
-          color: '#F79535', 
-          marginBottom: '2rem', 
+      <Typography
+        variant="h3"
+        sx={{
+          textAlign: 'center',
+          color: '#F79535',
+          marginBottom: '2rem',
           fontWeight: 'bold',
           textTransform: 'uppercase',
           letterSpacing: '2px',
@@ -53,40 +62,37 @@ const ChampionsPage = () => {
             <Card
               sx={{
                 borderRadius: '12px',
-                background: 'linear-gradient(145deg, #292929, #1a1a1a)',
+                background: '#292929',
                 boxShadow: '0 8px 16px rgba(255, 165, 0, 0.4)',
-                height: '100%',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                cursor: 'pointer',
                 '&:hover': {
                   transform: 'scale(1.05)',
                   boxShadow: '0 12px 24px rgba(255, 165, 0, 0.6)',
                 },
               }}
+              onClick={() => handleCardClick(index)}
             >
-              <Box sx={{ position: 'relative' }}>
+              <Box
+                sx={{
+                  position: 'relative',
+                  backgroundColor: seasonColors[champion.season] || '#000',
+                  borderRadius: '12px 12px 0 0',
+                }}
+              >
                 <CardMedia
                   component="img"
-                  height="300"
-                  image={champion.image} // Replace with actual image URLs
+                  height="250"
+                  image={champion.image}
                   alt={champion.name}
                   sx={{
                     borderRadius: '12px 12px 0 0',
                     objectFit: 'cover',
-                    filter: 'grayscale(30%)',
-                  }}
-                />
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    background: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8))',
+                    filter: champion.season === '1' ? 'grayscale(30%)' : 'none',
                   }}
                 />
               </Box>
-              <CardContent sx={{ padding: '1.5rem', textAlign: 'center' }}>
+              <CardContent sx={{ padding: '1.5rem', textAlign: 'center', background: '#1a1a1a' }}>
                 <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#F79535' }}>
                   {champion.name}
                 </Typography>
@@ -94,6 +100,19 @@ const ChampionsPage = () => {
                   Season: {champion.season}
                 </Typography>
               </CardContent>
+
+              {/* Collapse section for stats */}
+              <Collapse in={openCard === index}>
+                <CardContent sx={{ background: '#1a1a1a', color: '#D1D3D4', textAlign: 'center' }}>
+                  <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#F79535' }}>
+                    Season Stats
+                  </Typography>
+                  <Typography>Races: {champion.stats.races}</Typography>
+                  <Typography>Wins: {champion.stats.wins}</Typography>
+                  <Typography>Podiums: {champion.stats.podiums}</Typography>
+                  <Typography>Points: {champion.stats.points}</Typography>
+                </CardContent>
+              </Collapse>
             </Card>
           </Grid>
         ))}
