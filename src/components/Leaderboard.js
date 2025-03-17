@@ -101,7 +101,7 @@ const F1Leaderboard = () => {
               >
                 {/* Team Logo */}
                 <TableCell sx={{ textAlign: "center", padding: "12px", width: "20%" }}>
-                  <img src={teamLogo} alt={entry.team} style={{ width: "50px", height: "50px" }} />
+                  <img src={teamLogo} alt={entry.team} style={{ width: "60px", height: "60px" }} />
                 </TableCell>
 
                 {/* Name (Driver Name for Drivers, Team Name for Constructors) */}
@@ -121,7 +121,7 @@ const F1Leaderboard = () => {
 
                 {/* Car Logo */}
                 <TableCell sx={{ textAlign: "center", padding: "12px", width: "20%" }}>
-                  <img src={carLogo} alt="Car" style={{ width: "80px", height: "40px" }} />
+                  <img src={carLogo} alt="Car" style={{ width: "120px", height: "40px" }} /> {/* Adjusted width */}
                 </TableCell>
 
                 {/* Points */}
