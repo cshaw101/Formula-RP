@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Container,
   Typography,
   Box,
   Table,
@@ -10,41 +9,45 @@ import {
   TableRow,
   Paper,
   CircularProgress,
+  Grid,
 } from "@mui/material";
 import axios from "axios";
 
 const GOOGLE_SHEET_ID = "1wyZXZqNtAa9s5HRYr5rhgGc_Tm0o0ixqshXyjymzH6A";
 const GOOGLE_API_KEY = "AIzaSyDFJMB6zM1bBInkE7iVqzHgHwbe20i0aEk";
-const SHEET_NAME = "DriversChampionshipTier1";
+const DRIVERS_SHEET = "DriversChampionshipTier1";
+const CONSTRUCTORS_SHEET = "ConstructorsChampionshipTier1";
 
 const F1Leaderboard = () => {
-  const [leaderboard, setLeaderboard] = useState([]);
+  const [driversLeaderboard, setDriversLeaderboard] = useState([]);
+  const [constructorsLeaderboard, setConstructorsLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchLeaderboard = async () => {
+    const fetchLeaderboard = async (sheetName, setStateFunction) => {
       try {
         const response = await axios.get(
-          `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${SHEET_NAME}?key=${GOOGLE_API_KEY}`
+          `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${sheetName}?key=${GOOGLE_API_KEY}`
         );
-        const rows = response.data.values.slice(1); // Skip header row
+        const rows = response.data.values.slice(1);
 
         const formattedData = rows.map((row) => ({
           name: row[1],
           points: parseInt(row[2], 10),
-          team: row[3], // Assuming the team name is in column D (index 3)
+          team: row[3] || row[1], // Constructor name
         }));
 
         formattedData.sort((a, b) => b.points - a.points);
-
-        setLeaderboard(formattedData);
+        setStateFunction(formattedData);
       } catch (error) {
-        console.error("Error fetching leaderboard:", error);
+        console.error(`Error fetching ${sheetName}:`, error);
       }
-      setLoading(false);
     };
 
-    fetchLeaderboard();
+    Promise.all([
+      fetchLeaderboard(DRIVERS_SHEET, setDriversLeaderboard),
+      fetchLeaderboard(CONSTRUCTORS_SHEET, setConstructorsLeaderboard),
+    ]).finally(() => setLoading(false));
   }, []);
 
   if (loading) {
@@ -55,160 +58,135 @@ const F1Leaderboard = () => {
     );
   }
 
-  return (
-    <Container
-      maxWidth="lg"
+  const renderTable = (title, leaderboard, isDrivers = false) => (
+    <TableContainer
+      component={Paper}
       sx={{
-        backgroundColor: "#1C1C1C",
-        color: "white",
-        padding: 5,
-        borderRadius: 8,
+        background: "rgba(255, 255, 255, 0.1)",
+        backdropFilter: "blur(8px)",
+        borderRadius: "12px",
+        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.5)",
+        padding: "1rem",
         textAlign: "center",
-        boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.7)",
-        minHeight: "100vh",
-        fontFamily: "'Anton', sans-serif", // Bolder, thicker text
-        position: "relative",
-        overflow: "hidden",
+        width: "100%", // Allow it to take the full width
+        overflowX: "auto",
       }}
     >
-      {/* Title */}
       <Typography
-        variant="h3"
+        variant="h5"
         sx={{
           color: "#F79535",
-          marginBottom: "2rem",
           fontWeight: "bold",
           textTransform: "uppercase",
           letterSpacing: "2px",
-          textShadow: "0px 0px 10px rgba(255, 165, 0, 0.6)",
+          marginBottom: "1rem",
         }}
       >
-       Tier 1 Drivers Championship
+        {title}
       </Typography>
+      <Table size="medium" sx={{ minWidth: 300 }}>
+        <TableBody>
+          {leaderboard.map((entry, index) => {
+            const teamLogo = `/logos/${entry.team?.toLowerCase().replace(/\s+/g, "")}.avif`;
+            const carLogo = `/cars/${entry.team?.toLowerCase().replace(/\s+/g, "")}.avif`;
 
-      {/* Leaderboard Table */}
-      <TableContainer
-        component={Paper}
-        sx={{
-          background: "rgba(255, 255, 255, 0.1)",
-          backdropFilter: "blur(8px)",
-          borderRadius: "12px",
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.3)",
-          overflow: "hidden",
-          position: "relative",
-          zIndex: 5,
-        }}
-      >
-        <Table sx={{ minWidth: 650 }}>
-          <TableBody>
-            {leaderboard.map((driver, index) => {
-              const teamImageSrc = `/logos/${driver.team?.toLowerCase().replace(/\s+/g, "")}.avif`;
-              const carImageSrc = `/cars/${driver.team?.toLowerCase().replace(/\s+/g, "")}.avif`; // Assuming car image is in the /cars/ folder
-              let backgroundColor = "";
-              if (index === 0) {
-                backgroundColor = "gold"; // 1st place - Gold
-              } else if (index === 1) {
-                backgroundColor = "silver"; // 2nd place - Silver
-              } else if (index === 2) {
-                backgroundColor = "#cd7f32"; // 3rd place - Bronze (using a bronze color code)
-              } else {
-                backgroundColor = index % 2 === 0 ? "#2C2C2C" : "#3C3C3C"; // Other positions - default alternating color
-              }
+            return (
+              <TableRow
+                key={index}
+                sx={{
+                  backgroundColor: index % 2 === 0 ? "#333" : "#444",
+                  "&:hover": { backgroundColor: "#555", cursor: "pointer" },
+                  transition: "background-color 0.3s ease",
+                }}
+              >
+                {/* Team Logo */}
+                <TableCell sx={{ textAlign: "center", padding: "12px", width: "20%" }}>
+                  <img src={teamLogo} alt={entry.team} style={{ width: "50px", height: "50px" }} />
+                </TableCell>
 
-              return (
-                <TableRow
-                  key={index}
+                {/* Name (Driver Name for Drivers, Team Name for Constructors) */}
+                <TableCell
                   sx={{
-                    backgroundColor: backgroundColor,
-                    "&:hover": { backgroundColor: "#444", cursor: "pointer", transform: "scale(1.05)" }, // Hover effect
-                    position: "relative",
-                    padding: index < 3 ? "16px" : "8px", // Larger padding for top 3
-                    fontSize: index < 3 ? "1.8rem" : "1.2rem", // Larger font for top 3
-                    fontWeight: index < 3 ? "bold" : "normal",
-                    borderRadius: "8px",
-                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease", // Smooth transition on hover
-                    zIndex: 5,
+                    color: "white",
+                    fontSize: "1.2rem", // Adjusted font size
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    textTransform: "uppercase",
+                    padding: "12px",
+                    width: "40%",
                   }}
                 >
-                  {/* Team Logo */}
-                  <TableCell
-                    sx={{
-                      textAlign: "center",
-                      padding: "8px",
-                    }}
-                  >
-                    {driver.team && (
-                      <img
-                        src={teamImageSrc}
-                        alt={driver.team}
-                        style={{
-                          width: "100px", // Kept size for team logos
-                          height: "100px",
-                          objectFit: "contain",
-                          transition: "transform 0.3s ease",
-                        }}
-                      />
-                    )}
-                  </TableCell>
+                  {entry.name}
+                </TableCell>
 
-                  {/* Driver Name */}
-                  <TableCell
-                    sx={{
-                      color: index < 3 ? "black" : "white", // Black for top 3 to contrast with background
-                      fontSize: index < 3 ? "2.5rem" : "1.8rem", // Larger font for top 3
-                      fontWeight: "900", // Set the font weight to the heaviest for maximum boldness
-                      textAlign: "center",
-                      textTransform: "uppercase",
-                      textShadow: "0px 0px 10px rgba(255, 255, 255, 0.7)", // Neon glow effect
-                    }}
-                  >
-                    {driver.name}
-                  </TableCell>
+                {/* Car Logo */}
+                <TableCell sx={{ textAlign: "center", padding: "12px", width: "20%" }}>
+                  <img src={carLogo} alt="Car" style={{ width: "80px", height: "40px" }} />
+                </TableCell>
 
-                  {/* Car Image */}
-                  <TableCell
-                    sx={{
-                      textAlign: "center",
-                      padding: "8px",
-                    }}
-                  >
-                    {driver.team && (
-                      <img
-                        src={carImageSrc}
-                        alt={`${driver.team} Car`}
-                        style={{
-                          width: "160px", // Increased width for the car images to match your preference
-                          height: "80px", // Adjusted height to keep it proportional
-                          objectFit: "contain", // Adjusts the aspect ratio to fit the container
-                          borderRadius: "8px",
-                          transform: "scale(1.1)", // Slight zoom effect on car image
-                          transition: "transform 0.3s ease",
-                        }}
-                      />
-                    )}
-                  </TableCell>
+                {/* Points */}
+                <TableCell
+                  sx={{
+                    color: "white",
+                    fontSize: "1.2rem", // Adjusted font size
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    padding: "12px",
+                    width: "20%",
+                  }}
+                >
+                  {entry.points}
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
 
-                  {/* Points */}
-                  <TableCell
-                    sx={{
-                      color: index < 3 ? "black" : "white",
-                      fontSize: index < 3 ? "2rem" : "1.6rem", // Larger points for top 3
-                      fontWeight: "900", // Set the font weight to the heaviest for maximum boldness
-                      textAlign: "center",
-                      padding: "16px",
-                      textShadow: "0px 0px 10px rgba(255, 255, 255, 0.7)", // Neon glow effect
-                    }}
-                  >
-                    {driver.points}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
+  return (
+    <Box
+      sx={{
+        backgroundColor: "#1C1C1C",
+        color: "white",
+        padding: 3,
+        borderRadius: 12,
+        textAlign: "center",
+        boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.6)",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%", // Full width
+        paddingTop: "3rem", // Add spacing from top
+      }}
+    >
+      <Typography
+        variant="h4"
+        sx={{
+          color: "#F79535",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+          letterSpacing: "2px",
+          marginBottom: "1.5rem",
+        }}
+      >
+        Tier 1 Leaderboards
+      </Typography>
+
+      <Grid container spacing={4} justifyContent="center" sx={{ width: "100%" }}>
+        {/* Drivers Championship */}
+        <Grid item xs={12} sm={6} md={5}>
+          {renderTable("Drivers Championship", driversLeaderboard, true)}
+        </Grid>
+
+        {/* Constructors Championship */}
+        <Grid item xs={12} sm={6} md={5}>
+          {renderTable("Constructors Championship", constructorsLeaderboard, false)}
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

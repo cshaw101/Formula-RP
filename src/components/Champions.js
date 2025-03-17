@@ -4,14 +4,15 @@ import { Box, Typography, Grid, Card, CardContent, CardMedia, Collapse } from '@
 // Mock data for previous champions
 const champions = [
   {
-    name: 'VirtualDesigns',
+    name: 'ANYKAMIKAZU',
     season: '1',
     image: '/logos/stake.avif',
     stats: {
       races: 10,
-      wins: 5,
-      podiums: 8,
-      points: 220,
+      wins: 2,
+      podiums: 7,
+      fastestLap:2,
+      points: 249,
     },
   },
   {
@@ -20,9 +21,10 @@ const champions = [
     image: '/logos/ferrari.avif',
     stats: {
       races: 12,
-      wins: 7,
-      podiums: 10,
-      points: 275,
+      wins: 5,
+      podiums: 11,
+      fastestLap:2,
+      points: 422,
     },
   },
 ];
@@ -110,6 +112,7 @@ const ChampionsPage = () => {
                   <Typography>Races: {champion.stats.races}</Typography>
                   <Typography>Wins: {champion.stats.wins}</Typography>
                   <Typography>Podiums: {champion.stats.podiums}</Typography>
+                  <Typography>Fastest Lap: {champion.stats.fastestLap}</Typography>
                   <Typography>Points: {champion.stats.points}</Typography>
                 </CardContent>
               </Collapse>
