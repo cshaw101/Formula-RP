@@ -1,131 +1,314 @@
 import React from "react";
-import { Box, Typography, Button, Card, CardContent } from "@mui/material";
+import { Box, Typography, Button, Grid } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"; // Icon for button
-import { Link } from "react-scroll"; // Import Link from react-scroll
+import { Person, SportsMotorsports } from "@mui/icons-material"; // Icons for role guide
 
 const Overview = () => {
   return (
     <Box
       id="overview"
       sx={{
-        padding: { xs: "20px 10px", sm: "40px 20px" }, // Further reduced padding
+        padding: { xs: "40px 20px", sm: "60px 40px" },
         textAlign: "center",
-        backgroundColor: "#2e2e2e", // Dark grey background
-        backgroundImage: "url('/assets/overview-bg.jpg')", // Optional background image
+        backgroundColor: "#2e2e2e",
+        backgroundImage: "url('/assets/overview-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        color: "#FFFFFF", // Keeping text light for readability
+        color: "#FFFFFF",
         position: "relative",
-        overflow: "hidden",
-        borderRadius: "12px", // Rounded corners
-        marginTop: "100px", // Further reduced space above
-        marginBottom: "100px", // Further reduced space below
+        borderRadius: "12px",
+        marginTop: "100px",
+        marginBottom: "100px",
+        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.5)", // Enhanced shadow for depth
       }}
     >
-    
+      {/* Header */}
       <Typography
         variant="h2"
         sx={{
-          fontFamily: "'Bebas Neue', sans-serif", // F1-style font for header
-          fontSize: { xs: "2.5rem", sm: "4rem" }, // Reduced font size
+          fontFamily: "'Bebas Neue', sans-serif",
+          fontSize: { xs: "3.5rem", sm: "5rem" },
           fontWeight: "bold",
-          color: "#F79535", // Orange color for the header text
-          marginBottom: "15px", // Reduced margin
-          maxWidth: "80%",
-          margin: "0 auto",
+          color: "#F79535", // Accent color for header
+          marginBottom: "20px",
           letterSpacing: "2px",
-          display: "inline", // To make the border wrap each letter
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 25px rgba(125, 53, 105, 0.8)", // Purple glow effect
-          wordBreak: "break-word", // Allow text to wrap correctly
+          display: "inline-block",
+          textShadow: "3px 3px 6px rgba(0, 0, 0, 0.7)", // Subtle text shadow
         }}
       >
         Your Journey Starts Here
       </Typography>
 
-      {/* Card for body text */}
-      <Card
+      {/* Overview Text */}
+      <Typography
+        variant="body1"
         sx={{
+          fontFamily: "'Roboto', sans-serif",
+          fontSize: { xs: "1.4rem", sm: "1.6rem" },
+          lineHeight: "1.8",
+          color: "#FFFFFF",
+          letterSpacing: "1px",
           maxWidth: "80%",
-          margin: "20px auto", // Center card horizontally and add margin on top/bottom
-          backgroundColor: "#3d3d3d", // Slightly lighter background for the card
-          borderRadius: "8px", // Rounded corners for card
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)", // Adding a shadow for depth
-          minHeight: "250px", // Increased min-height for vertical centering
-          display: "flex", // Flexbox to center content
-          justifyContent: "center", // Center the content vertically
-          alignItems: "center", // Center the content vertically
-          padding: "20px", // Padding inside the card
+          margin: "0 auto",
+          marginBottom: "50px", // Increased space for better separation
         }}
       >
-        <CardContent sx={{ textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <Typography
-            variant="body1"
+        Experience the thrill of Formula 1 like never before! Join a dynamic league where every player takes on a unique role: Owners manage budgets and teams, Principals strategize for success, Drivers race for glory, and FIA members enforce the rules.
+      </Typography>
+
+      {/* Tier Guide: Side-by-side */}
+      <Grid container spacing={4} sx={{ marginBottom: "60px" }}>
+        {/* Tier 1 */}
+        <Grid item xs={12} sm={6}>
+          <Box
             sx={{
-              fontFamily: "'Roboto', sans-serif", // Fallback font for body text
-              fontSize: { xs: "1.2rem", sm: "1.4rem" }, // Reduced font size
-              lineHeight: "1.8", // Increased line height for better readability
-              color: "#FFFFFF",
-              letterSpacing: "1px",
-              wordBreak: "break-word", // Ensure body text wraps properly
-              maxWidth: "90%", // Add a max width to prevent text from going too wide
-              margin: "0 auto", // Center the text horizontally
+              backgroundColor: "#3d3d3d",
+              padding: "40px",
+              borderRadius: "12px",
+              textAlign: "center",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)", // Enhanced box shadow
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              height: "100%",
             }}
           >
-            Experience the thrill of Formula 1 like never before! Join a dynamic league where every player takes on a unique role: Owners manage budgets and teams, Principals strategize for success, Drivers race for glory, and FIA members enforce the rules.
-          </Typography>
+            <Typography
+              variant="h3"
+              sx={{
+                fontWeight: "bold",
+                color: "#F79535",
+                marginBottom: "20px",
+              }}
+            >
+              Tier 1
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#FFFFFF",
+                marginBottom: "20px",
+                fontSize: "1.2rem", // Increased font size for better readability
+                lineHeight: "1.6", // Improved line height
+              }}
+            >
+              Races on Sundays at 7:30 PM EST
+              <br />
+              Lobby opens at 7:00 PM EST
+              <br />
+              Short Qualifying
+              <br />
+              50% Race Distance
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                backgroundColor: "#F79535",
+                borderRadius: "12px",
+                padding: "12px 25px",
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                "&:hover": {
+                  backgroundColor: "#7D3569", // Purple on hover
+                },
+              }}
+            >
+              Learn More
+            </Button>
+          </Box>
+        </Grid>
 
-          <Typography
-            variant="body1"
+        {/* Tier 2 */}
+        <Grid item xs={12} sm={6}>
+          <Box
             sx={{
-              fontFamily: "'Roboto', sans-serif", // Fallback font for body text
-              fontSize: { xs: "1.2rem", sm: "1.4rem" }, // Reduced font size
-              lineHeight: "1.8", // Increased line height for better readability
-              marginTop: "20px", // Add space between paragraphs
-              color: "#FFFFFF",
-              letterSpacing: "1px",
-              wordBreak: "break-word", // Ensure body text wraps properly
-              maxWidth: "90%", // Add a max width to prevent text from going too wide
-              margin: "0 auto", // Center the text horizontally
+              backgroundColor: "#3d3d3d",
+              padding: "40px",
+              borderRadius: "12px",
+              textAlign: "center",
+              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              height: "100%",
             }}
           >
-            Take the wheel, make bold decisions, and create unforgettable moments in this immersive roleplay experience.
-          </Typography>
-        </CardContent>
-      </Card>
+            <Typography
+              variant="h3"
+              sx={{
+                fontWeight: "bold",
+                color: "#F79535",
+                marginBottom: "20px",
+              }}
+            >
+              Tier 2
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#FFFFFF",
+                marginBottom: "20px",
+                fontSize: "1.2rem",
+                lineHeight: "1.6", // Improved line height
+              }}
+            >
+              Races on Saturdays at 6:30 PM EST
+              <br />
+              Lobby opens at 6:00 PM EST
+              <br />
+              Short Qualifying
+              <br />
+              35% Race Distance
+              <br />
+              Sprint Race with Every Event!
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                backgroundColor: "#F79535",
+                borderRadius: "12px",
+                padding: "12px 25px",
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                "&:hover": {
+                  backgroundColor: "#7D3569", // Purple on hover
+                },
+              }}
+            >
+              Learn More
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
 
-      {/* Smooth Scroll to Sign-Up Section */}
-      <Link
-        to="signUp"
-        smooth={true}
-        duration={500}
-        style={{ textDecoration: "none" }}
+      {/* Role Guide: Team Principal and Reserve Driver */}
+      <Box
+        sx={{
+          marginBottom: "60px",
+          padding: "40px",
+          backgroundColor: "#3d3d3d",
+          borderRadius: "12px",
+          boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)",
+        }}
       >
-        <Button
-          variant="contained"
+        <Typography
+          variant="h3"
           sx={{
-            marginTop: "20px", // Reduced margin
-            padding: "8px 16px", // Reduced padding
-            backgroundColor: "#7D3569", // Purple color for the button
-            color: "#F79535", // Orange font color for the button
             fontWeight: "bold",
-            fontSize: "0.9rem", // Reduced font size
-            borderRadius: "8px",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px", // Reduced gap between icon and text
-            "&:hover": {
-              backgroundColor: "#F79535", // Orange background on hover
-              color: "#7D3569", // Purple text color on hover
-              transform: "scale(1.05)",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)", // Adding hover shadow effect
-            },
-            maxWidth: "200px", // Reduced max width
-            margin: "0 auto",
+            color: "#F79535",
+            marginBottom: "30px",
+            textAlign: "center", // Centered title for better visual structure
           }}
         >
-          <ArrowForwardIcon /> Join the Discord
+          Role Guide
+        </Typography>
+
+        <Grid container spacing={4}>
+          {/* Team Principal */}
+          <Grid item xs={12} sm={6}>
+            <Box
+              sx={{
+                backgroundColor: "#2e2e2e",
+                padding: "20px",
+                borderRadius: "8px",
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                display: "flex",
+                alignItems: "center",
+                gap: "20px",
+                height: "100%", // Ensure both boxes are same height
+              }}
+            >
+              <Person sx={{ color: "#F79535", fontSize: "3rem" }} />
+              <Box>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: "bold",
+                    color: "#F79535",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Team Principal
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#FFFFFF",
+                    fontSize: "1.1rem",
+                    lineHeight: "1.6",
+                  }}
+                >
+                  The team principal is responsible for signing and firing drivers, setting lineups, and managing team members.
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+
+          {/* Reserve Driver */}
+          <Grid item xs={12} sm={6}>
+            <Box
+              sx={{
+                backgroundColor: "#2e2e2e",
+                padding: "20px",
+                borderRadius: "8px",
+                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+                display: "flex",
+                alignItems: "center",
+                gap: "20px",
+                height: "100%", // Ensure both boxes are same height
+              }}
+            >
+              <SportsMotorsports sx={{ color: "#F79535", fontSize: "3rem" }} />
+              <Box>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: "bold",
+                    color: "#F79535",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Reserve Driver
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "#FFFFFF",
+                    fontSize: "1.1rem",
+                    lineHeight: "1.6",
+                  }}
+                  >
+                  Dedicated reserve drivers may replace drivers in either championship. Drivers must be willing to fill in when needed.
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
+      {/* Discord Button */}
+      <Box sx={{ marginTop: "40px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          href="https://discord.gg/yourdiscordlink"  // Add your Discord link here
+          sx={{
+            backgroundColor: "#F79535",
+            borderRadius: "12px",
+            padding: "12px 25px",
+            fontWeight: "bold",
+            fontSize: "1.2rem",
+            "&:hover": {
+              backgroundColor: "#7D3569", // Purple on hover
+            },
+          }}
+        >
+          Join our Discord
+          <ArrowForwardIcon sx={{ marginLeft: "10px" }} />
         </Button>
-      </Link>
+      </Box>
     </Box>
   );
 };
