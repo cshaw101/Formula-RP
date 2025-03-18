@@ -59,9 +59,10 @@ const Header = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '100%',
+          height: '100%', // Full height of AppBar
           paddingX: { xs: '0.5rem', sm: '1.5rem' }, // Reduced padding on mobile
           color: '#fff',
+          minHeight: '0 !important', // Override default Toolbar minHeight
         }}
       >
         {/* Logo - Centered on Mobile, Left on Desktop */}
@@ -73,6 +74,8 @@ const Header = () => {
             position: { xs: 'absolute', sm: 'static' }, // Center logo on mobile
             left: { xs: '50%', sm: 'auto' },
             transform: { xs: 'translateX(-50%)', sm: 'none' },
+            alignItems: 'center', // Vertically center logo
+            height: '100%', // Match Toolbar height
           }}
         >
           <Link to="/">
@@ -81,10 +84,10 @@ const Header = () => {
               src="/logo1.jpg"
               alt="Intrepid Racing League"
               sx={{
-                height: { xs: '40px', sm: '60px' }, // Controlled size with sx
-                width: 'auto',
-                maxHeight: '100%', // Ensures it fits within AppBar height
+                height: { xs: '60px', sm: '80px' }, // Match AppBar height exactly
+                width: 'auto', // Maintain aspect ratio
                 display: 'block',
+                objectFit: 'contain', // Ensure logo fits without distortion
               }}
             />
           </Link>
