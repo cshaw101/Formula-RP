@@ -1,21 +1,21 @@
 import React from "react";
 import { Box, Typography, Button, Grid } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward"; // Icon for button
-import { Person, SportsMotorsports } from "@mui/icons-material"; // Icons for role guide
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Person, SportsMotorsports } from "@mui/icons-material";
 
 const Overview = () => {
   return (
     <Box
       id="overview"
       sx={{
-        padding: { xs: "40px 20px", sm: "60px 40px" },
+        padding: { xs: "20px 10px", sm: "40px 20px", md: "60px 40px" }, // Reduced padding on mobile
         textAlign: "center",
-        backgroundColor: "#2E2E2E",  // Solid background color
+        backgroundColor: "#2E2E2E",
         color: "#FFFFFF",
         position: "relative",
         borderRadius: "4px",
-        marginTop: "100px",
-        marginBottom: "100px",
+        marginTop: { xs: "50px", sm: "100px" }, // Smaller margin on mobile
+        marginBottom: { xs: "50px", sm: "100px" },
         boxShadow: "none",
       }}
     >
@@ -24,12 +24,12 @@ const Overview = () => {
         variant="h2"
         sx={{
           fontFamily: "'Bebas Neue', sans-serif",
-          fontSize: { xs: "3.5rem", sm: "5rem" },
+          fontSize: { xs: "2.5rem", sm: "3.5rem", md: "5rem" }, // Scaled for mobile
           fontWeight: "bold",
           color: "#F79535",
-          marginBottom: "20px",
+          marginBottom: { xs: "15px", sm: "20px" },
           letterSpacing: "2px",
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Text shadow for header
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
         }}
       >
         Your Journey Starts Here
@@ -40,36 +40,36 @@ const Overview = () => {
         variant="body1"
         sx={{
           fontFamily: "'Roboto', sans-serif",
-          fontSize: { xs: "1.4rem", sm: "1.6rem" },
+          fontSize: { xs: "1rem", sm: "1.4rem", md: "1.6rem" }, // Scaled for mobile
           lineHeight: "1.8",
           color: "#FFFFFF",
           letterSpacing: "1px",
-          maxWidth: "80%",
+          maxWidth: { xs: "90%", sm: "80%" }, // Wider on mobile
           margin: "0 auto",
-          marginBottom: "50px",
+          marginBottom: { xs: "30px", sm: "50px" },
         }}
       >
         Experience the thrill of Formula 1 like never before! Join a dynamic league where every player takes on a unique role: Owners manage budgets and teams, Principals strategize for success, Drivers race for glory, and FIA members enforce the rules.
       </Typography>
 
-      {/* Tier Guide: Side-by-side */}
-      <Grid container spacing={4} sx={{ marginBottom: "60px" }}>
+      {/* Tier Guide: Side-by-side on desktop, stacked on mobile */}
+      <Grid container spacing={{ xs: 2, sm: 4 }} sx={{ marginBottom: { xs: "40px", sm: "60px" } }}>
         {/* Tier 1 */}
         <Grid item xs={12} sm={6}>
           <Box
             sx={{
               backgroundColor: "#3a3a3a",
-              padding: "30px",
+              padding: { xs: "20px", sm: "30px" }, // Reduced padding on mobile
               borderRadius: "8px",
               textAlign: "center",
-              boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)", // Deeper box shadow
+              boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               height: "100%",
-              transition: "transform 0.3s ease",  // Smooth transform on hover
+              transition: "transform 0.3s ease",
               "&:hover": {
-                transform: "translateY(-10px)", // Hover effect
+                transform: { xs: "none", sm: "translateY(-10px)" }, // Disable hover on mobile
               },
             }}
           >
@@ -79,6 +79,7 @@ const Overview = () => {
                 fontWeight: "bold",
                 color: "#F79535",
                 marginBottom: "15px",
+                fontSize: { xs: "1.5rem", sm: "2rem" }, // Scaled for mobile
               }}
             >
               Tier 1
@@ -88,7 +89,7 @@ const Overview = () => {
               sx={{
                 color: "#FFFFFF",
                 marginBottom: "15px",
-                fontSize: "1.1rem",
+                fontSize: { xs: "0.9rem", sm: "1.1rem" },
                 lineHeight: "1.5",
               }}
             >
@@ -108,12 +109,12 @@ const Overview = () => {
               sx={{
                 backgroundColor: "#F79535",
                 borderRadius: "8px",
-                padding: "10px 20px",
+                padding: { xs: "8px 16px", sm: "10px 20px" },
                 fontWeight: "bold",
-                fontSize: "1.1rem",
+                fontSize: { xs: "0.9rem", sm: "1.1rem" },
                 "&:hover": {
                   backgroundColor: "#7D3569",
-                  transform: "scale(1.05)",  // Button hover effect
+                  transform: { xs: "none", sm: "scale(1.05)" }, // Disable scale on mobile
                 },
               }}
             >
@@ -127,17 +128,17 @@ const Overview = () => {
           <Box
             sx={{
               backgroundColor: "#3d3d3d",
-              padding: "30px",
+              padding: { xs: "20px", sm: "30px" },
               borderRadius: "8px",
               textAlign: "center",
-              boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)", // Deeper box shadow
+              boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               height: "100%",
               transition: "transform 0.3s ease",
               "&:hover": {
-                transform: "translateY(-10px)",  // Hover effect
+                transform: { xs: "none", sm: "translateY(-10px)" },
               },
             }}
           >
@@ -146,7 +147,8 @@ const Overview = () => {
               sx={{
                 fontWeight: "bold",
                 color: "#F79535",
-                marginBottom: "20px",
+                marginBottom: "15px",
+                fontSize: { xs: "1.5rem", sm: "2rem" },
               }}
             >
               Tier 2
@@ -155,9 +157,9 @@ const Overview = () => {
               variant="body1"
               sx={{
                 color: "#FFFFFF",
-                marginBottom: "20px",
-                fontSize: "1.2rem",
-                lineHeight: "1.6",
+                marginBottom: "15px",
+                fontSize: { xs: "0.9rem", sm: "1.1rem" },
+                lineHeight: "1.5",
               }}
             >
               Races on Saturdays at 6:30 PM EST
@@ -178,12 +180,12 @@ const Overview = () => {
               sx={{
                 backgroundColor: "#F79535",
                 borderRadius: "8px",
-                padding: "12px 25px",
+                padding: { xs: "8px 16px", sm: "10px 20px" },
                 fontWeight: "bold",
-                fontSize: "1.2rem",
+                fontSize: { xs: "0.9rem", sm: "1.1rem" },
                 "&:hover": {
                   backgroundColor: "#7D3569",
-                  transform: "scale(1.05)",
+                  transform: { xs: "none", sm: "scale(1.05)" },
                 },
               }}
             >
@@ -196,11 +198,11 @@ const Overview = () => {
       {/* Role Guide: Team Principal and Reserve Driver */}
       <Box
         sx={{
-          marginBottom: "60px",
-          padding: "30px",
+          marginBottom: { xs: "40px", sm: "60px" },
+          padding: { xs: "20px", sm: "30px" },
           backgroundColor: "#3d3d3d",
           borderRadius: "8px",
-          boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)",  // Shadow for the section
+          boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)",
         }}
       >
         <Typography
@@ -208,34 +210,35 @@ const Overview = () => {
           sx={{
             fontWeight: "bold",
             color: "#F79535",
-            marginBottom: "30px",
+            marginBottom: { xs: "20px", sm: "30px" },
             textAlign: "center",
-            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",  // Text shadow for role guide
+            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
+            fontSize: { xs: "1.5rem", sm: "2rem" },
           }}
         >
           Role Guide
         </Typography>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 2, sm: 4 }}>
           {/* Team Principal */}
           <Grid item xs={12} sm={6}>
             <Box
               sx={{
                 backgroundColor: "#2e2e2e",
-                padding: "20px",
+                padding: { xs: "15px", sm: "20px" },
                 borderRadius: "8px",
                 display: "flex",
                 alignItems: "center",
-                gap: "20px",
-                boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3)",  // Box shadow for card effect
+                gap: { xs: "10px", sm: "20px" },
+                boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3)",
                 height: "100%",
                 transition: "transform 0.3s ease",
                 "&:hover": {
-                  transform: "translateY(-10px)", // Hover effect on card
+                  transform: { xs: "none", sm: "translateY(-10px)" },
                 },
               }}
             >
-              <Person sx={{ color: "#F79535", fontSize: "3rem" }} />
+              <Person sx={{ color: "#F79535", fontSize: { xs: "2rem", sm: "3rem" } }} />
               <Box>
                 <Typography
                   variant="h6"
@@ -243,6 +246,7 @@ const Overview = () => {
                     fontWeight: "bold",
                     color: "#F79535",
                     marginBottom: "10px",
+                    fontSize: { xs: "1.1rem", sm: "1.25rem" },
                   }}
                 >
                   Team Principal
@@ -251,7 +255,7 @@ const Overview = () => {
                   variant="body1"
                   sx={{
                     color: "#FFFFFF",
-                    fontSize: "1.1rem",
+                    fontSize: { xs: "0.9rem", sm: "1.1rem" },
                     lineHeight: "1.6",
                   }}
                 >
@@ -266,20 +270,20 @@ const Overview = () => {
             <Box
               sx={{
                 backgroundColor: "#2e2e2e",
-                padding: "20px",
+                padding: { xs: "15px", sm: "20px" },
                 borderRadius: "8px",
                 display: "flex",
                 alignItems: "center",
-                gap: "20px",
+                gap: { xs: "10px", sm: "20px" },
                 boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3)",
                 height: "100%",
                 transition: "transform 0.3s ease",
                 "&:hover": {
-                  transform: "translateY(-10px)", // Hover effect on card
+                  transform: { xs: "none", sm: "translateY(-10px)" },
                 },
               }}
             >
-              <SportsMotorsports sx={{ color: "#F79535", fontSize: "3rem" }} />
+              <SportsMotorsports sx={{ color: "#F79535", fontSize: { xs: "2rem", sm: "3rem" } }} />
               <Box>
                 <Typography
                   variant="h6"
@@ -287,6 +291,7 @@ const Overview = () => {
                     fontWeight: "bold",
                     color: "#F79535",
                     marginBottom: "10px",
+                    fontSize: { xs: "1.1rem", sm: "1.25rem" },
                   }}
                 >
                   Reserve Driver
@@ -295,7 +300,7 @@ const Overview = () => {
                   variant="body1"
                   sx={{
                     color: "#FFFFFF",
-                    fontSize: "1.1rem",
+                    fontSize: { xs: "0.9rem", sm: "1.1rem" },
                     lineHeight: "1.6",
                   }}
                 >
@@ -308,7 +313,7 @@ const Overview = () => {
       </Box>
 
       {/* Discord Button */}
-      <Box sx={{ marginTop: "40px" }}>
+      <Box sx={{ marginTop: { xs: "20px", sm: "40px" } }}>
         <Button
           variant="contained"
           color="primary"
@@ -316,17 +321,17 @@ const Overview = () => {
           sx={{
             backgroundColor: "#F79535",
             borderRadius: "8px",
-            padding: "12px 25px",
+            padding: { xs: "10px 20px", sm: "12px 25px" },
             fontWeight: "bold",
-            fontSize: "1.2rem",
+            fontSize: { xs: "1rem", sm: "1.2rem" },
             "&:hover": {
               backgroundColor: "#7D3569",
-              transform: "scale(1.05)",  // Button hover effect
+              transform: { xs: "none", sm: "scale(1.05)" },
             },
           }}
         >
           Join our Discord
-          <ArrowForwardIcon sx={{ marginLeft: "10px" }} />
+          <ArrowForwardIcon sx={{ marginLeft: "10px", fontSize: { xs: "1rem", sm: "1.2rem" } }} />
         </Button>
       </Box>
     </Box>

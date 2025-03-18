@@ -9,13 +9,13 @@ import {
   MenuItem,
   Popover,
 } from '@mui/material';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import MenuIcon from '@mui/icons-material/Menu'; // Import Menu Icon
+import { Link } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Header = () => {
   const [anchorElArchive, setAnchorElArchive] = useState(null);
-  const [anchorElMenu, setAnchorElMenu] = useState(null); // For Hamburger Menu Popover
-  const [openMenu, setOpenMenu] = useState(false); // For controlling the popover
+  const [anchorElMenu, setAnchorElMenu] = useState(null);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const handleArchiveOpen = (event) => {
     setAnchorElArchive(event.currentTarget);
@@ -26,12 +26,13 @@ const Header = () => {
   };
 
   const handleMenuOpen = (event) => {
-    setAnchorElMenu(event.currentTarget); // Open the popover when hamburger icon is clicked
+    setAnchorElMenu(event.currentTarget);
     setOpenMenu(true);
   };
 
   const handleMenuClose = () => {
-    setOpenMenu(false); // Close the popover when clicking outside or on a link
+    setAnchorElMenu(null);
+    setOpenMenu(false);
   };
 
   const navLinks = [
@@ -45,12 +46,11 @@ const Header = () => {
       position="sticky"
       sx={{
         background: '#7D3569',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)', 
-        height: { xs: '70px', sm: '90px' },
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+        height: { xs: '60px', sm: '80px' }, // Consistent height
         transition: 'all 0.3s ease',
-        backdropFilter: 'none',
         '&:hover': {
-          boxShadow: '0 4px 30px rgba(255, 165, 0, 0.6)', 
+          boxShadow: '0 4px 30px rgba(255, 165, 0, 0.6)',
         },
       }}
     >
@@ -60,37 +60,51 @@ const Header = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           height: '100%',
-          fontFamily: 'Helvetica, Arial, sans-serif',
-          paddingX: { xs: '1rem', sm: '1.5rem' },
-          letterSpacing: '1px',
+          paddingX: { xs: '0.5rem', sm: '1.5rem' }, // Reduced padding on mobile
           color: '#fff',
         }}
       >
-        {/* Logo on the Left for Desktop, Centered for Mobile */}
-        <Box sx={{ display: 'flex', justifyContent: 'flex-start', flex: 1 }}>
+        {/* Logo - Centered on Mobile, Left on Desktop */}
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: { xs: 'center', sm: 'flex-start' },
+            flex: { xs: '0', sm: '1' }, // No flex grow on mobile
+            position: { xs: 'absolute', sm: 'static' }, // Center logo on mobile
+            left: { xs: '50%', sm: 'auto' },
+            transform: { xs: 'translateX(-50%)', sm: 'none' },
+          }}
+        >
           <Link to="/">
-            <img
-              src="/logo1.jpg" 
+            <Box
+              component="img"
+              src="/logo1.jpg"
               alt="Intrepid Racing League"
-              style={{
-                height: '60px', // Smaller logo for mobile
+              sx={{
+                height: { xs: '40px', sm: '60px' }, // Controlled size with sx
                 width: 'auto',
+                maxHeight: '100%', // Ensures it fits within AppBar height
+                display: 'block',
               }}
             />
           </Link>
         </Box>
 
-        {/* Hamburger Icon for Mobile (on the Right side) */}
+        {/* Hamburger Icon for Mobile */}
         <IconButton
           color="inherit"
-          onClick={handleMenuOpen} // Open the popover when clicked
-          sx={{ display: { xs: 'flex', sm: 'none' }, justifyContent: 'flex-end' }}
+          onClick={handleMenuOpen}
+          sx={{
+            display: { xs: 'flex', sm: 'none' },
+            position: 'absolute',
+            right: '0.5rem', // Align to right edge
+          }}
         >
           <MenuIcon />
         </IconButton>
 
         {/* Desktop Navigation Links */}
-        <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: { sm: 1, md: 2 } }}>
           {navLinks.map((section) => (
             <Button
               key={section.name}
@@ -103,8 +117,8 @@ const Header = () => {
                   transform: 'scale(1.05)',
                   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                 },
-                fontSize: { xs: '1rem', sm: '1.2rem' },
-                padding: '8px 16px',
+                fontSize: { sm: '1rem', md: '1.2rem' },
+                padding: { sm: '6px 12px', md: '8px 16px' },
                 transition: 'transform 0.3s ease, box-shadow 0.2s ease',
               }}
             >
@@ -112,47 +126,37 @@ const Header = () => {
             </Button>
           ))}
 
-          {/* Archive Button with Clickable Dropdown */}
-          <Box sx={{ position: 'relative' }}>
-            <Button
-              color="inherit"
-              onClick={handleArchiveOpen}
-              sx={{
-                '&:hover': {
-                  backgroundColor: '#F79535',
-                  color: '#ffffff',
-                  transform: 'scale(1.05)',
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
-                },
-                '&:active': {
-                  backgroundColor: '#F79535', 
-                  color: '#ffffff',
-                },
-                fontSize: { xs: '1rem', sm: '1.2rem' },
-                padding: '8px 16px',
-                transition: 'transform 0.3s ease, box-shadow 0.2s ease',
-              }}
-            >
-              Archive
-            </Button>
-
-            {/* Archive Dropdown Menu */}
-            <Menu
-              anchorEl={anchorElArchive}
-              open={Boolean(anchorElArchive)}
-              onClose={handleArchiveClose}
-              sx={{
-                mt: 1,
-              }}
-            >
-              <MenuItem onClick={handleArchiveClose} component="a" href="/archive/season1">
-                Season 1
-              </MenuItem>
-              <MenuItem onClick={handleArchiveClose} component="a" href="/archive/season2">
-                Season 2
-              </MenuItem>
-            </Menu>
-          </Box>
+          {/* Archive Button with Dropdown */}
+          <Button
+            color="inherit"
+            onClick={handleArchiveOpen}
+            sx={{
+              '&:hover': {
+                backgroundColor: '#F79535',
+                color: '#ffffff',
+                transform: 'scale(1.05)',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+              },
+              fontSize: { sm: '1rem', md: '1.2rem' },
+              padding: { sm: '6px 12px', md: '8px 16px' },
+              transition: 'transform 0.3s ease, box-shadow 0.2s ease',
+            }}
+          >
+            Archive
+          </Button>
+          <Menu
+            anchorEl={anchorElArchive}
+            open={Boolean(anchorElArchive)}
+            onClose={handleArchiveClose}
+            sx={{ mt: 1 }}
+          >
+            <MenuItem onClick={handleArchiveClose} component="a" href="/archive/season1">
+              Season 1
+            </MenuItem>
+            <MenuItem onClick={handleArchiveClose} component="a" href="/archive/season2">
+              Season 2
+            </MenuItem>
+          </Menu>
         </Box>
       </Toolbar>
 
@@ -160,7 +164,7 @@ const Header = () => {
       <Popover
         open={openMenu}
         anchorEl={anchorElMenu}
-        onClose={handleMenuClose} // Close the popover
+        onClose={handleMenuClose}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right',
@@ -171,13 +175,15 @@ const Header = () => {
         }}
         sx={{
           '& .MuiPopover-paper': {
-            backgroundColor: '#f89535',
+            backgroundColor: '#7D3569', // Match AppBar color
             color: '#fff',
-            padding: '8px 16px',
+            width: '180px', // Fixed width for consistency
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
           },
         }}
       >
-        <Box>
+        <Box sx={{ padding: '8px' }}>
           {navLinks.map((section) => (
             <Button
               key={section.name}
@@ -187,8 +193,9 @@ const Header = () => {
               sx={{
                 display: 'block',
                 width: '100%',
-                padding: '8px 0',
+                padding: '10px 16px',
                 textAlign: 'left',
+                fontSize: '1rem',
                 '&:hover': {
                   backgroundColor: '#F79535',
                   color: '#ffffff',
@@ -206,8 +213,9 @@ const Header = () => {
             sx={{
               display: 'block',
               width: '100%',
-              padding: '8px 0',
+              padding: '10px 16px',
               textAlign: 'left',
+              fontSize: '1rem',
               '&:hover': {
                 backgroundColor: '#F79535',
                 color: '#ffffff',
@@ -223,8 +231,9 @@ const Header = () => {
             sx={{
               display: 'block',
               width: '100%',
-              padding: '8px 0',
+              padding: '10px 16px',
               textAlign: 'left',
+              fontSize: '1rem',
               '&:hover': {
                 backgroundColor: '#F79535',
                 color: '#ffffff',
