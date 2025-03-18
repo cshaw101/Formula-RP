@@ -18,7 +18,7 @@ const Footer = () => (
       <Grid item>
         <IconButton
           component={Link}
-          href="https://www.twitter.com"
+          href="https://x.com/Intrepid_League"
           target="_blank"
           sx={{
             color: '#FFD700',
@@ -31,7 +31,7 @@ const Footer = () => (
       <Grid item>
         <IconButton
           component={Link}
-          href="https://www.youtube.com"
+          href="https://www.youtube.com/@IntrepidRacingLeague"
           target="_blank"
           sx={{
             color: '#FFD700',
@@ -44,7 +44,7 @@ const Footer = () => (
       <Grid item>
         <IconButton
           component={Link}
-          href="https://www.twitch.tv"
+          href="https://www.twitch.tv/intrepidracingleague"
           target="_blank"
           sx={{
             color: '#FFD700',
