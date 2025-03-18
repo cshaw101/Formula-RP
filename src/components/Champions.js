@@ -574,3 +574,6 @@ const ChampionsPage = () => {
 };
 
 export default ChampionsPage;
+
+
+//redid image for mclaren
