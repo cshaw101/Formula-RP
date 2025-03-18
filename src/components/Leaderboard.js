@@ -70,9 +70,9 @@ const F1Leaderboard = () => {
         padding: "1rem",
         textAlign: "center",
         width: "100%",
-        minWidth: "500px",
+        maxWidth: "600px", // Adjusted max width
         margin: "0 auto",
-        overflowX: "auto",
+        overflowX: "auto", // Added for horizontal scrolling
       }}
     >
       <Typography
@@ -102,11 +102,15 @@ const F1Leaderboard = () => {
                 }}
               >
                 {/* Team Logo */}
-                <TableCell sx={{ textAlign: "center", padding: "12px", width: "25%" }}>
+                <TableCell sx={{ textAlign: "center", padding: "12px", width: { xs: "30%", sm: "20%" } }}>
                   <img
                     src={teamLogo}
                     alt={entry.team}
-                    style={{ width: "100px", height: "100px" }} // Increased size for better visibility
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      maxWidth: "100%",
+                    }}
                   />
                 </TableCell>
 
@@ -114,7 +118,7 @@ const F1Leaderboard = () => {
                 <TableCell
                   sx={{
                     color: "white",
-                    fontSize: "1.5rem",
+                    fontSize: { xs: "1.2rem", sm: "1.5rem" },
                     fontWeight: "bold",
                     textAlign: "center",
                     textTransform: "uppercase",
@@ -129,7 +133,7 @@ const F1Leaderboard = () => {
                 <TableCell
                   sx={{
                     color: "white",
-                    fontSize: "1.5rem",
+                    fontSize: { xs: "1.2rem", sm: "1.5rem" },
                     fontWeight: "bold",
                     textAlign: "center",
                     padding: "12px",
@@ -157,9 +161,9 @@ const F1Leaderboard = () => {
         padding: "1rem",
         textAlign: "center",
         width: "100%",
-        minWidth: "500px",
+        maxWidth: "600px", // Adjusted max width
         margin: "0 auto",
-        overflowX: "auto",
+        overflowX: "auto", // Added for horizontal scrolling
       }}
     >
       <Typography
@@ -190,20 +194,28 @@ const F1Leaderboard = () => {
                 }}
               >
                 {/* Team Logo */}
-                <TableCell sx={{ textAlign: "center", padding: "12px", width: "20%" }}>
+                <TableCell sx={{ textAlign: "center", padding: "12px", width: { xs: "30%", sm: "20%" } }}>
                   <img
                     src={teamLogo}
                     alt={entry.team}
-                    style={{ width: "100px", height: "100px" }} // Increased size for better visibility
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      maxWidth: "100%",
+                    }}
                   />
                 </TableCell>
 
                 {/* Car Logo */}
-                <TableCell sx={{ textAlign: "center", padding: "12px", width: "20%" }}>
+                <TableCell sx={{ textAlign: "center", padding: "12px", width: { xs: "50%", sm: "20%" } }}>
                   <img
                     src={carLogo}
                     alt={entry.team}
-                    style={{ width: "200px", height: "70px" }}
+                    style={{
+                      width: "150px",
+                      height: "50px",
+                      maxWidth: "100%",
+                    }}
                   />
                 </TableCell>
 
@@ -211,7 +223,7 @@ const F1Leaderboard = () => {
                 <TableCell
                   sx={{
                     color: "white",
-                    fontSize: "1.5rem",
+                    fontSize: { xs: "1.2rem", sm: "1.5rem" },
                     fontWeight: "bold",
                     textAlign: "center",
                     padding: "12px",
@@ -237,14 +249,15 @@ const F1Leaderboard = () => {
         borderRadius: 12,
         textAlign: "center",
         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.6)",
-        minHeight: "100vh",
+        minHeight: "100vh", // Ensure content covers full height
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center", // Center content vertically
         width: "100%",
         paddingTop: "3rem",
         maxWidth: "100%",
-        margin: "0",
+        overflowX: "hidden", // Prevent any horizontal overflow
       }}
     >
       <Typography
@@ -255,6 +268,7 @@ const F1Leaderboard = () => {
           textTransform: "uppercase",
           letterSpacing: "2px",
           marginBottom: "1.5rem",
+          fontSize: { xs: "2rem", sm: "3rem", md: "4rem" }, // Adjusted font sizes for responsive layout
         }}
       >
         Tier 1 Leaderboards
