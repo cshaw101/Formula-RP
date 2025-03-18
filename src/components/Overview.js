@@ -10,16 +10,13 @@ const Overview = () => {
       sx={{
         padding: { xs: "40px 20px", sm: "60px 40px" },
         textAlign: "center",
-        backgroundColor: "#2e2e2e",
-        backgroundImage: "url('/assets/overview-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundColor: "#2E2E2E",  // Solid background color
         color: "#FFFFFF",
         position: "relative",
-        borderRadius: "12px",
+        borderRadius: "4px",
         marginTop: "100px",
         marginBottom: "100px",
-        boxShadow: "0 4px 40px rgba(0, 0, 0, 0.5)", // Enhanced shadow for depth
+        boxShadow: "none",
       }}
     >
       {/* Header */}
@@ -29,11 +26,10 @@ const Overview = () => {
           fontFamily: "'Bebas Neue', sans-serif",
           fontSize: { xs: "3.5rem", sm: "5rem" },
           fontWeight: "bold",
-          color: "#F79535", // Accent color for header
+          color: "#F79535",
           marginBottom: "20px",
           letterSpacing: "2px",
-          display: "inline-block",
-          textShadow: "3px 3px 6px rgba(0, 0, 0, 0.7)", // Subtle text shadow
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Text shadow for header
         }}
       >
         Your Journey Starts Here
@@ -50,7 +46,7 @@ const Overview = () => {
           letterSpacing: "1px",
           maxWidth: "80%",
           margin: "0 auto",
-          marginBottom: "50px", // Increased space for better separation
+          marginBottom: "50px",
         }}
       >
         Experience the thrill of Formula 1 like never before! Join a dynamic league where every player takes on a unique role: Owners manage budgets and teams, Principals strategize for success, Drivers race for glory, and FIA members enforce the rules.
@@ -62,15 +58,19 @@ const Overview = () => {
         <Grid item xs={12} sm={6}>
           <Box
             sx={{
-              backgroundColor: "#3d3d3d",
-              padding: "40px",
-              borderRadius: "12px",
+              backgroundColor: "#3a3a3a",
+              padding: "30px",
+              borderRadius: "8px",
               textAlign: "center",
-              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)", // Enhanced box shadow
+              boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)", // Deeper box shadow
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               height: "100%",
+              transition: "transform 0.3s ease",  // Smooth transform on hover
+              "&:hover": {
+                transform: "translateY(-10px)", // Hover effect
+              },
             }}
           >
             <Typography
@@ -78,7 +78,7 @@ const Overview = () => {
               sx={{
                 fontWeight: "bold",
                 color: "#F79535",
-                marginBottom: "20px",
+                marginBottom: "15px",
               }}
             >
               Tier 1
@@ -87,9 +87,9 @@ const Overview = () => {
               variant="body1"
               sx={{
                 color: "#FFFFFF",
-                marginBottom: "20px",
-                fontSize: "1.2rem", // Increased font size for better readability
-                lineHeight: "1.6", // Improved line height
+                marginBottom: "15px",
+                fontSize: "1.1rem",
+                lineHeight: "1.5",
               }}
             >
               Races on Sundays at 7:30 PM EST
@@ -103,18 +103,21 @@ const Overview = () => {
             <Button
               variant="contained"
               color="primary"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScKo7VDOv34AzevNXuIDPIRAvzb0S8OZAb79PPtxZ2YaHOTQQ/viewform"
+              target="_blank"
               sx={{
                 backgroundColor: "#F79535",
-                borderRadius: "12px",
-                padding: "12px 25px",
+                borderRadius: "8px",
+                padding: "10px 20px",
                 fontWeight: "bold",
-                fontSize: "1.2rem",
+                fontSize: "1.1rem",
                 "&:hover": {
-                  backgroundColor: "#7D3569", // Purple on hover
+                  backgroundColor: "#7D3569",
+                  transform: "scale(1.05)",  // Button hover effect
                 },
               }}
             >
-              Learn More
+              Apply Now
             </Button>
           </Box>
         </Grid>
@@ -124,14 +127,18 @@ const Overview = () => {
           <Box
             sx={{
               backgroundColor: "#3d3d3d",
-              padding: "40px",
-              borderRadius: "12px",
+              padding: "30px",
+              borderRadius: "8px",
               textAlign: "center",
-              boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)",
+              boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)", // Deeper box shadow
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               height: "100%",
+              transition: "transform 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-10px)",  // Hover effect
+              },
             }}
           >
             <Typography
@@ -150,7 +157,7 @@ const Overview = () => {
                 color: "#FFFFFF",
                 marginBottom: "20px",
                 fontSize: "1.2rem",
-                lineHeight: "1.6", // Improved line height
+                lineHeight: "1.6",
               }}
             >
               Races on Saturdays at 6:30 PM EST
@@ -166,18 +173,21 @@ const Overview = () => {
             <Button
               variant="contained"
               color="primary"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScKo7VDOv34AzevNXuIDPIRAvzb0S8OZAb79PPtxZ2YaHOTQQ/viewform"
+              target="_blank"
               sx={{
                 backgroundColor: "#F79535",
-                borderRadius: "12px",
+                borderRadius: "8px",
                 padding: "12px 25px",
                 fontWeight: "bold",
                 fontSize: "1.2rem",
                 "&:hover": {
-                  backgroundColor: "#7D3569", // Purple on hover
+                  backgroundColor: "#7D3569",
+                  transform: "scale(1.05)",
                 },
               }}
             >
-              Learn More
+              Apply Now
             </Button>
           </Box>
         </Grid>
@@ -187,10 +197,10 @@ const Overview = () => {
       <Box
         sx={{
           marginBottom: "60px",
-          padding: "40px",
+          padding: "30px",
           backgroundColor: "#3d3d3d",
-          borderRadius: "12px",
-          boxShadow: "0 8px 30px rgba(0, 0, 0, 0.5)",
+          borderRadius: "8px",
+          boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)",  // Shadow for the section
         }}
       >
         <Typography
@@ -199,7 +209,8 @@ const Overview = () => {
             fontWeight: "bold",
             color: "#F79535",
             marginBottom: "30px",
-            textAlign: "center", // Centered title for better visual structure
+            textAlign: "center",
+            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",  // Text shadow for role guide
           }}
         >
           Role Guide
@@ -213,11 +224,15 @@ const Overview = () => {
                 backgroundColor: "#2e2e2e",
                 padding: "20px",
                 borderRadius: "8px",
-                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
                 display: "flex",
                 alignItems: "center",
                 gap: "20px",
-                height: "100%", // Ensure both boxes are same height
+                boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3)",  // Box shadow for card effect
+                height: "100%",
+                transition: "transform 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-10px)", // Hover effect on card
+                },
               }}
             >
               <Person sx={{ color: "#F79535", fontSize: "3rem" }} />
@@ -253,11 +268,15 @@ const Overview = () => {
                 backgroundColor: "#2e2e2e",
                 padding: "20px",
                 borderRadius: "8px",
-                boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
                 display: "flex",
                 alignItems: "center",
                 gap: "20px",
-                height: "100%", // Ensure both boxes are same height
+                boxShadow: "0 8px 25px rgba(0, 0, 0, 0.3)",
+                height: "100%",
+                transition: "transform 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-10px)", // Hover effect on card
+                },
               }}
             >
               <SportsMotorsports sx={{ color: "#F79535", fontSize: "3rem" }} />
@@ -279,7 +298,7 @@ const Overview = () => {
                     fontSize: "1.1rem",
                     lineHeight: "1.6",
                   }}
-                  >
+                >
                   Dedicated reserve drivers may replace drivers in either championship. Drivers must be willing to fill in when needed.
                 </Typography>
               </Box>
@@ -293,15 +312,16 @@ const Overview = () => {
         <Button
           variant="contained"
           color="primary"
-          href="https://discord.gg/yourdiscordlink"  // Add your Discord link here
+          href="https://discord.com/invite/U6dZYMpyya"
           sx={{
             backgroundColor: "#F79535",
-            borderRadius: "12px",
+            borderRadius: "8px",
             padding: "12px 25px",
             fontWeight: "bold",
             fontSize: "1.2rem",
             "&:hover": {
-              backgroundColor: "#7D3569", // Purple on hover
+              backgroundColor: "#7D3569",
+              transform: "scale(1.05)",  // Button hover effect
             },
           }}
         >

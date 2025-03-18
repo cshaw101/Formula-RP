@@ -180,7 +180,7 @@ const RaceSchedule = () => {
     <Box
       sx={{
         padding: "6rem 2rem", 
-        background: "linear-gradient(135deg, #2e2e2e 30%, #1a1a1a 100%)",
+        background: "#2e2e2e)",
         textAlign: "center",
         position: "relative",
         minHeight: "500px", 
@@ -320,20 +320,21 @@ const RaceSchedule = () => {
   onClick={() => setExpandedRace(index)}
   variant="contained"
   sx={{
-    background: "#F79535",
+    background: "#7D3569", // Change to purple
     color: "#fff",
     fontWeight: "bold",
     fontSize: "1.2rem",  // Increased font size
     padding: "0.75rem 1.5rem",  // Increased padding for bigger buttons
     borderRadius: "12px",  // Slightly more rounded corners for a more modern feel
-    border: `2px solid #F79535`,
+    border: `2px solid #7D3569`, // Border to match the purple
     "&:hover": {
-      background: "#FFA500",
+      background: "#6A2A58", // Slightly darker purple on hover
     },
   }}
 >
   More Info
 </Button>
+
 
                 </Box>
               </>
