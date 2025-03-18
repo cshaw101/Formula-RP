@@ -1,6 +1,6 @@
 /* Add the @font-face definitions */
 @font-face {
-  font-family: 'Formula Condensed Light';
+  font-family: 'Bodoni Moda', serif;
   font-style: normal;
   font-weight: normal;
   src: local('Formula Condensed Light'), url('/public/FormulaCondensed-Light.woff') format('woff');
@@ -15,10 +15,10 @@
 
 /* Apply the fonts globally */
 body {
-  font-family: 'Formula Condensed Light', sans-serif;
+  font-family: 'Bodoni Moda', serif;
 }
 
 /* Override specific elements for Bold font */
 h1, h2, h3, h4, h5, h6, .bold-text {
-  font-family: 'Formula Condensed Bold', sans-serif;
+  font-family: 'Bodoni Moda', serif;
 }

@@ -36,28 +36,24 @@ body {
 
 /* Individual driver box styling */
 .driver-box {
-  flex: 1 1 250px; /* Flex item with a base size of 250px */
-  min-width: 250px; /* Minimum width of 250px */
-  max-width: 300px; /* Optional: limit max width */
-  background-color: rgba(0, 0, 0, 0.7); /* Dark background */
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  color: #ffd700; /* Gold text */
+  flex: 1 1 250px;
+  max-width: 300px;  /* Optional: limit max width */
   margin: 10px; /* Optional margin between items */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .driver-box {
     flex: 1 1 100%; /* Full width on smaller screens */
-    max-width: 100%;  /* Allow full use of available space */
   }
 }
+
 
 @keyframes spin {
   0% {

@@ -13,31 +13,32 @@ const SignupPage = () => {
         maxWidth: 800,
         margin: '0 auto',
         marginBottom: '100px', // Extra space to emphasize section
+        boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.5)", // Added shadow for depth
       }}
     >
       <Typography
-        variant="h2"
+        variant="h3"
         sx={{
-          color: '#FFD700',
-          marginBottom: 4,
+          color: '#F79535', // Consistent accent color
+          marginBottom: 3,
           textAlign: 'center',
           fontWeight: 'bold',
           fontSize: "48px", // Larger text for impact
         }}
       >
-        Sign Up for Formula RP
+        Sign Up for Intrepid Racing
       </Typography>
       <Typography
-        variant="body1"
+        variant="h6"
         sx={{
           color: '#fff',
           marginBottom: 4,
           textAlign: 'center',
-          fontSize: "20px", // Larger font for description
-          lineHeight: "1.6",
+          fontSize: "20px", // Adjusted font size for readability
+          lineHeight: "1.8", // Increased line height for better spacing
         }}
       >
-        To join the Formula RP League, click the button below to sign up and complete the form.
+        To join the Intrepid Racing League, click the button below to sign up and complete the form.
       </Typography>
 
       {/* Sign-Up Button */}
@@ -45,15 +46,15 @@ const SignupPage = () => {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: '#FFD700',
+            backgroundColor: '#F79535', // Using accent color
             color: '#fff',
             fontSize: '20px',
             padding: '18px 36px',
             fontWeight: 'bold',
-            borderRadius: '12px',
+            borderRadius: '10px',
             width: '100%',
             "&:hover": {
-              backgroundColor: '#e6c300',
+              backgroundColor: '#e67d29', // Darker hover effect
               transform: "scale(1.05)", // Hover animation
             },
             transition: "all 0.3s ease",
