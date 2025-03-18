@@ -14,6 +14,8 @@ import Champions from "./components/Champions";
 import Leaderboard from "./components/Leaderboard";
 import RaceSchedule from "./components/Schedule";
 import StaffPage from "./components/Staff";
+import Season1 from "./components/archive/Season1";
+import Season2 from "./components/archive/Season2";
 
 function MainPage() {
   return (
@@ -49,6 +51,8 @@ function App() {
         <Route path="/champions" element={<Champions />} />
         <Route path="/staff" element={<StaffPage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/archive/season1" element={<Season1 />} /> {/* Route for Season 1 */}
+        <Route path="/archive/season2" element={<Season2 />} /> {/* Route for Season 2 */}
       </Routes>
       <Footer />
     </Router>
