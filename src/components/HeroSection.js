@@ -128,13 +128,13 @@ const HeroSection = () => {
           position: 'absolute',
           bottom: '10px',
           right: '10px',
-          backgroundColor: '#FFD700',
-          color: '#212121',
+          backgroundColor: '#F79535',
+          color: 'white',
           borderRadius: '50%',
           padding: '10px', // Reduced padding
           fontSize: '0.875rem', // Reduced font size
           zIndex: 2,
-          '&:hover': { backgroundColor: '#FFB300', transform: 'scale(1.05)' },
+          '&:hover': { backgroundColor: '#F79535', transform: 'scale(1.05)' },
         }}
       >
         {isPlaying ? <PauseIcon sx={{ fontSize: '1.25rem' }} /> : <PlayArrowIcon sx={{ fontSize: '1.25rem' }} />} 

@@ -7,17 +7,15 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
+  Popover,
 } from '@mui/material';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import MenuIcon from '@mui/icons-material/Menu'; // Import Menu Icon
 
 const Header = () => {
   const [anchorElArchive, setAnchorElArchive] = useState(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [anchorElMenu, setAnchorElMenu] = useState(null); // For Hamburger Menu Popover
+  const [openMenu, setOpenMenu] = useState(false); // For controlling the popover
 
   const handleArchiveOpen = (event) => {
     setAnchorElArchive(event.currentTarget);
@@ -27,8 +25,13 @@ const Header = () => {
     setAnchorElArchive(null);
   };
 
-  const handleMobileToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const handleMenuOpen = (event) => {
+    setAnchorElMenu(event.currentTarget); // Open the popover when hamburger icon is clicked
+    setOpenMenu(true);
+  };
+
+  const handleMenuClose = () => {
+    setOpenMenu(false); // Close the popover when clicking outside or on a link
   };
 
   const navLinks = [
@@ -63,34 +66,28 @@ const Header = () => {
           color: '#fff',
         }}
       >
-        {/* Logo Section */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <IconButton
-            color="inherit"
-            sx={{
-              fontSize: '2.5rem',
-              textShadow: '0 0 8px rgba(255, 255, 255, 0.8)',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                textShadow: '0 0 16px rgba(255, 255, 255, 1)',
-                transform: 'scale(1.05)',
-              },
-            }}
-            aria-label="Formula RP Icon"
-          />
-          
-          {/* Wrap the logo image in a Link component */}
+        {/* Logo on the Left for Desktop, Centered for Mobile */}
+        <Box sx={{ display: 'flex', justifyContent: 'flex-start', flex: 1 }}>
           <Link to="/">
             <img
               src="/logo1.jpg" 
               alt="Intrepid Racing League"
               style={{
-                height: '80px',
+                height: '60px', // Smaller logo for mobile
                 width: 'auto',
               }}
             />
           </Link>
         </Box>
+
+        {/* Hamburger Icon for Mobile (on the Right side) */}
+        <IconButton
+          color="inherit"
+          onClick={handleMenuOpen} // Open the popover when clicked
+          sx={{ display: { xs: 'flex', sm: 'none' }, justifyContent: 'flex-end' }}
+        >
+          <MenuIcon />
+        </IconButton>
 
         {/* Desktop Navigation Links */}
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
@@ -159,40 +156,85 @@ const Header = () => {
         </Box>
       </Toolbar>
 
-      {/* Mobile Drawer Menu */}
-      <Drawer
-        anchor="right"
-        open={mobileOpen}
-        onClose={handleMobileToggle}
+      {/* Popover for Hamburger Menu */}
+      <Popover
+        open={openMenu}
+        anchorEl={anchorElMenu}
+        onClose={handleMenuClose} // Close the popover
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
         sx={{
-          '& .MuiDrawer-paper': {
-            width: 250,
-            background: '#f89535',
-            color: '#FFFFFF',
+          '& .MuiPopover-paper': {
+            backgroundColor: '#f89535',
+            color: '#fff',
+            padding: '8px 16px',
           },
         }}
       >
-        <List>
+        <Box>
           {navLinks.map((section) => (
-            <ListItem key={section.name} disablePadding>
-              <ListItemButton onClick={handleMobileToggle} component="a" href={section.path}>
-                <ListItemText primary={section.name} sx={{ color: 'white' }} />
-              </ListItemButton>
-            </ListItem>
+            <Button
+              key={section.name}
+              color="inherit"
+              onClick={handleMenuClose}
+              href={section.path}
+              sx={{
+                display: 'block',
+                width: '100%',
+                padding: '8px 0',
+                textAlign: 'left',
+                '&:hover': {
+                  backgroundColor: '#F79535',
+                  color: '#ffffff',
+                },
+              }}
+            >
+              {section.name}
+            </Button>
           ))}
-          {/* Archive Section */}
-          <ListItem disablePadding>
-            <ListItemButton onClick={handleArchiveClose} component="a" href="/archive/season1">
-              <ListItemText primary="Season 1" sx={{ color: 'white' }} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton onClick={handleArchiveClose} component="a" href="/archive/season2">
-              <ListItemText primary="Season 2" sx={{ color: 'white' }} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Drawer>
+          {/* Archive Section in Popover */}
+          <Button
+            color="inherit"
+            onClick={handleMenuClose}
+            href="/archive/season1"
+            sx={{
+              display: 'block',
+              width: '100%',
+              padding: '8px 0',
+              textAlign: 'left',
+              '&:hover': {
+                backgroundColor: '#F79535',
+                color: '#ffffff',
+              },
+            }}
+          >
+            Season 1
+          </Button>
+          <Button
+            color="inherit"
+            onClick={handleMenuClose}
+            href="/archive/season2"
+            sx={{
+              display: 'block',
+              width: '100%',
+              padding: '8px 0',
+              textAlign: 'left',
+              '&:hover': {
+                backgroundColor: '#F79535',
+                color: '#ffffff',
+              },
+            }}
+          >
+            Season 2
+          </Button>
+        </Box>
+      </Popover>
     </AppBar>
   );
 };
