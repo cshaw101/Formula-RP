@@ -18,7 +18,6 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 function MainPage() {
   return (
     <>
-      <Header />
       <HeroSection />
       <main>
         <section id="overview">
@@ -38,6 +37,7 @@ function MainPage() {
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/highlights" element={<Highlights />} />
