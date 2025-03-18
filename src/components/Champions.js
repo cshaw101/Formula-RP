@@ -17,7 +17,7 @@ const champions = {
       teamColor: '#52E252', // Team color for driver (Red Bull)
     },
     constructor: {
-      name: 'Alfa Romeo',
+      name: 'Alfa Romeo/Stake Sauber',
       image: '/logos/stake.avif',
       teamPrincipal: 'Capt_Davis',
       drivers: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   Box,
   Typography,
@@ -20,7 +20,7 @@ const races = [
     image: "/track-images/australia.avif",
     description:
       "A classic season opener held in Melbourne's Albert Park. This semi-permanent street circuit is known for its smooth surface, fast chicanes, and tight racing action.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "Scorenzy (Season 3)",
   },
   {
     name: "Chinese Grand Prix",
@@ -30,7 +30,7 @@ const races = [
     image: "/track-images/china.avif",
     description:
       "Returning to the calendar, Shanghai features a challenging first corner that spirals inward and a long back straight that promotes exciting DRS overtakes.",
-    previousWinner: "Lewis Hamilton (2019)",
+    previousWinner: "Sqert-_- (Season 3)",
   },
   {
     name: "Saudi Arabian Grand Prix (SPRINT)",
@@ -40,7 +40,7 @@ const races = [
     image: "/track-images/saudi.avif",
     description:
       "The fastest street circuit in F1, Jeddah's high-speed nature and tight barriers demand precision, especially under the lights for this night race.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "CRF Rapters (Season 2)",
   },
   {
     name: "Canadian Grand Prix",
@@ -50,7 +50,7 @@ const races = [
     image: "/track-images/canada.avif",
     description:
       "Held in Montreal, this circuit is known for its long straights and the infamous 'Wall of Champions,' which has caught out many great drivers.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "INAUGURAL RACE (Season 3)",
   },
   {
     name: "Belgian Grand Prix",
@@ -60,7 +60,7 @@ const races = [
     image: "/track-images/spa.avif",
     description:
       "One of F1's most legendary tracks, Spa is famous for the high-speed Eau Rouge corner, unpredictable weather, and dramatic races.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "Hashbrown (Season 2)",
   },
   {
     name: "British Grand Prix",
@@ -70,7 +70,7 @@ const races = [
     image: "/track-images/silverstone.avif",
     description:
       "A fan-favorite circuit with legendary corners like Copse, Maggots, and Becketts. The birthplace of Formula 1, Silverstone always delivers thrilling racing.",
-    previousWinner: "Lewis Hamilton (2024)",
+    previousWinner: "Hashbrown (Season 2)",
   },
   {
     name: "Monaco Grand Prix",
@@ -80,7 +80,7 @@ const races = [
     image: "/track-images/monaco.avif",
     description:
       "The most prestigious race in F1, Monaco’s tight streets require absolute precision. Qualifying is crucial as overtaking is nearly impossible.",
-    previousWinner: "Charles Leclerc (2024)",
+    previousWinner: "Unbroken Leonardo (Season 2)",
   },
   {
     name: "Imola Grand Prix",
@@ -90,7 +90,7 @@ const races = [
     image: "/track-images/imola.avif",
     description:
       "A historic track with a mix of high-speed corners and technical sections. Imola tests drivers’ skills with minimal room for error.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "RenatoGames (Season 2)",
   },
   {
     name: "Austrian Grand Prix (SPRINT)",
@@ -100,7 +100,7 @@ const races = [
     image: "/track-images/austria.avif",
     description:
       "A short but intense circuit, the Red Bull Ring is known for its elevation changes and three key DRS zones that encourage overtaking.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "Hashbrown (Season 2)",
   },
   {
     name: "Monza Grand Prix",
@@ -110,7 +110,7 @@ const races = [
     image: "/track-images/monza.avif",
     description:
       "The 'Temple of Speed' features the highest top speeds of the season. A historic track where slipstream battles are common.",
-    previousWinner: "Carlos Sainz (2024)",
+    previousWinner: "promaster7 (Season 2)",
   },
   {
     name: "Azerbaijan Grand Prix",
@@ -120,7 +120,7 @@ const races = [
     image: "/track-images/baku.avif",
     description:
       "A street circuit with the longest straight in F1, Baku often produces unpredictable races with plenty of overtaking and dramatic moments.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "RenatoGames (Season 2)",
   },
   {
     name: "Japanese Grand Prix",
@@ -130,7 +130,7 @@ const races = [
     image: "/track-images/japan.avif",
     description:
       "Suzuka’s figure-eight layout features high-speed corners and technical sections. A favorite among drivers for its challenge.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "RST_LuisCarlos11 (Season 2)",
   },
   {
     name: "Brazilian Grand Prix (SPRINT)",
@@ -140,7 +140,7 @@ const races = [
     image: "/track-images/brazil.avif",
     description:
       "Interlagos is a legendary circuit with unpredictable weather, elevation changes, and a history of delivering dramatic races.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "RenatoGames (Season 2)",
   },
   {
     name: "Las Vegas Grand Prix",
@@ -150,24 +150,17 @@ const races = [
     image: "/track-images/vegas.avif",
     description:
       "Under the bright lights of Las Vegas, this high-speed street circuit features long straights and sharp corners, offering a true spectacle.",
-    previousWinner: "Max Verstappen (2024)",
+    previousWinner: "RST_LuisCarlos11(Season 2)",
   },
 ];
 
 
 const RaceSchedule = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedRace, setExpandedRace] = useState(null);
   const scrollRef = useRef(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  useEffect(() => {
-    const today = new Date();
-    const nextRaceIndex = races.findIndex((race) => new Date(race.date) >= today);
-    if (nextRaceIndex !== -1) {
-      setCurrentIndex(nextRaceIndex);
-    }
-  }, []);
+
 
   const scroll = (direction) => {
     if (scrollRef.current) {
