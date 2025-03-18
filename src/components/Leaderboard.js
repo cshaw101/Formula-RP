@@ -13,8 +13,6 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
-const GOOGLE_SHEET_ID = "1wyZXZqNtAa9s5HRYr5rhgGc_Tm0o0ixqshXyjymzH6A";
-const GOOGLE_API_KEY = "AIzaSyDFJMB6zM1bBInkE7iVqzHgHwbe20i0aEk";
 const DRIVERS_SHEET = "DriversChampionshipTier1";
 const CONSTRUCTORS_SHEET = "ConstructorsChampionshipTier1";
 
@@ -22,12 +20,21 @@ const F1Leaderboard = () => {
   const [driversLeaderboard, setDriversLeaderboard] = useState([]);
   const [constructorsLeaderboard, setConstructorsLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchLeaderboard = async (sheetName, setStateFunction) => {
+      const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID;
+      const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+
+      if (!sheetId || !apiKey) {
+        setError('Missing Google Sheet ID or API Key.');
+        return;
+      }
+
       try {
         const response = await axios.get(
-          `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${sheetName}?key=${GOOGLE_API_KEY}`
+          `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`
         );
         const rows = response.data.values.slice(1);
 
@@ -35,13 +42,14 @@ const F1Leaderboard = () => {
           name: row[1],
           points: parseInt(row[2], 10),
           team: row[3] || row[1], // Constructor name
-          teamColor: row[4] || "#FFFFFF", // Color for team (added new column for hex code)
+          teamColor: row[4] || "#FFFFFF", // Color for team
         }));
 
         formattedData.sort((a, b) => b.points - a.points);
         setStateFunction(formattedData);
       } catch (error) {
         console.error(`Error fetching ${sheetName}:`, error);
+        setError(`Failed to load ${sheetName} data.`);
       }
     };
 
@@ -50,6 +58,28 @@ const F1Leaderboard = () => {
       fetchLeaderboard(CONSTRUCTORS_SHEET, setConstructorsLeaderboard),
     ]).finally(() => setLoading(false));
   }, []);
+
+  if (error) {
+    return (
+      <Box
+        sx={{
+          padding: '4rem 2rem',
+          backgroundColor: '#1C1C1C',
+          textAlign: 'center',
+          color: '#FFFFFF',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography variant="h4" sx={{ color: '#F79535', marginBottom: '1rem' }}>
+          Oops! Something went wrong.
+        </Typography>
+        <Typography variant="body1">{error}</Typography>
+      </Box>
+    );
+  }
 
   if (loading) {
     return (
@@ -70,9 +100,9 @@ const F1Leaderboard = () => {
         padding: "1rem",
         textAlign: "center",
         width: "100%",
-        maxWidth: "600px", // Adjusted max width
+        maxWidth: "600px",
         margin: "0 auto",
-        overflowX: "auto", // Added for horizontal scrolling
+        overflowX: "auto",
       }}
     >
       <Typography
@@ -96,25 +126,18 @@ const F1Leaderboard = () => {
               <TableRow
                 key={index}
                 sx={{
-                  backgroundColor: entry.teamColor || "#333", // Apply team color
+                  backgroundColor: entry.teamColor || "#333",
                   "&:hover": { backgroundColor: "#555", cursor: "pointer" },
                   transition: "background-color 0.3s ease",
                 }}
               >
-                {/* Team Logo */}
                 <TableCell sx={{ textAlign: "center", padding: "12px", width: { xs: "30%", sm: "20%" } }}>
                   <img
                     src={teamLogo}
                     alt={entry.team}
-                    style={{
-                      width: "80px",
-                      height: "80px",
-                      maxWidth: "100%",
-                    }}
+                    style={{ width: "80px", height: "80px", maxWidth: "100%" }}
                   />
                 </TableCell>
-
-                {/* Name (Driver Name) */}
                 <TableCell
                   sx={{
                     color: "white",
@@ -128,8 +151,6 @@ const F1Leaderboard = () => {
                 >
                   {entry.name}
                 </TableCell>
-
-                {/* Points */}
                 <TableCell
                   sx={{
                     color: "white",
@@ -161,9 +182,9 @@ const F1Leaderboard = () => {
         padding: "1rem",
         textAlign: "center",
         width: "100%",
-        maxWidth: "600px", // Adjusted max width
+        maxWidth: "600px",
         margin: "0 auto",
-        overflowX: "auto", // Added for horizontal scrolling
+        overflowX: "auto",
       }}
     >
       <Typography
@@ -188,38 +209,25 @@ const F1Leaderboard = () => {
               <TableRow
                 key={index}
                 sx={{
-                  backgroundColor: entry.teamColor || "#333", // Apply team color
+                  backgroundColor: entry.teamColor || "#333",
                   "&:hover": { backgroundColor: "#555", cursor: "pointer" },
                   transition: "background-color 0.3s ease",
                 }}
               >
-                {/* Team Logo */}
                 <TableCell sx={{ textAlign: "center", padding: "12px", width: { xs: "30%", sm: "20%" } }}>
                   <img
                     src={teamLogo}
                     alt={entry.team}
-                    style={{
-                      width: "80px",
-                      height: "80px",
-                      maxWidth: "100%",
-                    }}
+                    style={{ width: "80px", height: "80px", maxWidth: "100%" }}
                   />
                 </TableCell>
-
-                {/* Car Logo */}
                 <TableCell sx={{ textAlign: "center", padding: "12px", width: { xs: "50%", sm: "20%" } }}>
                   <img
                     src={carLogo}
                     alt={entry.team}
-                    style={{
-                      width: "150px",
-                      height: "50px",
-                      maxWidth: "100%",
-                    }}
+                    style={{ width: "150px", height: "50px", maxWidth: "100%" }}
                   />
                 </TableCell>
-
-                {/* Points */}
                 <TableCell
                   sx={{
                     color: "white",
@@ -249,15 +257,15 @@ const F1Leaderboard = () => {
         borderRadius: 12,
         textAlign: "center",
         boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.6)",
-        minHeight: "100vh", // Ensure content covers full height
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center", // Center content vertically
+        justifyContent: "center",
         width: "100%",
         paddingTop: "3rem",
         maxWidth: "100%",
-        overflowX: "hidden", // Prevent any horizontal overflow
+        overflowX: "hidden",
       }}
     >
       <Typography
@@ -268,19 +276,16 @@ const F1Leaderboard = () => {
           textTransform: "uppercase",
           letterSpacing: "2px",
           marginBottom: "1.5rem",
-          fontSize: { xs: "2rem", sm: "3rem", md: "4rem" }, // Adjusted font sizes for responsive layout
+          fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
         }}
       >
         Tier 1 Leaderboards
       </Typography>
 
       <Grid container spacing={4} justifyContent="center" sx={{ width: "100%" }}>
-        {/* Drivers Championship */}
         <Grid item xs={12} sm={6} md={5} lg={5}>
           {renderDriversTable("Drivers Championship", driversLeaderboard)}
         </Grid>
-
-        {/* Constructors Championship */}
         <Grid item xs={12} sm={6} md={5} lg={5}>
           {renderConstructorsTable("Constructors Championship", constructorsLeaderboard)}
         </Grid>

@@ -55,7 +55,7 @@ const DownloadRulebook = () => {
       <Typography
         variant="h6"
         sx={{
-          fontSize: "20px",
+          
           lineHeight: "1.8",
           marginBottom: "40px",
           color: "#fff",
