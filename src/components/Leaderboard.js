@@ -131,17 +131,22 @@ const F1Leaderboard = () => {
                   transition: "background-color 0.3s ease",
                 }}
               >
-                <TableCell sx={{ textAlign: "center", padding: "12px", width: { xs: "30%", sm: "20%" } }}>
+                <TableCell sx={{ textAlign: "center", padding: "8px", width: { xs: "30%", sm: "25%" } }}>
                   <img
                     src={teamLogo}
                     alt={entry.team}
-                    style={{ width: "80px", height: "80px", maxWidth: "100%" }}
+                    style={{
+                      width: "80px", // Adjusted for better mobile scaling
+                      height: "80px",
+                      maxWidth: "100%",
+                      objectFit: "contain", // Ensures the image is not distorted
+                    }}
                   />
                 </TableCell>
                 <TableCell
                   sx={{
                     color: "white",
-                    fontSize: { xs: "1.2rem", sm: "1.5rem" },
+                    fontSize: { xs: "0.9rem", sm: "1.2rem" }, // Reduced mobile size
                     fontWeight: "bold",
                     textAlign: "center",
                     textTransform: "uppercase",

@@ -28,8 +28,8 @@ function MainPage() {
         </section>
         <Analytics />
         <SpeedInsights />
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }
