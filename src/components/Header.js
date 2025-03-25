@@ -45,7 +45,8 @@ const Header = () => {
     <AppBar
       position="sticky"
       sx={{
-        background: '#7D3569',
+        background: '#FFFFFF', // White background
+        borderBottom: '4px solid #7D3569', // Purple border at the bottom
         boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
         height: { xs: '60px', sm: '80px' }, // Consistent height
         transition: 'all 0.3s ease',
@@ -61,7 +62,7 @@ const Header = () => {
           alignItems: 'center',
           height: '100%', // Full height of AppBar
           paddingX: { xs: '0.5rem', sm: '1.5rem' }, // Reduced padding on mobile
-          color: '#fff',
+          color: '#000',
           minHeight: '0 !important', // Override default Toolbar minHeight
         }}
       >
